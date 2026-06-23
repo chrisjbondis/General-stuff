@@ -36,6 +36,18 @@
     }
   },
   {
+    "id": "5",
+    "quote": "Humans evolved as apex predators and thrive best on a zero-carbohydrate, animal-only diet. Plants are chemically toxic, carbohydrates are non-essential, and modern disease is the result of abandoning our carnivore roots.",
+    "attribution": "Dr. Shawn Baker, carnivore diet",
+    "date": "2026-06-23",
+    "verdict": {
+      "label": "COMPLICATED",
+      "color": "orange",
+      "confidence": 50,
+      "summary": "The carnivore diet is a blunt-force tool that genuinely works in specific situations — particularly for people with severe autoimmune conditions, chronic gut disorders, or profound metabolic syndrome. Removing every known food irritant at once produces real, sometimes dramatic relief. The satiety argument is also solid: protein and fat suppress appetite hard, making it difficult to overeat. The problems emerge at the extremes. Saturated fat from an all-meat diet drives LDL cholesterol sky-high in a significant subset of people, which most cardiologists consider a serious cardiovascular risk regardless of triglyceride levels. The claim that plants are universally toxic is overblown — anti-nutrients are a real phenomenon at high doses but most are deactivated by cooking. And the long-term data simply doesn't exist. It's a legitimate reset strategy for a broken system; it's not a proven template for lifelong health."
+    }
+  },
+  {
     "id": "3",
     "quote": "We are living through the most violent period in human history.",
     "attribution": "Common sentiment / media narrative",
