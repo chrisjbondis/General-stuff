@@ -24,6 +24,18 @@
     }
   },
   {
+    "id": "4",
+    "quote": "Sugar and carbohydrates are essential for optimal health. Seed oils and polyunsaturated fats are destroying our metabolisms, and fat-burning modes like keto are stressful starvation responses — not healthy baselines.",
+    "attribution": "Jay Feldman, pro-metabolic / bioenergetic diet",
+    "date": "2026-06-23",
+    "verdict": {
+      "label": "COMPLICATED",
+      "color": "orange",
+      "confidence": 55,
+      "summary": "The underlying biochemistry is real — glucose is efficient fuel, and aggressive low-carb diets do elevate stress hormones. But the framework cherry-picks mechanisms while ignoring the full picture. Encouraging high fruit juice and milk intake bypasses satiety signals, and once the liver is already full of glycogen (the norm for sedentary people), excess fructose converts directly to fat — a primary driver of fatty liver disease. Banning all PUFAs, including omega-3s, contradicts decades of clinical data on inflammation and heart health. It's a plausible corrective strategy for someone who has genuinely wrecked their metabolism through years of restriction; it's a fast track to metabolic damage for anyone who hasn't."
+    }
+  },
+  {
     "id": "3",
     "quote": "We are living through the most violent period in human history.",
     "attribution": "Common sentiment / media narrative",
