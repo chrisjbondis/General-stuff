@@ -28,6 +28,16 @@ export default function IdeasPage() {
               </time>
             </div>
             <p className="text-base leading-relaxed text-black/80">{idea.body}</p>
+            {idea.link && (
+              <a
+                href={idea.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 text-xs font-mono bg-black/10 hover:bg-black/20 rounded-full px-3 py-1.5 transition-colors"
+              >
+                View full document →
+              </a>
+            )}
             {idea.tags.length > 0 && (
               <div className="flex gap-2 mt-5 flex-wrap">
                 {idea.tags.map((tag) => (

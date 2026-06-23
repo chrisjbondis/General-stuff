@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Buying Rules</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #e8c84a;
+    --accent-dim: rgba(232, 200, 74, 0.12);
+    --accent-mid: rgba(232, 200, 74, 0.25);
+    --text: #e8e9ed;
+    --text-muted: #7a8099;
+    --text-dim: #4a5168;
+    --green: #4ade80;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --purple: #c084fc;
+    --orange: #fb923c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+
+  .header-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .header p {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 540px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Rule cards */
+  .rules {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rule {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .rule:hover {
+    border-color: var(--accent-mid);
+  }
+
+  .rule-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    min-width: 20px;
+    padding-top: 3px;
+  }
+
+  .rule-body {
+    flex: 1;
+  }
+
+  .rule-body strong {
+    color: var(--text);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+    font-size: 14px;
+  }
+
+  .rule-body span {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* Alert rules — special style */
+  .rule.alert {
+    border-color: rgba(248, 113, 113, 0.2);
+    background: rgba(248, 113, 113, 0.04);
+  }
+
+  .rule.alert:hover {
+    border-color: rgba(248, 113, 113, 0.4);
+  }
+
+  .rule.alert .rule-num {
+    color: var(--red);
+  }
+
+  /* Callout box */
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-mid);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 12px;
+  }
+
+  .callout-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .callout ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .callout ul li {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .callout ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  .callout ul li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Prompt box */
+  .prompt-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+
+  .prompt-box .prompt-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
+  .prompt-box p {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  /* Color variants */
+  .icon-entry  { background: rgba(74, 222, 128, 0.1); }
+  .icon-dip    { background: rgba(96, 165, 250, 0.1); }
+  .icon-exit   { background: rgba(248, 113, 113, 0.1); }
+  .icon-macro  { background: rgba(251, 146, 60, 0.1); }
+  .icon-rhythm { background: rgba(192, 132, 252, 0.1); }
+  .icon-youtube { background: rgba(232, 200, 74, 0.1); }
+  .icon-early  { background: rgba(52, 211, 153, 0.1); }
+
+  /* Stage badge */
+  .stage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 500px) {
+    .stage-grid { grid-template-columns: 1fr; }
+  }
+
+  .stage-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .stage-card.active {
+    border-color: rgba(52, 211, 153, 0.3);
+    background: rgba(52, 211, 153, 0.05);
+  }
+
+  .stage-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #34d399;
+    margin-bottom: 6px;
+  }
+
+  .stage-card h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .stage-card p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Tool grid */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 500px) {
+    .tool-grid { grid-template-columns: 1fr; }
+  }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .tool-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .tool-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .tool-freq {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 32px 16px 60px; }
+    .rule { padding: 14px 16px; gap: 12px; }
+  }
+
+  @media print {
+    body { background: white; color: #111; }
+    .rule { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-tag">Personal Trading Framework</div>
+    <h1>Share Buying Rules</h1>
+    <p>A disciplined framework for entering, managing, and exiting positions — built to slow down impulse decisions and protect capital.</p>
+    <div class="header-meta">
+      <span class="meta-pill">ASX + US Equities</span>
+      <span class="meta-pill">·</span>
+      <span class="meta-pill">CMC Invest</span>
+      <span class="meta-pill">·</span>
+      <span class="meta-pill">Updated June 2026</span>
+    </div>
+  </div>
+
+  <!-- ENTRY RULES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-entry">📈</div>
+      <div class="section-title">Entry Rules — When to Buy</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-num">01</div>
+        <div class="rule-body">
+          <strong>Don't chase breakouts</strong>
+          <span>If a stock has already run hard, wait for the first pullback to confirm support before entering.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">02</div>
+        <div class="rule-body">
+          <strong>Confirm the trend before sizing up</strong>
+          <span>Price above the 50-day MA is a minimum condition for a full-size position. Below it, half size or wait.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div class="rule-body">
+          <strong>Check RSI before entering</strong>
+          <span>Avoid buying when RSI is above 70 on the daily. Overbought entries reduce your margin for error.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">04</div>
+        <div class="rule-body">
+          <strong>Volume confirms conviction</strong>
+          <span>Only enter on a breakout if volume is meaningfully above average. Low-volume breakouts are traps.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">05</div>
+        <div class="rule-body">
+          <strong>Know your catalyst</strong>
+          <span>Don't buy into a stock without understanding why it should move. Macro theme, earnings, re-rating, or technical setup — pick one.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">06</div>
+        <div class="rule-body">
+          <strong>Wait for the close</strong>
+          <span>For volatile or speculative names, don't buy intraday spikes. Let the candle close and confirm direction.</span>
+        </div>
+      </div>
+      <div class="rule alert">
+        <div class="rule-num">07</div>
+        <div class="rule-body">
+          <strong>Never buy on weekends</strong>
+          <span>Markets are closed and weekend news is unpriced. Use weekends to research and plan, not execute. If you feel the urge to buy on a Sunday, write it down and set a price alert instead. Any orders queued for Monday open should use a limit order to protect against gappy opens.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">08</div>
+        <div class="rule-body">
+          <strong>Always run a second-opinion check with Claude before entering</strong>
+          <span>Especially if the idea came from YouTube, social media, or an external tip. Ask: What's the bull and bear case? Is this a good entry point technically? What macro or sector risks could work against this?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIP BUYING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-dip">📉</div>
+      <div class="section-title">Dip-Buying Criteria</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-num">01</div>
+        <div class="rule-body">
+          <strong>Distinguish a dip from a breakdown</strong>
+          <span>A dip is a pullback within an uptrend. A breakdown is a structural move lower. Only buy dips, not falling knives.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">02</div>
+        <div class="rule-body">
+          <strong>50-day MA is the first dip-buy zone</strong>
+          <span>For quality names with strong fundamentals, a test of the 50-day MA in an uptrend is often the ideal entry.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div class="rule-body">
+          <strong>Require a reason for the dip</strong>
+          <span>Sector rotation and general market weakness = potential buy. Earnings miss, guidance withdrawal, or fundamental deterioration = stay out.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">04</div>
+        <div class="rule-body">
+          <strong>Use ATR to size your entry zone</strong>
+          <span>If a stock has a high ATR, don't buy the first day of a pullback. Give it 1–2 ATR of room to find a base.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">05</div>
+        <div class="rule-body">
+          <strong>Set a price alert, not an order</strong>
+          <span>For high-volatility names, place a price alert at your target level and manually assess before buying. Avoids getting filled on a gap-down flush.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">06</div>
+        <div class="rule-body">
+          <strong>Don't dip-buy a stock you don't already understand</strong>
+          <span>Research happens before the dip, not during it.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXIT RULES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-exit">🛑</div>
+      <div class="section-title">Exit & Stop Rules</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="rules">
+      <div class="rule alert">
+        <div class="rule-num">01</div>
+        <div class="rule-body">
+          <strong>Set your stop before you enter</strong>
+          <span>Know your max loss per trade before you hit buy. No entry without a defined stop level.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">02</div>
+        <div class="rule-body">
+          <strong>Prefer trailing stop-limits over hard stops</strong>
+          <span>Use mental stops with price alerts for volatile names to avoid stop-outs from intraday noise.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div class="rule-body">
+          <strong>Lock in partial gains on strong runs</strong>
+          <span>If a position is up 20–40%, consider trimming 30–50% to protect capital while staying in for more upside.</span>
+        </div>
+      </div>
+      <div class="rule alert">
+        <div class="rule-num">04</div>
+        <div class="rule-body">
+          <strong>Don't let a winner turn into a loser</strong>
+          <span>Once a stock is up meaningfully, move your stop to at least breakeven.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">05</div>
+        <div class="rule-body">
+          <strong>Fundamental deterioration = immediate exit review</strong>
+          <span>If the thesis changes (guidance withdrawal, seismic event, management change), don't wait for the stop. Reassess same day.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">06</div>
+        <div class="rule-body">
+          <strong>Time stop</strong>
+          <span>If a stock isn't moving after 4–6 weeks, review whether capital is better deployed elsewhere.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTUBE RULE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-youtube">▶️</div>
+      <div class="section-title">The YouTube / Tip Rule</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="rules">
+      <div class="rule alert">
+        <div class="rule-num">01</div>
+        <div class="rule-body">
+          <strong>Wait 24 hours before acting on any tip</strong>
+          <span>Content creators often already hold the position — rushing in makes you their exit liquidity.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">02</div>
+        <div class="rule-body">
+          <strong>Check when the video was published</strong>
+          <span>If the stock is already up 20%+ from where it was discussed, the opportunity has likely passed.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div class="rule-body">
+          <strong>Let Claude stress-test the thesis first</strong>
+          <span>Bring the idea here before buying. A 5-minute check-in could save you from a bad entry or a stock that's already priced in the news.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MACRO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-macro">🌏</div>
+      <div class="section-title">Macro & Geopolitical Awareness</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-num">01</div>
+        <div class="rule-body">
+          <strong>Always know the macro backdrop before entering any trade</strong>
+          <span>Interest rate expectations, inflation data, and central bank tone (RBA, Fed) directly affect valuations — especially growth and resource stocks.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">02</div>
+        <div class="rule-body">
+          <strong>Geopolitical events move commodities fast</strong>
+          <span>Conflicts, trade disputes, and sanctions can spike or crash oil, copper, zinc, uranium, and rare earths overnight. Scan before entering resource stocks.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div class="rule-body">
+          <strong>US politics affects your ASX holdings</strong>
+          <span>Tariff policy, defence spending, energy policy, and USD strength all flow through to Australian markets.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">04</div>
+        <div class="rule-body">
+          <strong>China is a key variable for most ASX resources</strong>
+          <span>Iron ore, copper, lithium, and rare earths are all heavily China-demand driven. Any major Chinese economic data, stimulus, or trade policy shift should be on your radar.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">05</div>
+        <div class="rule-body">
+          <strong>Ask Claude for a macro pulse check before any significant buy</strong>
+          <span>Especially after a weekend or around major data release weeks. A quick "anything macro I should know before buying X?" takes two minutes and could save a bad entry.</span>
+        </div>
+      </div>
+      <div class="rule alert">
+        <div class="rule-num">06</div>
+        <div class="rule-body">
+          <strong>Risk-off environments are not the time to be a hero</strong>
+          <span>If markets are in a clearly risk-off mode (rising VIX, falling futures, dollar strengthening), reduce urgency on any new entries. Wait for conditions to stabilise.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY RHYTHM -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-rhythm">📅</div>
+      <div class="section-title">Weekly Rhythm & Check-ins</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-num">SUN</div>
+        <div class="rule-body">
+          <strong>Sunday evening macro check-in</strong>
+          <span>Before the ASX opens Monday, review weekend news with Claude. Scan: US Friday close, central bank commentary, commodity price shifts, geopolitical developments.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">MON</div>
+        <div class="rule-body">
+          <strong>Don't trade the Monday open blind</strong>
+          <span>Review Sunday's macro check-in and set your watchlist before market open. The first 30 minutes are often noisy — let price action settle before entering any new positions.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">WED</div>
+        <div class="rule-body">
+          <strong>Midweek position review</strong>
+          <span>Check each open position against its original thesis. Still valid? Has anything changed fundamentally or technically? Trim anything that's drifted off script.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">FRI</div>
+        <div class="rule-body">
+          <strong>Pre-weekend risk reduction</strong>
+          <span>Consider reducing exposure to highly speculative positions before the weekend close. News flows when markets are shut. Don't hold more risk than you're comfortable sitting on for 60 hours.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EARLY WARNING SIGNS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon icon-early">⚠️</div>
+      <div class="section-title">Early Warning Signs — When to Reassess</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="rules">
+      <div class="rule alert">
+        <div class="rule-num">01</div>
+        <div class="rule-body">
+          <strong>Stock fails to participate in a broad market rally</strong>
+          <span>If everything is up and your stock is flat or down, the market is telling you something. Investigate before adding.</span>
+        </div>
+      </div>
+      <div class="rule alert">
+        <div class="rule-num">02</div>
+        <div class="rule-body">
+          <strong>High volume on down days, low volume on up days</strong>
+          <span>Distribution pattern. Institutions are selling into retail strength. Treat it as a yellow flag.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div class="rule-body">
+          <strong>Price breaks below the 50-day MA on volume</strong>
+          <span>Not automatically a sell, but a trigger to reduce position size and tighten your stop. Re-entry requires a clean reclaim.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">04</div>
+        <div class="rule-body">
+          <strong>Insider selling at scale</strong>
+          <span>One executive selling is noise. Multiple insiders selling in the same quarter is a signal worth respecting.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">05</div>
+        <div class="rule-body">
+          <strong>The original thesis no longer holds</strong>
+          <span>If the reason you bought is gone, the position is now speculation. Decide whether you'd buy it today at this price — if not, exit.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal Trading Framework · ASX + US Equities</p>
+    <p>Updated June 2026</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -23,6 +23,7 @@ export type Idea = {
   body: string;
   tags: string[];
   date: string;
+  link?: string;
 };
 
 export type Photo = {
