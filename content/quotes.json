@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "quote": "We only use 10% of our brains.",
+    "attribution": "Common saying / pop psychology",
+    "date": "2026-06-23",
+    "verdict": {
+      "label": "BUSTED",
+      "color": "red",
+      "confidence": 99,
+      "summary": "This one's been thoroughly debunked. Brain imaging studies show that virtually all regions of the brain are active at some point, and most are active almost all the time — even during sleep. The myth likely started from misinterpretations of early neuroscience research and psychic claims in the early 20th century. Your whole brain is online, it's just not always working on something useful."
+    }
+  },
+  {
+    "id": "2",
+    "quote": "Lightning never strikes the same place twice.",
+    "attribution": "Common saying",
+    "date": "2026-06-23",
+    "verdict": {
+      "label": "BUSTED",
+      "color": "red",
+      "confidence": 99,
+      "summary": "Completely false — lightning absolutely strikes the same place twice, and often prefers it. Tall structures like the Empire State Building are struck dozens of times per year precisely because they're the tallest conductors around. The saying probably persists because it sounds like wisdom and humans are bad at intuiting probability."
+    }
+  },
+  {
+    "id": "3",
+    "quote": "We are living through the most violent period in human history.",
+    "attribution": "Common sentiment / media narrative",
+    "date": "2026-06-23",
+    "verdict": {
+      "label": "COMPLICATED",
+      "color": "orange",
+      "confidence": 80,
+      "summary": "Statistically, this appears to be wrong — Steven Pinker's 'The Better Angels of Our Nature' and subsequent research suggest violence per capita has declined dramatically over centuries. Pre-state societies had homicide rates far exceeding modern ones. That said, the argument is contested: critics point out that industrial-scale warfare in the 20th century makes raw comparisons tricky, and that 'violence' can be defined in ways that include structural or economic harm. Likely false in the narrow sense, genuinely complicated in the broad one."
+    }
+  }
+]

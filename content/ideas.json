@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Boredom is underrated",
+    "body": "Everyone's trying to optimise their way out of doing nothing. But boredom is where your brain actually gets to wander — it's the only state where you have an original thought instead of reacting to someone else's content. We've accidentally scheduled it out of existence.",
+    "tags": ["mind", "culture"],
+    "date": "2026-06-20"
+  },
+  {
+    "id": "2",
+    "title": "The problem with productivity porn",
+    "body": "There's an entire genre of content about how to be more productive that is, paradoxically, the biggest threat to your productivity. Watching a 45-minute video on the Pomodoro technique is not the same as actually doing the thing.",
+    "tags": ["work", "irony"],
+    "date": "2026-06-22"
+  },
+  {
+    "id": "3",
+    "title": "Restaurants should show you the fridge",
+    "body": "A restaurant tour of the walk-in fridge before you sit down would tell you everything you need to know about the kitchen. How organised it is, how fresh things look, whether the shelves are labelled. Better than any review.",
+    "tags": ["food", "design"],
+    "date": "2026-06-23"
+  }
+]
