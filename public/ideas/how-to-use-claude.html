@@ -345,10 +345,91 @@
     color: var(--text-dim);
   }
 
+  /* Choose section */
+  .choose {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 40px;
+  }
+
+  .choose-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .choose-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+
+  .questions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .question {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .question-q {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    min-width: 14px;
+    padding-top: 1px;
+  }
+
+  .question-body {
+    flex: 1;
+  }
+
+  .question-body strong {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .question-body span {
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .choose-note {
+    font-size: 13px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    line-height: 1.6;
+  }
+
+  .choose-note strong {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
   @media (max-width: 600px) {
     body { padding: 32px 16px 60px; }
     .product-header { padding: 20px; }
     .product-body { padding: 20px; }
+    .choose { padding: 20px; }
   }
 </style>
 </head>
@@ -359,6 +440,49 @@
     <div class="header-tag">Reference Guide</div>
     <h1>How to Use Claude</h1>
     <p>Four different ways to work with Claude — each built for a different context. Understanding which to use (and when to switch) is the difference between a useful tool and a transformative one.</p>
+  </div>
+
+  <!-- CHOOSE THE RIGHT INSTANCE -->
+  <div class="choose">
+    <div class="choose-title">Start here: think before you open</div>
+    <p class="choose-intro">
+      Most people default to opening claude.ai chat for everything — and that works fine for simple tasks. But Claude has four distinct modes, each built for a different kind of work. The one you choose affects how much context Claude has, what it can actually do, and how much friction you'll hit. Thirty seconds of thinking before you start will save a lot of copy-pasting later.
+    </p>
+
+    <div class="questions">
+      <div class="question">
+        <div class="question-q">→</div>
+        <div class="question-body">
+          <strong>Is this a one-off question or a quick task?</strong>
+          <span>Just open Chat. No setup needed — type and go.</span>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-q">→</div>
+        <div class="question-body">
+          <strong>Is this part of an ongoing project that needs context each time?</strong>
+          <span>Use a Project. Upload your reference docs once, set your instructions, and every conversation starts informed.</span>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-q">→</div>
+        <div class="question-body">
+          <strong>Do you need Claude to work with actual files on your computer?</strong>
+          <span>Use Cowork. It connects to your local machine so Claude can read, write, and organise files directly — no copy-pasting in and out.</span>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-q">→</div>
+        <div class="question-body">
+          <strong>Are you working on a codebase or software project?</strong>
+          <span>Use Claude Code. It runs in your terminal, reads your entire repo, edits code, runs commands, and manages GitHub — all in one place.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="choose-note">
+      <strong>The common mistake:</strong> using Chat for everything because it's familiar, then spending 10 minutes copy-pasting files in, briefing Claude on context it could have remembered, and manually applying outputs to your actual documents. The other modes exist precisely to remove that friction.
+    </div>
   </div>
 
   <div class="products">
