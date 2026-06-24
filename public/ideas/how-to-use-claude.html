@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Use Claude — A Practical Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #e8c84a;
+    --accent-dim: rgba(232, 200, 74, 0.12);
+    --accent-mid: rgba(232, 200, 74, 0.25);
+    --text: #e8e9ed;
+    --text-muted: #7a8099;
+    --text-dim: #4a5168;
+    --green: #4ade80;
+    --blue: #60a5fa;
+    --purple: #c084fc;
+    --orange: #fb923c;
+    --teal: #2dd4bf;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+
+  .header-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .header p {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  /* Product cards */
+  .products {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .product {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .product-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .product-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .product-meta {
+    flex: 1;
+  }
+
+  .product-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .product-tagline {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .product-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  .badge-cloud {
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--blue);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+  }
+
+  .badge-local {
+    background: rgba(74, 222, 128, 0.1);
+    color: var(--green);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+  }
+
+  .badge-dev {
+    background: rgba(192, 132, 252, 0.1);
+    color: var(--purple);
+    border: 1px solid rgba(192, 132, 252, 0.2);
+  }
+
+  .product-body {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .product-desc {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* Workflow section */
+  .workflow-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .workflow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    min-width: 16px;
+    padding-top: 3px;
+  }
+
+  /* Best for */
+  .best-for {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .best-for-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
+  .best-for-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  /* Not ideal for */
+  .not-for {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-style: italic;
+    padding-top: 4px;
+    border-top: 1px solid var(--border);
+  }
+
+  .not-for span {
+    color: var(--text-dim);
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Product color accents */
+  .product.chat    { border-left: 3px solid var(--blue); }
+  .product.projects { border-left: 3px solid var(--accent); }
+  .product.cowork  { border-left: 3px solid var(--green); }
+  .product.code    { border-left: 3px solid var(--purple); }
+
+  .icon-chat     { background: rgba(96, 165, 250, 0.1); }
+  .icon-projects { background: rgba(232, 200, 74, 0.1); }
+  .icon-cowork   { background: rgba(74, 222, 128, 0.1); }
+  .icon-code     { background: rgba(192, 132, 252, 0.1); }
+
+  /* Quick-compare table */
+  .compare {
+    margin-top: 48px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .compare-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    font-size: 12px;
+  }
+
+  .compare-row {
+    display: contents;
+  }
+
+  .compare-cell {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .compare-cell:last-child {
+    border-right: none;
+  }
+
+  .compare-cell.header {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .compare-cell.row-label {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 12px;
+  }
+
+  .yes { color: var(--green); }
+  .no  { color: var(--text-dim); }
+  .partial { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .compare-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .compare-cell.hide-mobile { display: none; }
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 32px 16px 60px; }
+    .product-header { padding: 20px; }
+    .product-body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-tag">Reference Guide</div>
+    <h1>How to Use Claude</h1>
+    <p>Four different ways to work with Claude — each built for a different context. Understanding which to use (and when to switch) is the difference between a useful tool and a transformative one.</p>
+  </div>
+
+  <div class="products">
+
+    <!-- CLAUDE.AI CHAT -->
+    <div class="product chat">
+      <div class="product-header">
+        <div class="product-icon icon-chat">💬</div>
+        <div class="product-meta">
+          <div class="product-name">Claude.ai Chat</div>
+          <div class="product-tagline">The standard, no-setup way to use Claude. Open a tab and go.</div>
+          <div class="product-badge badge-cloud">Cloud-based</div>
+        </div>
+      </div>
+      <div class="product-body">
+        <p class="product-desc">
+          Everything runs in Anthropic's cloud — you type, Claude responds. There's nothing to install and no configuration required. Each conversation starts fresh, with no memory of previous ones unless you're using Projects. The fastest way to get a response.
+        </p>
+
+        <div class="divider"></div>
+
+        <div>
+          <div class="workflow-label">Typical Workflow</div>
+          <div class="workflow-steps">
+            <div class="step"><div class="step-num">1</div><div>Open claude.ai in your browser</div></div>
+            <div class="step"><div class="step-num">2</div><div>Start a new conversation — no preamble needed, just ask</div></div>
+            <div class="step"><div class="step-num">3</div><div>Copy outputs you want to keep — nothing persists after you close the tab by default</div></div>
+            <div class="step"><div class="step-num">4</div><div>For follow-up tasks, start a new chat or continue in the same thread</div></div>
+          </div>
+        </div>
+
+        <div class="best-for">
+          <div class="best-for-label">Best for</div>
+          <div class="best-for-tags">
+            <span class="tag">One-off questions</span>
+            <span class="tag">Quick drafts</span>
+            <span class="tag">Research summaries</span>
+            <span class="tag">Brainstorming</span>
+            <span class="tag">Explaining concepts</span>
+            <span class="tag">Fact-checking</span>
+          </div>
+        </div>
+
+        <div class="not-for">Not ideal for: ongoing work that needs context from previous sessions, or anything involving your local files.</div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="product projects">
+      <div class="product-header">
+        <div class="product-icon icon-projects">📁</div>
+        <div class="product-meta">
+          <div class="product-name">Projects</div>
+          <div class="product-tagline">Organised workspaces in the cloud with persistent context.</div>
+          <div class="product-badge badge-cloud">Cloud-based</div>
+        </div>
+      </div>
+      <div class="product-body">
+        <p class="product-desc">
+          Projects are built on top of regular chat but give Claude persistent memory across conversations. You can upload reference files, set custom instructions about who you are and how you want Claude to respond, and group related conversations together. Claude remembers the project context across every session — no re-briefing required.
+        </p>
+
+        <div class="divider"></div>
+
+        <div>
+          <div class="workflow-label">Typical Workflow</div>
+          <div class="workflow-steps">
+            <div class="step"><div class="step-num">1</div><div>Create a Project in the Claude.ai sidebar and name it for the work area (e.g. "ASX Research", "Website Copy", "Health")</div></div>
+            <div class="step"><div class="step-num">2</div><div>Upload any reference documents — Claude reads these at the start of every conversation in the project</div></div>
+            <div class="step"><div class="step-num">3</div><div>Set custom instructions: your background, preferences, relevant context, and how you want Claude to respond</div></div>
+            <div class="step"><div class="step-num">4</div><div>Start conversations inside the project — Claude already knows the context, so you can get straight to the point</div></div>
+            <div class="step"><div class="step-num">5</div><div>Update your reference docs and instructions as the project evolves</div></div>
+          </div>
+        </div>
+
+        <div class="best-for">
+          <div class="best-for-label">Best for</div>
+          <div class="best-for-tags">
+            <span class="tag">Ongoing projects</span>
+            <span class="tag">Business research</span>
+            <span class="tag">Writing with a consistent voice</span>
+            <span class="tag">Anything requiring context across sessions</span>
+          </div>
+        </div>
+
+        <div class="not-for">Not ideal for: tasks involving your actual local files, or developer workflows involving code execution.</div>
+      </div>
+    </div>
+
+    <!-- COWORK -->
+    <div class="product cowork">
+      <div class="product-header">
+        <div class="product-icon icon-cowork">🖥️</div>
+        <div class="product-meta">
+          <div class="product-name">Cowork</div>
+          <div class="product-tagline">Claude connects to your computer and works directly with your files.</div>
+          <div class="product-badge badge-local">Local-based</div>
+        </div>
+      </div>
+      <div class="product-body">
+        <p class="product-desc">
+          Cowork is a fundamentally different experience. Instead of working in the cloud and copying results across, Claude connects to your local machine and works directly inside your folders and files. It can read what's there, write and edit documents, rename and organise files, and work alongside your actual tools — no copy-pasting required.
+        </p>
+
+        <div class="divider"></div>
+
+        <div>
+          <div class="workflow-label">Typical Workflow</div>
+          <div class="workflow-steps">
+            <div class="step"><div class="step-num">1</div><div>Open the Cowork session from Claude.ai — it connects to your local machine</div></div>
+            <div class="step"><div class="step-num">2</div><div>Point Claude at the folder or files you want to work on</div></div>
+            <div class="step"><div class="step-num">3</div><div>Give instructions naturally: "Clean up this folder", "Draft a summary of this PDF", "Rename these files by date"</div></div>
+            <div class="step"><div class="step-num">4</div><div>Claude reads, edits, and creates files directly — changes happen in your actual filesystem</div></div>
+            <div class="step"><div class="step-num">5</div><div>Review changes and iterate — Claude can undo or adjust on request</div></div>
+          </div>
+        </div>
+
+        <div class="best-for">
+          <div class="best-for-label">Best for</div>
+          <div class="best-for-tags">
+            <span class="tag">File organisation</span>
+            <span class="tag">Document editing</span>
+            <span class="tag">Working with local folders</span>
+            <span class="tag">Tasks that span multiple files</span>
+          </div>
+        </div>
+
+        <div class="not-for">Not ideal for: pure Q&A or research tasks, or developer/coding workflows.</div>
+      </div>
+    </div>
+
+    <!-- CLAUDE CODE -->
+    <div class="product code">
+      <div class="product-header">
+        <div class="product-icon icon-code">⌨️</div>
+        <div class="product-meta">
+          <div class="product-name">Claude Code</div>
+          <div class="product-tagline">A developer tool that lives in your terminal and connects to GitHub.</div>
+          <div class="product-badge badge-dev">Dev environment</div>
+        </div>
+      </div>
+      <div class="product-body">
+        <p class="product-desc">
+          Claude Code runs in your terminal as a command-line tool. It reads your entire codebase, writes and edits code, runs shell commands, and manages GitHub pull requests — all from a single interface. It's cloud-powered but operates inside your development environment, making it feel like a very capable pair-programmer sitting next to you.
+        </p>
+
+        <div class="divider"></div>
+
+        <div>
+          <div class="workflow-label">Typical Workflow</div>
+          <div class="workflow-steps">
+            <div class="step"><div class="step-num">1</div><div>Install Claude Code: <code style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); background: var(--bg); padding: 1px 5px; border-radius: 3px;">npm install -g @anthropic-ai/claude-code</code></div></div>
+            <div class="step"><div class="step-num">2</div><div>Navigate to your project directory in terminal and run <code style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); background: var(--bg); padding: 1px 5px; border-radius: 3px;">claude</code></div></div>
+            <div class="step"><div class="step-num">3</div><div>Claude reads your codebase and is ready for instructions — "add a search feature", "fix the login bug", "refactor this component"</div></div>
+            <div class="step"><div class="step-num">4</div><div>Claude writes and edits files directly, runs tests, and shows you diffs before committing</div></div>
+            <div class="step"><div class="step-num">5</div><div>Push to GitHub or create a pull request — Claude can handle the whole flow</div></div>
+          </div>
+        </div>
+
+        <div class="best-for">
+          <div class="best-for-label">Best for</div>
+          <div class="best-for-tags">
+            <span class="tag">Software development</span>
+            <span class="tag">Codebase exploration</span>
+            <span class="tag">Bug fixing</span>
+            <span class="tag">Writing & editing code</span>
+            <span class="tag">GitHub workflows</span>
+            <span class="tag">Running tests</span>
+          </div>
+        </div>
+
+        <div class="not-for">Not ideal for: non-developers, or tasks that don't involve a codebase.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- QUICK COMPARE -->
+  <div class="compare">
+    <div class="compare-title">Quick Comparison</div>
+    <div class="compare-grid">
+      <div class="compare-cell header"></div>
+      <div class="compare-cell header">Chat</div>
+      <div class="compare-cell header">Projects</div>
+      <div class="compare-cell header">Cowork</div>
+      <div class="compare-cell header">Code</div>
+
+      <div class="compare-cell row-label">Setup required</div>
+      <div class="compare-cell no">None</div>
+      <div class="compare-cell no">Minimal</div>
+      <div class="compare-cell partial">Some</div>
+      <div class="compare-cell partial">Install CLI</div>
+
+      <div class="compare-cell row-label">Remembers context</div>
+      <div class="compare-cell no">Per chat only</div>
+      <div class="compare-cell yes">Yes</div>
+      <div class="compare-cell partial">Per session</div>
+      <div class="compare-cell partial">Per session</div>
+
+      <div class="compare-cell row-label">Reads local files</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell no">Uploads only</div>
+      <div class="compare-cell yes">Yes</div>
+      <div class="compare-cell yes">Yes (code)</div>
+
+      <div class="compare-cell row-label">Writes files</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell yes">Yes</div>
+      <div class="compare-cell yes">Yes</div>
+
+      <div class="compare-cell row-label">Runs commands</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell partial">Limited</div>
+      <div class="compare-cell yes">Yes</div>
+
+      <div class="compare-cell row-label">GitHub integration</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell no">No</div>
+      <div class="compare-cell yes">Yes</div>
+
+      <div class="compare-cell row-label">Needs to be a developer</div>
+      <div class="compare-cell yes">No</div>
+      <div class="compare-cell yes">No</div>
+      <div class="compare-cell yes">No</div>
+      <div class="compare-cell no">Helps</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal reference · claude.ai</p>
+    <p>Updated June 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
