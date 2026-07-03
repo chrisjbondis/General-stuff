@@ -1,5 +1,15 @@
 @AGENTS.md
 
+## Deployment
+
+- Site is hosted on Netlify, connected to the `main` branch of `chrisjbondis/general-stuff`
+- Static export mode (`output: "export"`) — builds go to `out/`, configured in `netlify.toml`
+- Build takes ~8 seconds. Cache headers are already configured (no-cache HTML, immutable hashed assets)
+- Do NOT spend time debugging Netlify cache lag — it's solved. If the user reports stale content, tell them to wait up to an hour for the first cache expiry, then it will be instant going forward
+- The training page is a standalone file at `public/training.html`, served at `/training.html` — it is NOT linked in the nav
+- Standalone idea pages live in `public/ideas/` and are linked from idea cards via the `link` field in `content/ideas.json`
+- Always push changes to `main` for Netlify to pick them up
+
 ## Design preferences
 
 When writing HTML/CSS for this project, use high-contrast text values — the owner finds low-contrast muted colours hard to read. Specifically:
