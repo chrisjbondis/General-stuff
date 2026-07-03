@@ -27,7 +27,13 @@ export default function IdeasPage() {
                 {formatDate(idea.date)}
               </time>
             </div>
-            <p className="text-base leading-relaxed text-black/80">{idea.body}</p>
+            <p
+              className={`text-base leading-relaxed text-black/80 ${
+                idea.locked ? "blur-[5px] select-none" : ""
+              }`}
+            >
+              {idea.body}
+            </p>
             {idea.link && (
               <a
                 href={idea.link}
@@ -35,7 +41,9 @@ export default function IdeasPage() {
                 rel="noopener noreferrer"
                 className="inline-block mt-4 text-xs font-mono bg-black/10 hover:bg-black/20 rounded-full px-3 py-1.5 transition-colors"
               >
-                View full document →
+                {idea.locked
+                  ? "Unlock this with 1:1 Claude training →"
+                  : "View full document →"}
               </a>
             )}
             {idea.tags.length > 0 && (
