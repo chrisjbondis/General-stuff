@@ -432,6 +432,153 @@
     }
     .footer-links a:hover { color: var(--ink); }
 
+    /* ── RESOURCE ── */
+    .resource {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 5rem 2rem;
+    }
+
+    .resource-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .resource .section-label { color: var(--claude); }
+
+    .resource-desc {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .resource-gate {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 480px;
+    }
+
+    .resource-gate label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.7rem;
+    }
+
+    .resource-gate-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .resource-gate input {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 5px;
+      padding: 0.7rem 1rem;
+      color: var(--paper);
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.08em;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .resource-gate input:focus { border-color: var(--claude); }
+    .resource-gate input::placeholder { color: rgba(255,255,255,0.25); }
+
+    .resource-gate button {
+      background: var(--claude);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .resource-gate button:hover { opacity: 0.85; }
+
+    .resource-error {
+      font-size: 0.8rem;
+      color: #f87171;
+      margin-top: 0.7rem;
+      display: none;
+    }
+
+    .resource-unlocked {
+      display: none;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .resource-unlocked-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ade80;
+      margin-bottom: 1rem;
+    }
+
+    .resource-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .resource-card-info strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 0.2rem;
+    }
+
+    .resource-card-info span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .resource-download {
+      background: var(--paper);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.55rem 1.2rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .resource-download:hover { background: #e2e0da; }
+
+    .resource-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 1.2rem 1.2rem; }
@@ -608,6 +755,56 @@
   <a href="mailto:chris@generalstuff.com.au" class="cta-email">chris@generalstuff.com.au</a>
   <p class="cta-note">0415 521 500 · Usually respond within 24 hours · Melbourne, Australia</p>
 </section>
+
+<!-- RESOURCE -->
+<section class="resource" id="resource">
+  <div class="resource-inner">
+    <div class="section-label">Session resource</div>
+    <h2 class="section-title" style="color: var(--paper);">Getting the Most from Claude AI</h2>
+    <p class="resource-desc">
+      A reference guide covering the three ways to work with Claude — Chat, Cowork, and Claude Code — with workflows, decision tables, and practical tips. Updated regularly as Claude evolves. Enter your session code to download.
+    </p>
+
+    <div class="resource-gate">
+      <label for="access-code">Session access code</label>
+      <div class="resource-gate-row">
+        <input type="text" id="access-code" placeholder="Enter your code" autocomplete="off" />
+        <button onclick="checkCode()">Unlock</button>
+      </div>
+      <div class="resource-error" id="resource-error">That code doesn't look right. Check with Chris.</div>
+
+      <div class="resource-unlocked" id="resource-unlocked">
+        <div class="resource-unlocked-label">✓ Access granted</div>
+        <div class="resource-card">
+          <div class="resource-card-info">
+            <strong>Claude AI Guide</strong>
+            <span>Google Slides · Updated regularly</span>
+          </div>
+          <a href="https://docs.google.com/presentation/d/1KUpgnWKyvAfcz5xC3kJ_AcdkTwWjl99Fz58eV8HZE0o/export/pdf" target="_blank" class="resource-download">Download PDF ↓</a>
+        </div>
+        <p class="resource-note">You'll always find the latest version here using your session code. Bookmark this page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function checkCode() {
+    var input = document.getElementById('access-code').value.trim().toUpperCase();
+    var error = document.getElementById('resource-error');
+    var unlocked = document.getElementById('resource-unlocked');
+    if (input === 'CLAUDE2026') {
+      error.style.display = 'none';
+      unlocked.style.display = 'block';
+    } else {
+      error.style.display = 'block';
+      unlocked.style.display = 'none';
+    }
+  }
+  document.getElementById('access-code').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkCode();
+  });
+</script>
 
 <!-- FOOTER -->
 <footer>
