@@ -32,6 +32,14 @@ export default function Nav() {
             </Link>
           </li>
         ))}
+        <li>
+          <a
+            href="/claude-training.html"
+            className="transition-colors text-white/70 hover:text-white"
+          >
+            Claude Training
+          </a>
+        </li>
       </ul>
     </nav>
   );
