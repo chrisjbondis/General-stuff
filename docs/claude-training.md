@@ -20,12 +20,13 @@ Chris has 18 years in the lighting industry (works at Solstice Lighting, not a f
 - **OptimisedEats.com** — free nutrition app for AU/NZ families
 - **LightTools.com.au** — free lighting calculator suite
 - **VoltageDrop.com.au** — free voltage drop calculator (AS/NZS 3000)
-- Share trading apps and rule-based trading systems (personal use)
+- **JCVD.ai** — another built page/app
+- A share tracking app, plus rule-based trading systems (personal use)
 - **This training service** — 1:1 sessions teaching people how to set up and use Claude effectively
 
 ## Open decisions
 
-1. **Hosting** — `generalstuff.com.au`'s DNS lives in VentraIP (DNS Hosting only, no server behind it yet). Plan is to deploy this Next.js repo to Vercel (free tier) and point VentraIP's DNS at it.
+1. **Hosting** — `generalstuff.com.au`'s DNS lives in VentraIP (DNS Hosting only, no server behind it yet). Considering self-hosting on Chris's Oracle Cloud (Always Free compute instance) instead of Vercel.
 
 ## Possible next steps
 
