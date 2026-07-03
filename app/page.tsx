@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { getIdeas, getQuotes, getPhotos, formatDate } from "@/lib/content";
+import { getIdeas, getQuotes, formatDate } from "@/lib/content";
 import VerdictBadge from "@/components/VerdictBadge";
 
 export default function Home() {
   const ideas = getIdeas().slice(0, 3);
   const quotes = getQuotes().slice(0, 2);
-  const photos = getPhotos().slice(0, 3);
 
   return (
     <div>
@@ -19,8 +18,6 @@ export default function Home() {
             Random ideas.
             <br />
             <span className="text-[#ff6b5b]">Things people say.</span>
-            <br />
-            <span className="text-[#5bc8f5]">And photos.</span>
           </h1>
           <p className="text-white/60 text-lg max-w-xl">
             A place for thoughts that don&apos;t fit anywhere else. Quotes get
@@ -102,21 +99,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Photos teaser */}
-      {photos.length > 0 && (
-        <section className="px-6 py-16 max-w-4xl mx-auto">
-          <div className="flex items-baseline justify-between mb-8">
-            <h2 className="text-2xl font-bold">Photos</h2>
-            <Link
-              href="/photos"
-              className="text-sm font-medium text-black/50 hover:text-black transition-colors"
-            >
-              All photos →
-            </Link>
-          </div>
-          <p className="text-black/50">Photos coming soon.</p>
-        </section>
-      )}
     </div>
   );
 }
