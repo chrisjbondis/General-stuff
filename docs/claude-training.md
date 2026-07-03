@@ -4,14 +4,14 @@ A single-file static landing page for Chris Bond's 1:1 Claude AI training servic
 
 ## Files
 
-- `claude-training.html` — the full landing page (HTML + inline CSS, no build step, no dependencies)
+- `claude-training.html` — the full landing page (HTML + inline CSS, no build step, no dependencies), served from `public/` as `/claude-training.html`
 
 ## Current state
 
-- Contact email is set to `cbconsultmelb@gmail.com` (placeholder — update once a professional custom-domain email is set up)
+- Contact email is `chris@generalstuff.com.au` (Zoho Mail, forwarding to Gmail)
 - Footer links point to: optimisedeats.com, lighttools.com.au, voltagedrop.com.au, solsticelighting.com.au
 - No backend, no form submission — the CTA is a `mailto:` link
-- Not yet hosted anywhere; currently just a local file
+- Linked from the site nav (`components/Nav.tsx`) and from the "four ways to use Claude" idea card, which is now blurred/gated behind it
 
 ## Background / context
 
@@ -25,16 +25,9 @@ Chris has 18 years in the lighting industry (works at Solstice Lighting, not a f
 
 ## Open decisions
 
-1. **Domain** — undecided whether this lives on a new domain, a subdomain of an existing site (e.g. `training.lighttools.com.au`), or elsewhere.
-2. **Email** — Chris currently has Google AI Plus (not Workspace). Needs a proper Workspace or Zoho Mail setup to get a custom-domain email address before going live.
-3. **Hosting** — not yet decided. Easiest options for a static file like this:
-   - Cloudflare Pages (free)
-   - Netlify (free, drag-and-drop deploy)
-   - A subdomain on whatever host runs the existing Solstice/LightTools sites (likely free if already paid for)
+1. **Hosting** — `generalstuff.com.au`'s DNS lives in VentraIP (DNS Hosting only, no server behind it yet). Plan is to deploy this Next.js repo to Vercel (free tier) and point VentraIP's DNS at it.
 
 ## Possible next steps
 
-- Swap the `mailto:` CTA for a proper contact form if a backend/hosting solution is chosen
+- Swap the `mailto:` CTA for a proper contact form once the site is actually deployed
 - Add a booking tool (Calendly or similar) instead of/alongside the email CTA
-- Connect a custom domain once one is decided
-- Update contact email once a professional one exists
