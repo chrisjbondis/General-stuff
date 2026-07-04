@@ -52,7 +52,11 @@ export default function Home() {
               <h3 className="font-bold text-lg mb-3 leading-snug">
                 {idea.title}
               </h3>
-              <p className="text-sm leading-relaxed text-black/70 line-clamp-3">
+              <p
+                className={`text-sm leading-relaxed text-black/70 line-clamp-3 ${
+                  idea.locked ? "blur-[4px] select-none" : ""
+                }`}
+              >
                 {idea.body}
               </p>
               <div className="flex gap-2 mt-4 flex-wrap">
@@ -65,6 +69,16 @@ export default function Home() {
                   </span>
                 ))}
               </div>
+              {idea.locked && idea.link && (
+                <a
+                  href={idea.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 text-xs font-mono bg-black/10 hover:bg-black/20 rounded-full px-3 py-1.5 transition-colors"
+                >
+                  Unlock with 1:1 Claude training →
+                </a>
+              )}
             </div>
           ))}
         </div>

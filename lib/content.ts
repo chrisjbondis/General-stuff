@@ -24,6 +24,7 @@ export type Idea = {
   tags: string[];
   date: string;
   link?: string;
+  locked?: boolean;
 };
 
 export type Photo = {
