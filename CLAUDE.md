@@ -1,5 +1,10 @@
 @AGENTS.md
 
+## Project brief (Google Drive)
+
+Full project context — what's done, what's pending, content details, design decisions — is in this doc. Read it at the start of any session:
+https://docs.google.com/document/d/1vQcNutZPCN3sNbbQaK9MKqoCOiqXjpCkx0OjCIC-c6E/edit
+
 ## Deployment
 
 - Site is hosted on Netlify, connected to the `main` branch of `chrisjbondis/general-stuff`
