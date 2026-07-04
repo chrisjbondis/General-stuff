@@ -327,6 +327,82 @@
     .compare-cell.hide-mobile { display: none; }
   }
 
+  /* Local vs Cloud */
+  .pros-cons {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+
+  .pros-cons-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .pros-cons-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 620px;
+  }
+
+  .pc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .pc-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .pc-card.local { border-top: 3px solid var(--green); }
+  .pc-card.cloud { border-top: 3px solid var(--blue); }
+
+  .pc-card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .pc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .pc-list:last-child { margin-bottom: 0; }
+
+  .pc-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .pc-mark { min-width: 14px; padding-top: 2px; font-family: 'DM Mono', monospace; font-size: 12px; }
+  .pc-mark.pro { color: var(--green); }
+  .pc-mark.con { color: var(--orange); }
+
+  @media (max-width: 640px) {
+    .pc-grid { grid-template-columns: 1fr; }
+  }
+
   /* Footer */
   .footer {
     margin-top: 48px;
@@ -664,6 +740,46 @@
 
   </div>
 
+  <!-- CLAUDE CODE: LOCAL VS CLOUD -->
+  <div class="pros-cons">
+    <div class="pros-cons-title">Claude Code: Local vs Cloud</div>
+    <p class="pros-cons-intro">
+      Claude Code itself can run two different ways — installed on your own computer, or hosted by Anthropic in the cloud (claude.ai/code, browser or mobile). Same tool, different tradeoffs.
+    </p>
+
+    <div class="pc-grid">
+      <div class="pc-card local">
+        <div class="pc-card-title">Local — runs on your computer</div>
+        <div class="pc-list">
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Full access to everything on your machine — your files, tools, and existing setup, exactly as they are</span></div>
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Nothing to configure — works immediately on projects you already have</span></div>
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Changes happen instantly and can be undone as you go</span></div>
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Keeps working even with a patchy internet connection — only the AI responses need a connection, not the file access</span></div>
+        </div>
+        <div class="pc-list">
+          <div class="pc-item"><span class="pc-mark con">–</span><span>Only available on the machine it's installed on — no picking up from your phone</span></div>
+          <div class="pc-item"><span class="pc-mark con">–</span><span>Your computer needs to stay on and connected for the session to keep going</span></div>
+          <div class="pc-item"><span class="pc-mark con">–</span><span>Can't leave it running unattended in the background overnight</span></div>
+        </div>
+      </div>
+
+      <div class="pc-card cloud">
+        <div class="pc-card-title">Cloud — runs on Anthropic's servers</div>
+        <div class="pc-list">
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Keeps working after you close your laptop — check in later from any device</span></div>
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Run several separate tasks at once instead of one at a time</span></div>
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Good for handing off a long or heavy job so it's not tying up your own computer</span></div>
+          <div class="pc-item"><span class="pc-mark pro">+</span><span>Included in your Claude subscription — no extra setup cost</span></div>
+        </div>
+        <div class="pc-list">
+          <div class="pc-item"><span class="pc-mark con">–</span><span>Only sees the project's code — not your personal files, saved logins, or other tools on your computer</span></div>
+          <div class="pc-item"><span class="pc-mark con">–</span><span>A little setup the first time, to connect it to the right project</span></div>
+          <div class="pc-item"><span class="pc-mark con">–</span><span>Less suited to highly custom personal setups than working directly on your own machine</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- QUICK COMPARE -->
   <div class="compare">
     <div class="compare-title">Quick Comparison</div>
@@ -720,7 +836,7 @@
 
   <div class="footer">
     <p>Personal reference · claude.ai</p>
-    <p>Updated June 2026</p>
+    <p>Updated July 2026</p>
   </div>
 
 </div>

@@ -575,6 +575,27 @@
 
     .resource-download:hover { background: #e2e0da; }
 
+    .resource-download-ghost {
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(255,255,255,0.25);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.55rem 1.2rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .resource-download-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
+
+    .resource-card-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
     .resource-note {
       font-size: 0.78rem;
       color: rgba(255,255,255,0.45);
@@ -804,7 +825,10 @@
             <strong>Claude AI Guide</strong>
             <span>Google Slides · Updated regularly</span>
           </div>
-          <a href="https://docs.google.com/presentation/d/1KUpgnWKyvAfcz5xC3kJ_AcdkTwWjl99Fz58eV8HZE0o/export/pdf" target="_blank" class="resource-download">Download PDF ↓</a>
+          <div class="resource-card-actions">
+            <a href="/ideas/how-to-use-claude.html" target="_blank" class="resource-download-ghost">Read the guide →</a>
+            <a href="https://docs.google.com/presentation/d/1KUpgnWKyvAfcz5xC3kJ_AcdkTwWjl99Fz58eV8HZE0o/export/pdf" target="_blank" class="resource-download">Download PDF ↓</a>
+          </div>
         </div>
         <p class="resource-note">You'll always find the latest version here using your session code. Bookmark this page.</p>
       </div>
