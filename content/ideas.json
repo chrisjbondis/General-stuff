@@ -1,5 +1,13 @@
 [
   {
+    "id": "7",
+    "title": "Sun angle, infrared, and latitude",
+    "body": "Low sun feels different from midday sun, and there's real physics behind it — but the popular story about latitude and infrared has the direction backwards. Covers sun-angle spectral shifts, photobiomodulation, full-spectrum saunas, and where the science actually stops.",
+    "tags": ["science", "biology", "sunlight"],
+    "date": "2026-07-08",
+    "link": "/ideas/sun-angle-infrared.html"
+  },
+  {
     "id": "6",
     "title": "EZ water: the fourth phase",
     "body": "Most of the water in your cells isn't ordinary liquid water. Gerald Pollack's decades of research argue for a structured, negatively-charged \"fourth phase\" — H₃O₂ — that forms against every surface in the body, with the same physics driving water up a 100-metre tree.",

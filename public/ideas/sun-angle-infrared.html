@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sun Angle, Infrared, and Latitude</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #fb923c;
+    --accent-dim: rgba(251, 146, 60, 0.1);
+    --accent-mid: rgba(251, 146, 60, 0.25);
+    --text: #f0f1f5;
+    --text-muted: #b0b8cc;
+    --text-dim: #7a8299;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
+  .header-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5.5vw, 46px); font-weight: 400; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+  .header p { color: var(--text-muted); font-size: 15px; max-width: 580px; line-height: 1.7; }
+
+  .section { margin-bottom: 40px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 14px; }
+  .section p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 12px; }
+  .section p:last-child { margin-bottom: 0; }
+
+  .stat-row { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 160px; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--accent); margin-bottom: 4px; }
+  .stat-label { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .two-col h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .two-col p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+  .caveat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; }
+  .caveat-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+  .caveat p { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-bottom: 8px; }
+  .caveat p:last-child { margin-bottom: 0; }
+
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 600px) { body { padding: 32px 16px 60px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="margin-bottom: 24px;">
+    <a href="/" style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-dim)'">← Home</a>
+  </div>
+
+  <div class="header">
+    <div class="header-tag">Idea · Science</div>
+    <h1>Sun Angle, Infrared,<br>and Latitude</h1>
+    <p>Low sun feels different from midday sun. There's real physics behind that — and a few places the popular story gets the direction backwards.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Low sun is redder, not richer</div>
+    <p>When the sun is near the horizon, its light travels through far more atmosphere than at midday — around 619km of path at sunrise versus a short vertical hop when the sun is overhead. Molecules in the air scatter short wavelengths (blue) much more than long ones (red, infrared), which is why sunrise and sunset look orange.</p>
+    <p>The shift in <em>proportion</em> is real but modest: infrared makes up about 50% of sunlight when the sun is directly overhead, rising to about 53% at a low 5° angle. What actually changes the most is total intensity — low sun gives you a much smaller dose overall, just one that's tilted slightly toward red and infrared and away from UV.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What infrared does in the body</div>
+    <p>This part has real, peer-reviewed backing. Near-infrared light (roughly 650–900nm) is absorbed by an enzyme in your mitochondria called cytochrome c oxidase, and this measurably boosts ATP production and lowers cell-damaging free radicals. It's been used clinically for decades — wound healing, pain, inflammation — and is now being studied for things like Parkinson's and retinal disease.</p>
+    <p>The catch: almost all of that evidence comes from controlled light exposure — LEDs and lasers at set doses — not from studies of people just standing in the sun. The idea that sunlight's infrared content does the same thing passively is physically plausible, but it hasn't actually been tested the same way.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Full-spectrum infrared saunas</div>
+    <p>"Full spectrum" saunas combine near (0.76–1.5 microns), mid (1.5–5.6 microns), and far (5.6–1000 microns) infrared, instead of just far-infrared alone. The physics of that is solid — shorter wavelengths penetrate less deeply and act more on skin and surface tissue, while far-infrared penetrates furthest and drives the deep-heat, heavy-sweat effect. Where it gets murkier is the therapeutic side: most of the claims about which wavelength does what for the body come from sauna manufacturer and retailer sites, not independent trials comparing the two designs head to head.</p>
+    <p>The actual clinical evidence is a mixed picture, and it's worth being precise about which studies are testing what:</p>
+    <div class="two-col">
+      <div>
+        <h3>The strongest evidence isn't infrared</h3>
+        <p>The famous Finnish cohort finding — 4–7 sessions a week linked to a 40% drop in all-cause mortality over 20 years — comes from traditional heat saunas, not infrared. It gets borrowed by infrared sauna marketing a lot, but it didn't test infrared.</p>
+      </div>
+      <div>
+        <h3>Infrared has its own trials, more mixed</h3>
+        <p>A 2024 meta-analysis (17 studies, ~2,264 people) found infrared sauna use improved arterial function 24–36% after 4 weeks. A crossover trial in healthy women found the effects looked driven by core body temperature rising, not something exercise-like or infrared-specific.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Latitude: the opposite of what you'd expect</div>
+    <p>Here's the part worth correcting: <strong>low latitudes get more total infrared, not less.</strong> Near the equator the sun stays high and days stay close to 12 hours all year, so radiation barely changes season to season. At high latitudes, the sun sits low for months and days shrink dramatically — that's where a real infrared drought happens, especially in winter.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">&lt;20%</div><div class="stat-label">seasonal swing in clear-sky radiation at the equator</div></div>
+      <div class="stat"><div class="stat-num">18.5 → 5.5 hrs</div><div class="stat-label">day length range across the year at 60°N</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Plants: a protective response, not a deficiency</div>
+    <div class="two-col">
+      <div>
+        <h3>More radiation, more reflection</h3>
+        <p>Alpine plants studied on the Qinghai-Tibetan Plateau reflect <em>more</em> light — UV, visible, and infrared — the higher up they grow. It's a shield against getting too much radiation, not a sign of scarcity.</p>
+      </div>
+      <div>
+        <h3>Forest floors are the real shade story</h3>
+        <p>Leaves absorb red light for photosynthesis but let most far-red/infrared pass through or bounce off. Dense canopies — thicker in the tropics — create understories starved of red light relative to far-red, which is what actually triggers "reach for the light" growth in shaded plants.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Human adaptation by latitude — real, but not about infrared</div>
+    <p>There are two well-documented ways humans adapted to latitude, and neither is specifically about infrared:</p>
+    <div class="two-col">
+      <div>
+        <h3>Skin colour and UV</h3>
+        <p>Dark skin evolved near the equator to protect folate from intense UV. Light skin evolved at high latitudes because too little UV gets through for the body to make enough vitamin D.</p>
+      </div>
+      <div>
+        <h3>Mood and blue light</h3>
+        <p>Seasonal affective disorder is linked to specialised retinal cells that respond mainly to <em>blue</em> light, not infrared — winter's reduced blue light is thought to under-drive the body clock.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="caveat">
+      <div class="caveat-title">Honest gap</div>
+      <p>I couldn't find any research specifically linking human latitude adaptation to infrared exposure, the way there is for UV and skin colour. If that connection exists, it's currently an inference from the mitochondrial mechanism — not a documented finding.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal reference</p>
+    <p>Updated July 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
