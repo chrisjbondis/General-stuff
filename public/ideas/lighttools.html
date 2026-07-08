@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LightTools — Free Electrical Calculators</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #f59e0b;
+    --text: #f0f1f5;
+    --text-muted: #b0b8cc;
+    --text-dim: #7a8299;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
+  .header-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 400; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+  .header p { color: var(--text-muted); font-size: 15px; max-width: 580px; line-height: 1.6; }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .btn-primary { background: var(--accent); color: #1a1206; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 11px 22px; border-radius: 8px; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost { color: var(--text-muted); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 11px 20px; border-radius: 8px; border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .btn-ghost:hover { border-color: var(--text-dim); color: var(--text); }
+
+  .section { margin-bottom: 40px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 16px; }
+  .section-note { font-size: 13.5px; color: var(--text-dim); margin-bottom: 20px; max-width: 600px; line-height: 1.6; }
+
+  .links { display: flex; flex-direction: column; gap: 10px; }
+  .link-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; text-decoration: none; transition: border-color 0.2s; }
+  .link-card:hover { border-color: var(--text-dim); }
+  .link-card-info strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+  .link-card-info span { font-size: 12.5px; color: var(--text-dim); }
+  .link-card-arrow { font-family: 'DM Mono', monospace; color: var(--text-dim); font-size: 14px; flex-shrink: 0; }
+
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 600px) { body { padding: 32px 16px 60px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="margin-bottom: 24px;">
+    <a href="/" style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-dim)'">← Home</a>
+  </div>
+
+  <div class="header">
+    <div class="header-tag">Project</div>
+    <h1>LightTools</h1>
+    <p>A free hub of electrical calculators built for Australian electricians and lighting designers — voltage drop, LED strip driver sizing, strip selection, lux, and garden lighting. Monetised via AdSense and Amazon Associates, built and maintained solo.</p>
+    <div class="cta-row">
+      <a href="https://lighttools.com.au" target="_blank" class="btn-primary">Open LightTools →</a>
+      <a href="https://lighttools.com.au/led-strip-installation-guide.html" target="_blank" class="btn-ghost">Install guide</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Calculators</div>
+    <p class="section-note">Each one is a standalone tool — link straight to the one you need.</p>
+    <div class="links">
+      <a href="https://lighttools.com.au/voltage-drop-calculator.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>Voltage Drop Calculator</strong><span>AS/NZS 3000 &amp; AS 3008 compliant</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a href="https://lighttools.com.au/led-strip-driver-calculator.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>LED Strip Driver Calculator</strong><span>Size the right driver for your run</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a href="https://lighttools.com.au/led-strip-light-selector.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>LED Strip Selector</strong><span>Find the right strip for the job</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a href="https://lighttools.com.au/lux-calculator.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>Lux Calculator</strong><span>Work out light levels for a space</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a href="https://lighttools.com.au/garden-lighting-calculator.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>Garden Lighting Calculator</strong><span>Plan outdoor low-voltage runs</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a href="https://lighttools.com.au/sparky-selector.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>Sparky Selector</strong><span>Quick tool picker for electricians</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">More from LightTools</div>
+    <div class="links">
+      <a href="https://voltagedrop.com.au" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>VoltageDrop.com.au</strong><span>Standalone voltage drop calculator — AU, US, India, South Africa</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a href="https://lighttools.com.au/about.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>About</strong><span>Who built it and why</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+      <a href="https://lighttools.com.au/disclaimer.html" target="_blank" class="link-card">
+        <div class="link-card-info"><strong>Disclaimer</strong><span>Read before relying on any calculator for compliance work</span></div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal project · lighttools.com.au</p>
+    <p>Updated July 2026</p>
+  </div>
+
+</div>
+</body>
+</html>

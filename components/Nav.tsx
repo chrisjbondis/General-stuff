@@ -16,7 +16,7 @@ export default function Nav() {
       <Link href="/" className="font-bold text-lg tracking-tight">
         General Stuff<span className="text-[#d4f04c]">.</span>
       </Link>
-      <ul className="flex gap-6 text-sm font-medium">
+      <ul className="flex gap-6 text-sm font-medium overflow-x-auto whitespace-nowrap min-w-0">
         {links.slice(1).map(({ href, label }) => (
           <li key={href}>
             <Link
@@ -45,6 +45,30 @@ export default function Nav() {
             className="transition-colors text-white/70 hover:text-white"
           >
             OptimisedEats
+          </a>
+        </li>
+        <li>
+          <a
+            href="/ideas/lighttools.html"
+            className="transition-colors text-white/70 hover:text-white"
+          >
+            LightTools
+          </a>
+        </li>
+        <li>
+          <a
+            href="/ideas/voltagedrop.html"
+            className="transition-colors text-white/70 hover:text-white"
+          >
+            VoltageDrop
+          </a>
+        </li>
+        <li>
+          <a
+            href="/ideas/jcvdai.html"
+            className="transition-colors text-white/70 hover:text-white"
+          >
+            JCVD.ai
           </a>
         </li>
       </ul>
