@@ -39,6 +39,14 @@ export default function Nav() {
             Claude Training
           </a>
         </li>
+        <li>
+          <a
+            href="/ideas/optimisedeats.html"
+            className="transition-colors text-white/70 hover:text-white"
+          >
+            OptimisedEats
+          </a>
+        </li>
       </ul>
     </nav>
   );
