@@ -1,5 +1,13 @@
 [
   {
+    "id": "6",
+    "title": "EZ water: the fourth phase",
+    "body": "Most of the water in your cells isn't ordinary liquid water. Gerald Pollack's decades of research argue for a structured, negatively-charged \"fourth phase\" — H₃O₂ — that forms against every surface in the body, with the same physics driving water up a 100-metre tree.",
+    "tags": ["science", "biology", "water"],
+    "date": "2026-07-08",
+    "link": "/ideas/ez-water.html"
+  },
+  {
     "id": "5",
     "title": "The four ways to use Claude",
     "body": "Chat, Projects, Cowork, and Claude Code are four different products built for different contexts. Understanding which to reach for — and when to switch — is what turns Claude from occasionally useful into genuinely transformative.",

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EZ Water — The Fourth Phase</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #38bdf8;
+    --accent-dim: rgba(56, 189, 248, 0.1);
+    --accent-mid: rgba(56, 189, 248, 0.25);
+    --text: #f0f1f5;
+    --text-muted: #b0b8cc;
+    --text-dim: #7a8299;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
+  .header-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 6vw, 50px); font-weight: 400; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+  .header p { color: var(--text-muted); font-size: 15px; max-width: 580px; line-height: 1.7; }
+
+  .section { margin-bottom: 40px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 16px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .two-col h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .two-col p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+  .quote {
+    border-left: 3px solid var(--accent-mid);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    background: var(--surface);
+    border-radius: 0 10px 10px 0;
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .quote-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; background: var(--border); margin-bottom: 12px; }
+  @media (max-width: 640px) { .grid3 { grid-template-columns: 1fr; } }
+  .grid3-item { background: var(--bg); padding: 24px 20px; }
+  .grid3-item .g-icon { font-size: 22px; margin-bottom: 10px; opacity: 0.7; }
+  .grid3-item .g-title { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--accent); margin-bottom: 8px; }
+  .grid3-item p { font-size: 12.5px; color: var(--text-dim); line-height: 1.7; }
+
+  .caveat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+  }
+  .caveat-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+  .caveat p { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 600px) { body { padding: 32px 16px 60px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="margin-bottom: 24px;">
+    <a href="/" style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-dim)'">← Home</a>
+  </div>
+
+  <div class="header">
+    <div class="header-tag">Idea · Science</div>
+    <h1>EZ Water<br>The Fourth Phase</h1>
+    <p>Most of the water inside your cells isn't ordinary liquid water. Gerald Pollack, a bioengineering professor at the University of Washington, has spent two decades arguing it's something else entirely — and the implications, if he's right, reach further than biology.</p>
+  </div>
+
+  <div class="section">
+    <div class="quote">
+      <div class="quote-text">"Most of the water in your cells is not ordinary liquid water. It is exclusion zone water — EZ water — a gel-like, liquid crystalline fourth phase with a molecular structure closer to ice than to the water in a glass."</div>
+      <div class="quote-source">Gerald Pollack — The Fourth Phase of Water, 2013</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What it is</div>
+    <div class="two-col">
+      <div>
+        <h3>Not H₂O — H₃O₂</h3>
+        <p>When ordinary water touches a hydrophilic (water-loving) surface, the molecules at that interface reorganise into a structured, gel-like layer with different properties entirely. It's roughly 10% denser than bulk water, has a higher refractive index, and — critically — carries a net negative electrical charge.</p>
+      </div>
+      <div>
+        <h3>Peer-reviewed, not fringe</h3>
+        <p>Pollack holds the highest faculty honour at the University of Washington and is editor-in-chief of the peer-reviewed journal <em>WATER</em>. His 2024 paper demonstrating EZ water in tree xylem was published in Nature's <em>Scientific Reports</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Where it lives in you</div>
+    <div class="two-col">
+      <div>
+        <h3>Everywhere there's a surface</h3>
+        <p>EZ water forms against every hydrophilic surface inside the body — cell membranes, proteins, collagen fibres, blood vessel walls, fascia, the inside of every cell. Because these surfaces are so densely packed, most of what fills a cell isn't ordinary liquid water at all.</p>
+      </div>
+      <div>
+        <h3>The charge matters</h3>
+        <p>Red blood cells carry a negative surface charge — their zeta potential — that keeps them repelling each other rather than clumping together. The electrical order in EZ water appears to be the mechanism maintaining that charge, with knock-on implications for microcirculation, fascia function, and mitochondrial energy production.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="quote">
+      <div class="quote-text">"EZ water can build up both inside and outside plant xylem vessels. EZ water generation inside xylem vessels is associated with water flow, likely driven by a proton gradient."</div>
+      <div class="quote-source">Pollack et al. — Scientific Reports, 2024</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What builds it</div>
+    <div class="grid3">
+      <div class="grid3-item">
+        <div class="g-icon">⏚</div>
+        <div class="g-title">Grounding</div>
+        <p>The earth's surface carries an abundant supply of free electrons. Biophysicist James Oschman's research suggests skin contact with the ground supports EZ water formation and maintenance — the same mechanism a tree draws on continuously through its roots.</p>
+      </div>
+      <div class="grid3-item">
+        <div class="g-icon">◉</div>
+        <div class="g-title">Infrared light</div>
+        <p>Pollack's team found infrared light is the most powerful driver of EZ water formation — shine it on a water chamber and the exclusion zone can expand up to four times. The same mechanism drives photosynthesis in plants.</p>
+      </div>
+      <div class="grid3-item">
+        <div class="g-icon">≋</div>
+        <div class="g-title">Hydrophilic surfaces</div>
+        <p>EZ water needs something to form against. Tree xylem — the vascular tissue that moves water against gravity up a 100-metre trunk — is one of the clearest natural examples of the same physics at work.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="caveat">
+      <div class="caveat-title">A Note on the Science</div>
+      <p>The fourth phase of water is a real, peer-reviewed observation from a credentialed research university. But the full mechanistic picture of how EZ water drives biological processes is still an active area of investigation, and some of Pollack's broader claims remain debated in mainstream cell biology. Treat this as fascinating emerging science — not settled consensus.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal reference · from Wellness Wood research notes</p>
+    <p>Updated July 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
