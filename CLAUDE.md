@@ -22,6 +22,18 @@ scp -i "$env:USERPROFILE\OneDrive\Desktop\ssh-key-2026-04-21 (1).key" -r out/* u
 - Standalone idea pages live in `public/ideas/` and are linked from idea cards via the `link` field in `content/ideas.json`
 - Always push changes to `main` — then manually build + scp to Oracle per above; don't rely on Netlify's auto-deploy to make changes actually live
 
+## Project showcase pages
+
+**Every project Chris builds should get a showcase page here, added proactively — don't wait to be asked.** When a new app/site/tool comes up in conversation (or an existing one is mentioned that isn't listed below), give it the same treatment:
+
+1. A standalone page at `public/ideas/<project-slug>.html` — same dark template as the existing ones (`optimisedeats.html`, `lighttools.html`, `voltagedrop.html`, `jcvdai.html`): DM Sans/DM Serif Display/DM Mono fonts, `--bg #0f1117` / `--surface #181c26` / `--border #252a38` base, with a distinct `--accent` colour per project (pick one not already used: green=OptimisedEats, amber=LightTools, blue=VoltageDrop, red=JCVD.ai). Structure: back-to-home link, header with project tag/title/description/CTA buttons, a features or link-card section, footer.
+2. If the target site has real distinct URLs for its sections (like LightTools' separate calculator pages), link straight to them as clickable link-cards. If it's a client-state SPA with no routing (like OptimisedEats or a single-page app), describe sections as feature cards instead — don't invent deep links that don't exist.
+3. Add a nav tab in `components/Nav.tsx` (follow the existing plain `<a>` pattern used for Claude Training/OptimisedEats/etc. — these are static files, not Next.js routes, so don't use `<Link>`).
+4. Add a footer link in `public/claude-training.html`'s `<footer class="footer-links">`.
+5. Build, verify in preview, then deploy per the Deployment section above and push to `main`.
+
+Current projects covered: OptimisedEats, LightTools, VoltageDrop, JCVD.ai. Known projects not yet covered as of 2026-07-08: none outstanding — check with Chris if a new one comes up (e.g. a share-tracking app was mentioned in his bio but doesn't have its own page yet).
+
 ## Design preferences
 
 When writing HTML/CSS for this project, use high-contrast text values — the owner finds low-contrast muted colours hard to read. Specifically:
