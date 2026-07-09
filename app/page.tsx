@@ -15,13 +15,14 @@ export default function Home() {
             generalstuff.com.au
           </p>
           <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-8">
-            Random ideas.
+            Ideas, tools,
             <br />
-            <span className="text-[#ff6b5b]">Things people say.</span>
+            <span className="text-[#ff6b5b]">and things people say.</span>
           </h1>
           <p className="text-white/60 text-lg max-w-xl">
-            A place for thoughts that don&apos;t fit anywhere else. Quotes get
-            fact-checked by Claude. Ideas just get posted.
+            Half personal blog, half workshop. Quotes get fact-checked by
+            Claude, ideas range from gut takes to properly researched
+            deep-dives, and the odd one turns into something real.
           </p>
         </div>
       </section>

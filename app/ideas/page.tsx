@@ -11,7 +11,8 @@ export default function IdeasPage() {
     <div className="max-w-4xl mx-auto px-6 py-16">
       <h1 className="text-5xl font-bold mb-3">Ideas</h1>
       <p className="text-black/50 text-lg mb-12">
-        Thoughts, observations, half-baked theories.
+        Thoughts, observations, half-baked theories — and a few backed by
+        actual research.
       </p>
 
       <div className="flex flex-col gap-6">
