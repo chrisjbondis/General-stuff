@@ -57,6 +57,11 @@
   .questions li { list-style: none; font-size: 14px; color: var(--text-muted); line-height: 1.7; padding-left: 20px; position: relative; }
   .questions li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
 
+  .reasons { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+  .reasons li { list-style: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.75; padding-left: 20px; position: relative; }
+  .reasons li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+  .reasons li em { color: var(--text); font-style: normal; font-weight: 500; }
+
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
   @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
   .two-col h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
@@ -139,6 +144,28 @@
       <li>Whether lowering Lp(a) pharmacologically actually reduces events — plausible and backed by genetic studies, but no completed outcomes trial yet. Two read out through 2026.</li>
       <li>Exactly how much CRP/inflammation adds on top of particle number — a real modifier, but not a substitute for ApoB/Lp(a).</li>
     </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Why does this genetic risk even exist?</div>
+    <p>A quick correction to how these genes are usually described, then the interesting part. There are three common ApoE variants, not four — ε2, ε3, ε4 — which pair up into six possible genotypes. ε3/ε3 is the population "default" (~60% of people); ε3/ε4 (the genotype in Case study A) sits in about a quarter of the population; ε4/ε4 is rare. There was historically a genuinely rare fourth electrophoretic variant labelled "ApoE1," but it's a distinct, uncommon mutation, not a fourth mainstream population type. The three common forms differ at just two amino acid positions, which changes how well the ApoE protein binds the liver's LDL receptor and clears cholesterol-carrying remnant particles out of the blood — that single mechanical difference drives most of the downstream lipid effects.</p>
+    <p style="margin-top:12px"><strong style="color:var(--text)">The evolutionary timeline runs backwards from the numbering.</strong> ε4 is the ancestral, oldest form — for roughly the first 96% of modern human history, everyone was ε4/ε4. ε3 arose from a mutation around 220,000 years ago and gradually became dominant; ε2 is the newest, appearing only around 70,000–80,000 years ago. So the ε3/ε4 genotype in Case study A is literally a mix of the original hunter-gatherer-era allele and the newer, lower-risk one.</p>
+    <p style="margin-top:12px"><strong style="color:var(--text)">Why hasn't the "risky" ε4 allele been bred out?</strong> A few converging, evidence-backed (though not fully settled) explanations:</p>
+    <ul class="reasons">
+      <li><em>Selection shadow.</em> Heart disease and Alzheimer's mostly strike after reproductive age. For nearly all of human history, few people lived long enough to encounter ε4's downside at all — natural selection has very little power to remove a gene whose cost only shows up after you've already had and raised children.</li>
+      <li><em>Antagonistic pleiotropy — good early, bad late.</em> A study of the Tsimane, a forager-farmer population in Bolivia with a heavy parasite burden, found ε4 carriers held onto steadier, sometimes better cognition under high parasite exposure than non-carriers facing the same exposure — the opposite of the pattern seen in low-pathogen industrialised settings. ε4 carriers in that population also ran 30% lower CRP alongside higher cholesterol/oxidised LDL, suggesting the allele tunes the immune and inflammatory system in a way that was net-positive when infection, not heart disease, was the main threat to survival.</li>
+      <li><em>A genuine fertility advantage.</em> In a natural-fertility forager-farmer population, women carrying ε4 had more children — up to 1.4–2.1 more with two copies — driven by earlier first reproduction and shorter gaps between births. The likely mechanism: ApoE supplies the cholesterol used to build ovarian estrogen and progesterone, and higher progesterone tracks with higher fecundity. This wasn't just tolerated by evolution, it was actively selected for.</li>
+      <li><em>A genuine double-edged sword on infection.</em> ApoE is deeply involved in how cells interact with pathogens. It's associated with better clearance of hepatitis C, giardia, and cryptosporidium in high-burden populations — but it also helps herpes simplex virus 1 (the cold sore virus) attach to and enter cells, and the ε4 + HSV-1 combination substantially raises Alzheimer's risk in old age, plausibly through the virus periodically reactivating in an ageing brain. That cost, again, only had the decades required to compound in a world where people routinely live past 70–80.</li>
+      <li><em>The "thicker blood" claim, honestly assessed.</em> This one comes up a lot online, and it's worth flagging rather than repeating: there's no solid direct evidence tying ε4 specifically to enhanced blood clotting or hemostasis. What is well-documented is ε4's broader role in keeping more cholesterol/lipid circulating and available — useful for hormone production, cell membrane repair, and immune signalling, all plausibly more valuable in a high-injury, high-infection, short-lifespan environment. Best treated as a folk simplification of that broader lipid-availability story rather than an established clotting mechanism, worth digging into further if a better source turns up.</li>
+    </ul>
+    <p style="margin-top:16px"><strong style="color:var(--text)">The mismatch, tied together:</strong> for almost all of human history — short lifespans from injury, infection and childbirth, constant pathogen exposure, unreliable food supply — ε4's package of more available circulating cholesterol, a more reactive immune system, and better fertility was a net win, and its costs mostly arrived at ages almost nobody reached. The modern environment flips the equation: we live long enough, pathogen load is low, and food is constantly abundant, so the ancestral upside barely gets used while the downside gets 60–80 years to compound. It's the same "evolutionary mismatch" logic behind things like the thrifty-genotype model of diabetes risk or the sickle-cell/malaria trade-off — just playing out in lipid and immune biology instead.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Why what you eat barely moves the needle for most people</div>
+    <p>This is worth understanding because it explains why "ultra healthy lifestyle, still progressive disease" isn't a contradiction — for a lot of people, diet was never the main lever to begin with.</p>
+    <p style="margin-top:12px">Most circulating cholesterol isn't coming from your plate. The liver manufactures roughly 75–80% of it; only about 20–25% comes from food. On top of that, the body runs a tight feedback loop: eat more dietary cholesterol, and the intestines absorb proportionally less of it while the liver dials down its own production (via HMG-CoA reductase — the same enzyme statins target) to hold blood levels roughly steady. This compensation is well-documented enough that the 2015–2020 US Dietary Guidelines dropped the old 300mg/day dietary cholesterol cap entirely, because the evidence didn't support it mattering much for most people. The often-cited illustration: an 88-year-old man who ate around 25 eggs a day for years had entirely normal cholesterol, because his body increased bile acid production and cut both absorption and synthesis to compensate. Saturated fat is a somewhat more consistent lever on LDL than dietary cholesterol itself — the two get conflated a lot in public messaging, but they're not the same thing.</p>
+    <p style="margin-top:12px">The exception that proves the rule: a genetically-influenced minority known as "hyperresponders" whose cholesterol does move meaningfully with diet, particularly with saturated fat. And this loops straight back to genetics — ε4 carriers are more likely to fall into that hyperresponsive group, and some trial data shows ε4 carriers get a proportionally larger LDL/ApoB benefit than ε3/ε3 people when saturated fat is swapped for low-glycaemic-index carbohydrate. So the practical read for the genotype in Case study A: diet is a genuinely bigger lever than it is for the average ε3/ε3 person, worth using deliberately rather than assuming it won't help — but it's still working against a liver that's producing and clearing particles according to a baseline set by genetics, not diet, which is exactly why lifestyle alone wasn't enough to prevent plaque from forming in that case.</p>
   </div>
 
   <div class="section">
@@ -264,6 +291,23 @@
       <a href="https://www.healio.com/news/cardiology/20250811/emerging-therapies-for-lowering-lpa-peering-into-the-future" target="_blank">Emerging therapies for lowering Lp(a): 'Peering into the future'</a>
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10460604/" target="_blank">Impact of Lifestyle Modifications on Cardiovascular Health: A Narrative Review</a>
       <a href="https://theconversation.com/how-c-reactive-protein-outpaced-bad-cholesterol-as-leading-heart-disease-risk-marker-271143" target="_blank">How C-reactive protein outpaced 'bad' cholesterol as leading heart disease risk marker</a>
+      <a href="https://mindbodyneurology.com/apoe4/" target="_blank">The Ancestral Origins and Modern Impact of ApoE4: Genetics, Evolution, and Diet</a>
+      <a href="https://wiki.apoe4.info/wiki/A_short_history_of_APOE4" target="_blank">A short history of APOE4 — ApoE4.Info Wiki</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3056453/" target="_blank">The Apolipoprotein E Antagonistic Pleiotropy Hypothesis: Review and Recommendations</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5349792/" target="_blank">Apolipoprotein E4 is associated with improved cognitive function in Amazonian forager-horticulturalists with a high parasite burden</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8480980/" target="_blank">APOE4 is associated with elevated blood lipids and lower levels of innate immune biomarkers in a tropical Amerindian subsistence population</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10411886/" target="_blank">Apolipoprotein-ε4 is associated with higher fecundity in a natural fertility population</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4345437/" target="_blank">Apolipoprotein E (ApoE) polymorphism is related to differences in potential fertility in women: a case of antagonistic pleiotropy?</a>
+      <a href="https://alz-journals.onlinelibrary.wiley.com/doi/10.1002/alz.12008" target="_blank">Interaction between APOE4 and herpes simplex virus type 1 in Alzheimer's disease</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11846946/" target="_blank">Recruitment of apolipoprotein E facilitates Herpes simplex virus 1 attachment, entry, and release</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC425115/" target="_blank">A novel electrophoretic variant of human apolipoprotein E — identification of apolipoprotein E1</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9143438/" target="_blank">Is There a Correlation between Dietary and Blood Cholesterol? Evidence from Epidemiological Data and Clinical Interventions</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9025004/" target="_blank">From Dietary Cholesterol to Blood Cholesterol, Physiological Lipid Fluxes, and Cholesterol Homeostasis</a>
+      <a href="https://www.healthline.com/nutrition/dietary-cholesterol-does-not-matter" target="_blank">Why Dietary Cholesterol Does Not Matter (For Most People) — Healthline</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6024687/" target="_blank">Dietary Cholesterol and the Lack of Evidence in Cardiovascular Disease</a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/3328488/" target="_blank">Hypo- and hyperresponders: individual differences in the response of serum cholesterol to changes in diet</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6213759/" target="_blank">APOE4 Genotype Exerts Greater Benefit in Lowering Plasma Cholesterol and ApoB than Wild Type (E3/E3), after Replacement of Dietary Saturated Fats with Low GI Carbohydrates</a>
+      <a href="https://www.sciencedirect.com/science/article/pii/S0022316623030808" target="_blank">The Effect of Dietary Fat on LDL Size Is Influenced by Apolipoprotein E Genotype in Healthy Subjects</a>
     </div>
   </div>
 
