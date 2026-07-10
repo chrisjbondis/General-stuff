@@ -1,5 +1,13 @@
 [
   {
+    "id": "8",
+    "title": "Heart health: a genetics-first framework",
+    "body": "Most heart-health content assumes lifestyle is the main lever. It isn't, for everyone — some people do everything right and still build plaque, because the real driver is genetic. Two anonymised case studies, a testing toolkit, and where cardiology guidance is solid versus still genuinely contested.",
+    "tags": ["health", "genetics", "science"],
+    "date": "2026-07-10",
+    "link": "/ideas/heart-health.html"
+  },
+  {
     "id": "7",
     "title": "Sun angle, infrared, and latitude",
     "body": "Low sun feels different from midday sun, and there's real physics behind it — but the popular story about latitude and infrared has the direction backwards. Covers sun-angle spectral shifts, photobiomodulation, full-spectrum saunas, and where the science actually stops.",

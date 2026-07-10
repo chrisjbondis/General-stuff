@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Health: A Genetics-First Framework</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #fb7185;
+    --accent-dim: rgba(251, 113, 133, 0.1);
+    --accent-mid: rgba(251, 113, 133, 0.25);
+    --text: #f0f1f5;
+    --text-muted: #b0b8cc;
+    --text-dim: #7a8299;
+    --green: #4ade80;
+    --amber: #fbbf24;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page { max-width: 820px; margin: 0 auto; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 32px; }
+  .header-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 400; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+  .header p { color: var(--text-muted); font-size: 15px; max-width: 640px; line-height: 1.7; }
+
+  .disclaimer { background: var(--surface); border: 1px solid var(--accent-mid); border-radius: 10px; padding: 16px 20px; margin-bottom: 36px; }
+  .disclaimer p { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; }
+
+  .section { margin-bottom: 40px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 21px; font-weight: 400; color: var(--text); margin-bottom: 14px; }
+  .section p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 12px; }
+  .section p:last-child { margin-bottom: 0; }
+
+  .ladder { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .ladder-item { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+  .ladder-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); min-width: 18px; padding-top: 2px; }
+  .ladder-item p { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin: 0; }
+
+  .questions { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .questions li { list-style: none; font-size: 14px; color: var(--text-muted); line-height: 1.7; padding-left: 20px; position: relative; }
+  .questions li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .two-col h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .two-col p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+  .fact-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .fact-list li { list-style: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.7; padding-left: 18px; position: relative; }
+  .fact-list.established li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 12px; }
+  .fact-list.vague li::before { content: '?'; position: absolute; left: 0; color: var(--amber); font-size: 12px; font-weight: 700; }
+
+  table.toolkit { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+  table.toolkit th { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  table.toolkit td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--text-muted); vertical-align: top; line-height: 1.6; }
+  table.toolkit td:first-child { color: var(--text); font-weight: 500; white-space: nowrap; }
+  table.toolkit tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  .case-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 20px 24px; }
+  .case-box ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .case-box li { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  .case-box li strong { color: var(--text); font-weight: 500; }
+
+  .caveat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; }
+  .caveat-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+  .caveat p { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+
+  .sources { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .sources a { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.2s, border-color 0.2s; }
+  .sources a:hover { color: var(--accent); border-color: var(--accent-mid); }
+
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 600px) { body { padding: 32px 16px 60px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="margin-bottom: 24px;">
+    <a href="/" style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-dim)'">← Home</a>
+  </div>
+
+  <div class="header">
+    <div class="header-tag">Idea · Health · Genetics</div>
+    <h1>Heart Health: A Genetics-First Framework</h1>
+    <p>Most public heart-health content is written for the average person with lifestyle-driven risk. It doesn't work well for people whose primary risk driver is genetic — where you can do everything "right" and still build plaque, or have terrible numbers on paper and carry almost no risk. This is a living reference doc, started July 2026, built around two real (anonymised) case studies.</p>
+  </div>
+
+  <div class="disclaimer">
+    <p>Not medical advice. This is a personal reference framework, not a clinical recommendation — genetics decides which parts of this apply to any given person, and that requires an actual clinician working from your own results.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The core framework</div>
+    <p>Cardiovascular risk from cholesterol comes down to three questions, roughly in this order of importance:</p>
+    <div class="ladder">
+      <div class="ladder-item"><span class="ladder-num">1</span><p><strong style="color:var(--text)">How many atherogenic particles do you make, and for how long have you been exposed to them?</strong> Mostly genetic — set by LDL receptor function, ApoB production, Lp(a) level, and how the body clears remnant lipoproteins (this is where ApoE genotype comes in). Lifestyle nudges this, but for a lot of people it doesn't move it nearly enough.</p></div>
+      <div class="ladder-item"><span class="ladder-num">2</span><p><strong style="color:var(--text)">Is that exposure actually causing plaque, right now, in your arteries?</strong> This is what imaging (CAC, CT angiogram, carotid ultrasound) answers directly, rather than inferring it from a blood number.</p></div>
+      <div class="ladder-item"><span class="ladder-num">3</span><p><strong style="color:var(--text)">What's your inflammatory and metabolic context?</strong> Smoking, diabetes, blood pressure, visceral fat, hs-CRP — these determine how "reactive" your arteries are to a given particle burden, and they're the part lifestyle affects most directly.</p></div>
+    </div>
+    <p style="margin-top:14px">The mistake in most public discussion is collapsing all three into "cholesterol is good/bad." Genetics sets the dose, imaging tells you the actual effect, and metabolic health is the modifier. Two people with identical LDL can have completely different outcomes depending on #1 and #3 — the exact contrast between the two case studies below.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What's well-established vs. what's still vague</div>
+    <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--green); margin-bottom:6px; font-family:'DM Mono',monospace;">Well-established</h3>
+    <ul class="fact-list established">
+      <li>LDL/ApoB is causally linked to atherosclerosis — about as settled as anything in cardiology, backed by genetic (Mendelian randomisation), epidemiological, and drug-trial evidence across statins, ezetimibe, and PCSK9 inhibitors.</li>
+      <li>ApoB is a more accurate risk marker than standard LDL-C, because it counts the actual number of atherogenic particles rather than inferring it from the cholesterol they carry.</li>
+      <li>Lp(a) is a genetically determined, independent, causal risk factor — 70–90% inherited, stable for life, not moved by diet or exercise, present in roughly 1 in 5 people, and mostly ignored in routine care.</li>
+      <li>A CAC score of zero carries genuinely low near-term risk. Multiple studies show statins provide no measurable event reduction in primary-prevention patients with CAC = 0, regardless of LDL — the strongest data point against blanket statin prescribing by cholesterol number alone.</li>
+      <li>Familial hypercholesterolemia (FH) is caused by mutations in LDLR (~85–90% of cases), APOB, or PCSK9. Genetic testing only actually finds a mutation in 25–75% of people who meet clinical criteria, so a "clean" genetic test doesn't rule it out.</li>
+      <li>The nocebo effect is real and large in statin side effects — the SAMSON trial and multiple reviews suggest up to half of reported muscle symptoms occur regardless of whether the pill contains a statin. True intolerance is real but rarer (~3–5%).</li>
+    </ul>
+    <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin:22px 0 6px; font-family:'DM Mono',monospace;">Genuinely still vague / contested</h3>
+    <ul class="fact-list vague">
+      <li>Whether CAC = 0 is protective in the presence of <em>very</em> high genetic risk the way it is in average-risk people. Zero calcium isn't zero plaque — it's zero <em>calcified</em> plaque, and CT angiography can still show non-calcified disease CAC misses entirely.</li>
+      <li>The lean-mass-hyperresponder (LMHR) question — whether very high LDL/ApoB on a low-carb diet, in an otherwise metabolically healthy person, carries the same risk per unit of ApoB as it does in an average person. Genuinely unresolved, and a good example of a real phenomenon overgeneralised into "cholesterol doesn't matter" — which it clearly does for a different underlying mechanism, as in Case study A below.</li>
+      <li>Whether lowering Lp(a) pharmacologically actually reduces events — plausible and backed by genetic studies, but no completed outcomes trial yet. Two read out through 2026.</li>
+      <li>Exactly how much CRP/inflammation adds on top of particle number — a real modifier, but not a substitute for ApoB/Lp(a).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The testing toolkit</div>
+    <div class="table-wrap">
+      <table class="toolkit">
+        <tr><th>Test</th><th>What it tells you</th><th>Where it fits</th></tr>
+        <tr><td>Standard lipid panel</td><td>Cheap, universal, but LDL-C is a calculated estimate and can mislead, especially with high triglycerides</td><td>Baseline only — don't stop here with family history</td></tr>
+        <tr><td>ApoB</td><td>Direct count of atherogenic particles</td><td>The real number to track; more accurate than LDL-C</td></tr>
+        <tr><td>Lp(a)</td><td>Genetically fixed, independent risk factor</td><td>Check once in a lifetime — a high value raises targets on the rest of the panel</td></tr>
+        <tr><td>ApoE genotype</td><td>Determines remnant lipoprotein clearance speed; ε4 carriers clear slower, run higher LDL</td><td>Explains why the numbers behave as they do; flags a poorer average statin response</td></tr>
+        <tr><td>Genetic panel + Dutch Lipid Clinic Score</td><td>Confirms or scores probability of familial hypercholesterolemia</td><td>Worth doing with strong family history + high LDL from a young age</td></tr>
+        <tr><td>CAC score</td><td>Directly measures calcified plaque burden</td><td>The single best "does this matter for me" test</td></tr>
+        <tr><td>CT coronary angiogram</td><td>Sees calcified and non-calcified plaque, plus stenosis severity</td><td>Step up from CAC when borderline or genetic risk is high</td></tr>
+        <tr><td>Carotid ultrasound</td><td>Independent, radiation-free window onto systemic atherosclerosis</td><td>Good corroborating and repeatable tracking test</td></tr>
+        <tr><td>hs-CRP</td><td>Inflammatory modifier of risk on top of particle number</td><td>Adds context for borderline lipid numbers</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Mitigation strategies — the ladder</div>
+    <p><strong style="color:var(--text)">Lifestyle</strong> is always the floor, rarely enough alone for genetic cases: saturated-fat-aware, plant-forward diet with regular oily fish or omega-3, resistance and aerobic exercise, weight/visceral fat management, good sleep, not smoking. It meaningfully affects the inflammatory/metabolic layer and triglycerides, modestly affects LDL/ApoB — and does essentially nothing to Lp(a). Doing all of this and still progressing isn't a failure of effort, it's the genetics working as expected.</p>
+    <p style="margin-top:16px"><strong style="color:var(--text)">Pharmacological ladder</strong>, roughly in order of use:</p>
+    <div class="ladder">
+      <div class="ladder-item"><span class="ladder-num">1</span><p>Statin — first line, biggest evidence base, but ~3–5% have genuine intolerance (vs. a much larger nocebo-driven dropout rate); a supervised rechallenge is worth doing before writing them off entirely.</p></div>
+      <div class="ladder-item"><span class="ladder-num">2</span><p>Ezetimibe — blocks cholesterol absorption in the gut, modest LDL reduction (~15–20%) alone, well tolerated, additive to statins.</p></div>
+      <div class="ladder-item"><span class="ladder-num">3</span><p>Bempedoic acid — statin-free mechanism, no muscle symptoms, meaningfully effective; increasingly used alone or combined with ezetimibe in statin-intolerant patients.</p></div>
+      <div class="ladder-item"><span class="ladder-num">4</span><p>PCSK9 inhibitors or inclisiran (injectable) — largest LDL reductions after other drugs are maxed out. In Australia, PBS access is gated fairly tightly by LDL threshold, prior therapy, and diagnosis criteria — worth clarifying exactly which criterion is being missed, since private funding is also an option.</p></div>
+      <div class="ladder-item"><span class="ladder-num">5</span><p>On the horizon, not yet proven by outcomes trials: pelacarsen and olpasiran, both Lp(a)-lowering (80–95%+ reductions in phase 2) — the first real test of whether lowering Lp(a) actually prevents events, reading out through 2026.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The statin over-treatment / under-treatment problem</div>
+    <p>This cuts both ways, and treating it as one-directional is where a lot of public commentary goes wrong.</p>
+    <div class="two-col">
+      <div>
+        <h3>Over-treatment</h3>
+        <p>Prescribing by LDL number alone, in a primary-prevention, average-genetic-risk person, produces a very poor number-needed-to-treat at the margins — around 400 over five years for the lowest-risk patients now brought into guideline thresholds, up from ~40 in the 1990s. Statins show no measurable event benefit in patients with a genuinely CAC = 0 score, absent other independent risk drivers.</p>
+      </div>
+      <div>
+        <h3>Under-treatment / dismissal</h3>
+        <p>Common in low-carb/keto-adjacent commentary: generalising the LMHR argument to people whose high particle count comes from a completely different mechanism — impaired LDL-receptor clearance, a poor-clearing ApoE4 genotype, or genetically fixed high Lp(a) — none of which have anything to do with diet.</p>
+      </div>
+    </div>
+    <p style="margin-top:16px">The honest framework, stated plainly: genetics decides who's in which bucket, and the imaging is what actually tells you which bucket you're in — the lipid panel by itself doesn't.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Case study A — genetics-first risk</div>
+    <div class="case-box">
+      <ul>
+        <li><strong>Family history:</strong> a parent underwent triple bypass surgery around age 60 — a strong signal that whatever's going on is heritable, not purely dietary or lifestyle.</li>
+        <li><strong>Lifestyle:</strong> by conventional standards, doing everything right — and still showing progressive disease on imaging. This is the whole point of the genetics-first framing: lifestyle is the floor, not the ceiling, when the underlying particle-clearance problem is genetic.</li>
+        <li><strong>Genotype:</strong> ApoE ε3/ε4 — one copy of the ε4 allele, associated with higher LDL/oxidised LDL via slower hepatic clearance of remnant lipoproteins, and a somewhat poorer average response to lipid-lowering therapy — relevant context for why the numbers have been stubborn.</li>
+        <li><strong>Testing done:</strong> full advanced lipid panel including ApoA and ApoB, Lp(a), CAC score, CT coronary angiogram, and carotid ultrasound — well beyond a standard GP lipid panel, specifically because of the family history.</li>
+        <li><strong>Findings:</strong> calcified plaque present on imaging; not much soft (non-calcified) plaque, a relatively reassuring feature of what's there.</li>
+        <li><strong>Treatment history:</strong> statins not tolerated (worth revisiting via a proper rechallenge given how large the nocebo effect is in the literature); ezetimibe tolerated and effective but not sufficient alone; currently short of the PBS threshold for a PCSK9 inhibitor/inclisiran — next step is clarifying exactly which criterion is the blocker.</li>
+        <li><strong>Why document this:</strong> partly as a record for others in the same position, partly because it's a useful public example — good genetics <em>and</em> discipline aren't always enough, and that's an important counterweight to "just eat clean and it'll be fine."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Case study B — low genetic risk, high cholesterol</div>
+    <div class="case-box">
+      <p style="margin:0">High cholesterol on a standard panel, CAC score of zero, no smoking, no diabetes. On current evidence, this is close to the textbook case where imaging overrides the cholesterol number for near-term decision-making — a candidate for periodic re-scanning rather than immediate statin therapy, provided there's no family history of premature CAD or other independent risk driver. A good side-by-side illustration of why "high cholesterol" alone is an incomplete question.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Open questions still being tracked</div>
+    <ul class="questions">
+      <li>What specific PBS criterion is being missed for PCSK9i/inclisiran, and is private funding worth costing out in the meantime?</li>
+      <li>Would a formal, ideally blinded, statin rechallenge be worth doing given the nocebo literature, before fully writing statins off?</li>
+      <li>Pelacarsen/olpasiran outcomes data lands in 2026 — if positive, this could be a genuinely new option given the Lp(a)/family-history angle.</li>
+      <li>Worth getting hs-CRP if not already done, as an additional modifier on top of the particle-count data already gathered.</li>
+      <li>Keep an eye on next-generation ApoB-lowering orals in the pipeline as alternatives to injectables.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="caveat">
+      <div class="caveat-title">Reminder</div>
+      <p>None of this is a substitute for a cardiologist working from your own results. It's a framework for asking better questions, not a protocol to follow.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Sources</div>
+    <div class="sources">
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11836235/" target="_blank">Lipoprotein(a) as a Causal Risk Factor for Cardiovascular Disease</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12959997/" target="_blank">The Lipoprotein(a) Implementation Gap: Bridging Evidence and Clinical Practice</a>
+      <a href="https://www.acc.org/latest-in-cardiology/articles/2025/12/01/01/feature-lipoprotein-a" target="_blank">Feature | Lipoprotein(a): An Independent Risk Factor For CV Disease — ACC</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9961636/" target="_blank">Genetic Heterogeneity of Familial Hypercholesterolemia</a>
+      <a href="https://medlineplus.gov/genetics/condition/familial-hypercholesterolemia/" target="_blank">Familial Hypercholesterolemia — MedlinePlus Genetics</a>
+      <a href="http://nlaresourcecenter.lipidjournal.com/Content/PDFs/Tables/4.pdf" target="_blank">Table 4. Dutch Lipid Clinic Network diagnostic criteria</a>
+      <a href="https://scienceinsights.org/how-the-apoe4-gene-causes-high-cholesterol/" target="_blank">How the ApoE4 Gene Causes High Cholesterol</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3078893/" target="_blank">Apolipoprotein E epsilon-4 polymorphism and poorer response to lipid-lowering therapy</a>
+      <a href="https://www.empirical.health/blog/apob-vs-ldl-cholesterol/" target="_blank">Why ApoB is more accurate than LDL cholesterol</a>
+      <a href="https://www.tandfonline.com/doi/full/10.1080/14796678.2025.2535184" target="_blank">Current opinions on the role of apolipoprotein B in clinical management of cardiovascular risk</a>
+      <a href="https://www.sciencedirect.com/science/article/abs/pii/S1933287425001242" target="_blank">Coronary artery disease in a zero calcium score patient</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12372559/" target="_blank">Evaluating the Implications of a CAC = 0 in Modern Risk Prediction</a>
+      <a href="https://www.tctmd.com/news/statins-provide-no-clinical-benefit-when-coronary-calcium-zero-study-shows" target="_blank">Statins Provide No Clinical Benefit When Coronary Calcium Is Zero — tctmd.com</a>
+      <a href="https://www.medicalnewstoday.com/articles/high-cholesterol-but-zero-calcium-score" target="_blank">High cholesterol but zero calcium score — Medical News Today</a>
+      <a href="https://cdt.amegroups.org/article/view/14282/html" target="_blank">Plaque imaging with CT — comprehensive review on CCTA-based risk assessment</a>
+      <a href="https://onlinejase.com/article/S0894-7317(20)30252-2/fulltext" target="_blank">Recommendations for the Assessment of Carotid Arterial Plaque by Ultrasound — ASE</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9178378/" target="_blank">Step-by-step diagnosis and management of the nocebo/drucebo effect — ILEP position paper</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6240752/" target="_blank">Introducing the 'Drucebo' effect in statin therapy</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10055622/" target="_blank">Management of Statin Intolerant Patients in the Era of Novel Lipid Lowering Therapies</a>
+      <a href="https://www.news-medical.net/news/20240107/Combining-ezetimibe-and-bempedoic-acid-effectively-lowers-cholesterol-in-statin-intolerant-patients.aspx" target="_blank">Combining ezetimibe and bempedoic acid effectively lowers cholesterol in statin-intolerant patients</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11432672/" target="_blank">Addition of Bempedoic Acid to Statin–Ezetimibe versus Statin Titration</a>
+      <a href="https://medicinetoday.com.au/mt/2021/september/regular-series/two-pcsk9-inhibitors-now-pbssubsidised-cholesterol-control" target="_blank">Two PCSK9 inhibitors now PBS-subsidised for cholesterol control</a>
+      <a href="https://australianprescriber.tg.org.au/articles/inclisiran-for-hypercholesterolaemia.html" target="_blank">Inclisiran for hypercholesterolaemia — Australian Prescriber</a>
+      <a href="https://newshub.medianet.com.au/2024/04/leqvio-a-first-in-class-sirna-therapy-for-ldl-c-lowering-now-listed-on-the-pbs-2/43251/" target="_blank">LEQVIO — first-in-class siRNA therapy for LDL-C lowering, now listed on the PBS</a>
+      <a href="https://www.pulsetoday.co.uk/news/clinical-areas/cardiovascular/nnt-with-statins-is-400-for-lower-risk-eligible-patients-researchers-estimate/" target="_blank">NNT with statins is 400 for lower risk eligible patients — Pulse Today</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6777225/" target="_blank">Statin Use in Primary Prevention According to 5 Major Guidelines: NNT analysis</a>
+      <a href="https://peterattiamd.com/there-is-no-safe-gamble-with-high-ldl-cholesterol/" target="_blank">There is no safe gamble with high LDL cholesterol — Peter Attia MD</a>
+      <a href="https://www.lipidjournal.com/article/S1933-2874(22)00295-1/fulltext" target="_blank">Elevated LDL-C among lean mass hyper-responders on ketogenic diets deserve urgent clinical attention</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9048595/" target="_blank">Case Report: Hypercholesterolemia "Lean Mass Hyper-Responder" Phenotype</a>
+      <a href="https://blueripple.com/lpa/lpa-emerging-therapies/" target="_blank">Emerging Lp(a) Therapies: The Drug Development Pipeline</a>
+      <a href="https://www.healio.com/news/cardiology/20250811/emerging-therapies-for-lowering-lpa-peering-into-the-future" target="_blank">Emerging therapies for lowering Lp(a): 'Peering into the future'</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10460604/" target="_blank">Impact of Lifestyle Modifications on Cardiovascular Health: A Narrative Review</a>
+      <a href="https://theconversation.com/how-c-reactive-protein-outpaced-bad-cholesterol-as-leading-heart-disease-risk-marker-271143" target="_blank">How C-reactive protein outpaced 'bad' cholesterol as leading heart disease risk marker</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal reference · not medical advice</p>
+    <p>Updated July 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
