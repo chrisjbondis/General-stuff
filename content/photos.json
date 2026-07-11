@@ -1,10 +1,29 @@
 [
   {
-    "id": "1",
+    "id": "travel-placeholder",
+    "album": "travel",
     "filename": "placeholder-1.jpg",
-    "caption": "Your first photo will go here.",
+    "caption": "Your travel photos will go here.",
     "location": "",
-    "date": "2026-06-23",
+    "date": "2026-01-01",
+    "tags": []
+  },
+  {
+    "id": "macro-placeholder",
+    "album": "macro",
+    "filename": "placeholder-1.jpg",
+    "caption": "Your macro photos will go here.",
+    "location": "",
+    "date": "2026-01-01",
+    "tags": []
+  },
+  {
+    "id": "architectural-placeholder",
+    "album": "architectural",
+    "filename": "placeholder-1.jpg",
+    "caption": "Your architectural photos will go here.",
+    "location": "",
+    "date": "2026-01-01",
     "tags": []
   }
 ]

@@ -1,6 +1,7 @@
 import ideasData from "@/content/ideas.json";
 import quotesData from "@/content/quotes.json";
 import photosData from "@/content/photos.json";
+import albumsData from "@/content/albums.json";
 
 export type Verdict = {
   label: "VERIFIED" | "BUSTED" | "COMPLICATED" | "UNVERIFIABLE";
@@ -27,9 +28,17 @@ export type Idea = {
   locked?: boolean;
 };
 
+export type Album = {
+  id: string;
+  title: string;
+  description: string;
+};
+
 export type Photo = {
   id: string;
-  filename: string;
+  album: string;
+  filename?: string;
+  url?: string;
   caption: string;
   location: string;
   date: string;
@@ -49,9 +58,13 @@ export function getQuotes(): Quote[] {
 }
 
 export function getPhotos(): Photo[] {
-  return [...photosData].sort(
+  return [...(photosData as Photo[])].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+}
+
+export function getAlbums(): Album[] {
+  return albumsData as Album[];
 }
 
 export function formatDate(dateStr: string): string {

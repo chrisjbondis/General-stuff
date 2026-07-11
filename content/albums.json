@@ -1,0 +1,17 @@
+[
+  {
+    "id": "travel",
+    "title": "Travel",
+    "description": "Places worth going back to."
+  },
+  {
+    "id": "macro",
+    "title": "Macro",
+    "description": "The small stuff, up close."
+  },
+  {
+    "id": "architectural",
+    "title": "Architectural",
+    "description": "Lines, light, and structure."
+  }
+]
