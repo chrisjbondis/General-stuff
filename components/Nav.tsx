@@ -71,6 +71,14 @@ export default function Nav() {
             JCVD.ai
           </a>
         </li>
+        <li>
+          <a
+            href="/ideas/sharetracker.html"
+            className="transition-colors text-white/70 hover:text-white"
+          >
+            ShareTracker Pro
+          </a>
+        </li>
       </ul>
     </nav>
   );

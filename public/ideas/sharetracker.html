@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShareTracker Pro — Portfolio Tracking &amp; Stock Analysis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #a855f7;
+    --text: #f0f1f5;
+    --text-muted: #b0b8cc;
+    --text-dim: #7a8299;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
+  .header-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 400; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+  .header p { color: var(--text-muted); font-size: 15px; max-width: 580px; line-height: 1.6; }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .btn-primary { background: var(--accent); color: #1a0f26; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 11px 22px; border-radius: 8px; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost { color: var(--text-muted); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 11px 20px; border-radius: 8px; border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .btn-ghost:hover { border-color: var(--text-dim); color: var(--text); }
+
+  .section { margin-bottom: 40px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 16px; }
+  .section-note { font-size: 13.5px; color: var(--text-dim); margin-bottom: 20px; max-width: 600px; line-height: 1.6; }
+
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .feature-icon { font-size: 18px; margin-bottom: 8px; }
+  .feature-name { font-size: 13.5px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .feature-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  .links { display: flex; flex-direction: column; gap: 10px; }
+  .link-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; text-decoration: none; transition: border-color 0.2s; }
+  .link-card:hover { border-color: var(--text-dim); }
+  .link-card-info strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+  .link-card-info span { font-size: 12.5px; color: var(--text-dim); }
+  .link-card-arrow { font-family: 'DM Mono', monospace; color: var(--text-dim); font-size: 14px; flex-shrink: 0; }
+
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 600px) { body { padding: 32px 16px 60px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="margin-bottom: 24px;">
+    <a href="/" style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-dim)'">← Home</a>
+  </div>
+
+  <div class="header">
+    <div class="header-tag">Project</div>
+    <h1>ShareTracker Pro</h1>
+    <p>A portfolio tracking and stock analysis tool — live quotes, buy/sell/hold recommendations, watchlists with thesis notes, and a Stage 1/2 scanner for spotting setups. Each account keeps its own private portfolio; free to sign up and use.</p>
+    <div class="cta-row">
+      <a href="https://shares.generalstuff.com.au" target="_blank" class="btn-primary">Open ShareTracker Pro →</a>
+      <a href="https://shares.generalstuff.com.au/signup" target="_blank" class="btn-ghost">Create a free account</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What's inside the app</div>
+    <p class="section-note">Sign up once — your portfolio, watchlists, and analysis are private to your account.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">💼</div>
+        <div class="feature-name">Portfolio Dashboard</div>
+        <div class="feature-desc">Track holdings with live pricing, cost basis, and total P&amp;L converted to AUD.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📈</div>
+        <div class="feature-name">Buy / Sell / Hold Signals</div>
+        <div class="feature-desc">Server-side technical analysis turns each position into a clear recommendation.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👁️</div>
+        <div class="feature-name">Watchlists</div>
+        <div class="feature-desc">Track stocks you don't own yet, with target prices and your own thesis notes.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-name">Stage 1/2 Scanner</div>
+        <div class="feature-desc">Screen for stocks moving from base-building into a Stage 2 uptrend.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <div class="feature-name">Stock Analysis</div>
+        <div class="feature-desc">Drill into any ticker for price history and the reasoning behind its signal.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📄</div>
+        <div class="feature-name">Reports</div>
+        <div class="feature-desc">Generate a portfolio report summarising performance across all holdings.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">More from ShareTracker Pro</div>
+    <div class="links">
+      <a href="https://shares.generalstuff.com.au" target="_blank" class="link-card">
+        <div class="link-card-info">
+          <strong>The App</strong>
+          <span>shares.generalstuff.com.au — free, sign up to start tracking</span>
+        </div>
+        <div class="link-card-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal project · shares.generalstuff.com.au</p>
+    <p>Updated July 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
