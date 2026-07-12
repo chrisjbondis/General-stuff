@@ -5,13 +5,21 @@
 Full project context — what's done, what's pending, content details, design decisions — is in this doc. Read it at the start of any session:
 https://docs.google.com/document/d/1vQcNutZPCN3sNbbQaK9MKqoCOiqXjpCkx0OjCIC-c6E/edit
 
+## Before starting content work
+
+Run `git log --oneline -15` and `git status` before adding an idea post or showcase page. Sessions here run in fresh, isolated containers with no memory of other sessions, so it's possible for two sessions to work on the same topic without either knowing — this already happened once (commits `ac7743c` and `f447e76` both added a "genetics-first heart health" post ten minutes apart, the second re-touching the file the first had just created). If `content/ideas.json` or `public/ideas/` already has something close to what you're about to add, stop and flag it instead of creating a duplicate.
+
+Prefer the slash commands `/add-idea-post` and `/add-showcase-page` (in `.claude/commands/`) for these two workflows — they include this check and encode the steps below so they don't have to be re-derived from prose each time.
+
 ## Deployment
 
 **Oracle Cloud is the real production host for generalstuff.com.au — not Netlify.** DNS for the domain resolves to `168.138.23.164`, the same Oracle Cloud VM that serves lighttools.com.au, voltagedrop.com.au, and optimisedeats.com. Nginx is configured there (`/etc/nginx/sites-available/generalstuff.com.au`) with SSL via Certbot, serving static files from `/var/www/generalstuff.com.au/html/`. Its `try_files $uri $uri.html $uri/ =404;` rule means extension-less paths like `/claude-training` automatically resolve to `claude-training.html` — no separate routing config needed for clean URLs.
 
 Netlify (`generalstuff.netlify.app`) is also connected to the `main` branch and auto-deploys on push, but it is a secondary/unused target — nothing points users there, and it can lag behind `main` by a while after a push (its build queue isn't instant). Don't treat Netlify as the source of truth for "is this live" — check the actual domain.
 
-**Deploying to Oracle is manual** (no GitHub Actions auto-deploy configured for this repo, unlike lighttools/voltagedrop):
+**Deploying to Oracle is automated via GitHub Actions** (`.github/workflows/deploy.yml`): every push to `main` builds and rsyncs `out/` to `/var/www/generalstuff.com.au/html/` on the Oracle VM. This requires a repo secret `ORACLE_SSH_KEY` (the private key content, added via GitHub repo Settings → Secrets and variables → Actions) — Chris needs to add that secret once from his machine; Claude sessions can't add repo secrets themselves. Until that secret exists the workflow will fail at the SSH step; the build step still runs and validates the export either way.
+
+Manual fallback (same as before, still works if you need to deploy from a local machine without waiting on CI):
 ```powershell
 npm run build   # static export, output: "export" in next.config.ts, produces out/
 scp -i "$env:USERPROFILE\OneDrive\Desktop\ssh-key-2026-04-21 (1).key" -r out/* ubuntu@168.138.23.164:/var/www/generalstuff.com.au/html/
@@ -20,7 +28,7 @@ scp -i "$env:USERPROFILE\OneDrive\Desktop\ssh-key-2026-04-21 (1).key" -r out/* u
 
 - The training page lives at `public/claude-training.html`, served at both `/claude-training.html` and `/claude-training` — it IS linked in the nav as "Claude Training"
 - Standalone idea pages live in `public/ideas/` and are linked from idea cards via the `link` field in `content/ideas.json`
-- Always push changes to `main` — then manually build + scp to Oracle per above; don't rely on Netlify's auto-deploy to make changes actually live
+- Always push changes to `main` — the GitHub Actions workflow handles the Oracle deploy from there; don't rely on Netlify's auto-deploy to make changes actually live
 
 ## Project showcase pages
 
