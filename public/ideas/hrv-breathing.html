@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HRV & Resonance Breathing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f11;
+    --bg-card: #17181b;
+    --border: #26282c;
+    --text: #e8e8ea;
+    --text-dim: #9a9ca1;
+    --accent: #7fd6c2;
+    --accent-2: #f2b263;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    padding: 0 20px 80px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .nav { padding: 24px 0 0; }
+  header { padding: 32px 0 32px; border-bottom: 1px solid var(--border); }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.1rem;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle { color: var(--text-dim); font-size: 1rem; margin: 0; }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 48px 0 16px;
+    color: var(--accent);
+  }
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 24px 0 8px;
+    color: var(--text);
+  }
+  p { color: var(--text); margin: 0 0 12px; }
+  .dim { color: var(--text-dim); }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 16px 0; }
+  .mode-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .mode-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+  .mode-pattern { font-size: 1.4rem; font-weight: 600; color: var(--accent); margin: 6px 0; }
+  .mode-use { color: var(--text-dim); font-size: 0.88rem; }
+  ul { padding-left: 20px; margin: 8px 0 16px; }
+  li { margin-bottom: 8px; }
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-2);
+    border: 1px solid var(--accent-2);
+    border-radius: 999px;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.92rem;
+  }
+  .schedule-table th, .schedule-table td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .schedule-table th { color: var(--text-dim); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav">
+    <a href="/" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-dim)'">← Home</a>
+  </div>
+
+  <header>
+    <h1>HRV & Resonance Breathing</h1>
+    <p class="subtitle">A working reference for daily practice, sleep, and where the app is headed.</p>
+  </header>
+
+  <h2>The core technique: resonance breathing</h2>
+  <p>Slow, exhale-dominant breathing shifts the body toward parasympathetic (vagal) dominance. The strongest, most consistent effects show up at or below <strong>6 breaths per minute</strong> — the "resonance frequency" for most adults, where breathing rhythm and natural heart-rate oscillations sync up.</p>
+
+  <div class="modes">
+    <div class="mode-card">
+      <div class="mode-name">Dawn</div>
+      <div class="mode-pattern">5s in / 5s out</div>
+      <div class="mode-use">6 breaths/min — dead center of the resonance range. Daytime baseline / general regulation.</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-name">Dusk</div>
+      <div class="mode-pattern">4s in / 7s out</div>
+      <div class="mode-use">Longer exhale bias. Evening wind-down, targets sleep onset specifically.</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-name">Quick reset</div>
+      <div class="mode-pattern">4s in / 6s out</div>
+      <div class="mode-use">Shorter sessions, still exhale-dominant. For a mid-day reset.</div>
+    </div>
+  </div>
+
+  <h3>Why plain 5-in/5-out, no hold</h3>
+  <p>A hybrid pattern like 5s in / 3s hold / 6s out was tested and works — the hold stimulates lung stretch receptors, adding a second (different) pathway to sustained vagal output alongside the exhale itself, and it can act as a useful attentional anchor. But it runs slightly under the resonance rate. Plain <strong>5/5</strong> lands almost exactly on 6 breaths/min and is the most-studied, most reliable option if you're picking one thing to do consistently.</p>
+
+  <hr class="divider">
+
+  <h2>Dosage: what to actually do</h2>
+
+  <div class="card">
+    <span class="tag">Weeks 1–2</span>
+    <p><strong>5 minutes, twice a day.</strong> Consistency beats duration early on — a 10-minute session skipped half the time is worse than 5 minutes done reliably. The goal is to make it automatic before making it longer.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">Once it's a habit</span>
+    <p><strong>Build to 10 minutes, twice a day.</strong> This is the dose used in the clinical studies showing the strongest, most durable HRV improvements (sustained over 8–12 weeks). Jumping straight to 20 min/day from a standing start tends to backfire — it feels like a bigger ask and gets skipped on exactly the days it's needed most.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">Extra sessions</span>
+    <p>No downside to additional 5-minute sessions through the day — benefits appear to compound with frequency, not just duration, and it doubles as a solid meditation. Only caution: if lightheaded or dizzy, ease off the pace or shorten the session.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Sleep: a different toolkit</h2>
+  <p>Sleep breathing isn't just "do the same thing for longer" — three distinct tools, each solving a different part of the problem.</p>
+
+  <h3>1. Dusk (extended exhale) — main wind-down ritual</h3>
+  <p><strong>4s in / 7s out, 15–20 minutes, no hold.</strong> A study on insomniacs found 20 minutes of paced breathing before bed reduced time to fall asleep, night wakings, and total time spent awake. Run before bed, sitting or lying down, eyes closed if comfortable.</p>
+  <ul>
+    <li>Minutes 1–2: still consciously counting</li>
+    <li>Minutes 3–5: counting fades, breath smooths out</li>
+    <li>Minutes 8–10+: heaviness, slower heart rate, pre-sleep drift</li>
+  </ul>
+  <p class="dim">If breathing naturally slows past the count without effort, that's the exercise working — no need to force precision the whole way through.</p>
+
+  <h3>2. 4-7-8 — the lights-out signal</h3>
+  <p><strong>4 in / hold 7 / 8 out, ~4 cycles (2 minutes).</strong> Not a long session — a short ritual right at the edge of sleep that signals to the brain "time to wind down." Works better as a nightly habit than as a rescue tool on an already-bad night.</p>
+
+  <h3>3. Cyclic sighing — the 2:30am tool</h3>
+  <p>Two inhales through the nose (one normal, one short "top-off"), then one long, slow exhale through the mouth. A Stanford study (Balban et al., 2023) found 5 minutes daily outperformed mindfulness meditation for lowering arousal and improving mood. Short and low-effort enough to use half-asleep — the specific tool for a middle-of-the-night wake-up, rather than lying there escalating.</p>
+
+  <h3>Skip at night: box breathing</h3>
+  <p>The 4-4-4-4 pattern (holds on both ends) is built for daytime alertness-under-pressure, not drowsiness. Save it for a stressful moment during the day.</p>
+
+  <hr class="divider">
+
+  <h2>Putting it together</h2>
+  <table class="schedule-table">
+    <tr><th>When</th><th>What</th><th>Length</th></tr>
+    <tr><td>Morning</td><td>Dawn (5/5)</td><td>5–10 min</td></tr>
+    <tr><td>Midday (optional)</td><td>Dawn (5/5) or Quick reset</td><td>5 min</td></tr>
+    <tr><td>Evening</td><td>Dusk (4/7) — replaces the 2nd session if it lands here</td><td>15–20 min</td></tr>
+    <tr><td>Lights out</td><td>4-7-8</td><td>~2 min</td></tr>
+    <tr><td>If awake at 2:30am</td><td>Cyclic sighing</td><td>5 min</td></tr>
+  </table>
+  <p class="dim">Keep it to two structured sessions a day where possible — let Dusk replace whichever session would otherwise fall in the evening, rather than stacking a third on top. Sustainable beats perfect.</p>
+
+  <hr class="divider">
+
+  <h2>App roadmap</h2>
+  <p>The current build (HTML prototype) has the working spec: phase-cycling logic, timings for all three modes, and session/streak tracking. A native app is the long-term move, mainly for reliability.</p>
+  <ul>
+    <li><strong>Reliable voice cues</strong> — no browser sandbox restrictions</li>
+    <li><strong>Haptic feedback</strong> — gentle pulse on inhale/exhale transitions, useful eyes-closed</li>
+    <li><strong>Background/lock-screen operation</strong> — keeps running if the phone locks mid-session</li>
+    <li><strong>Local notifications</strong> — reminders for Dawn/Dusk sessions</li>
+    <li><strong>Live HRV integration</strong> — Polar H10 (Bluetooth chest strap) reading real data instead of a fixed timer; worth specifying to the builder upfront since it's much easier to design in from the start than bolt on later</li>
+    <li><strong>Possible fourth mode</strong> — "2:30am" mode: cyclic sighing, short and simple enough to use half-asleep</li>
+  </ul>
+  <p>Once the Polar H10 is in hand, it's also the natural way to settle the 5/5 vs. 5-3-6 question objectively — run both, see which one the HRV data actually responds to.</p>
+
+  <footer>
+    Personal reference — General Stuff. Not medical advice.
+  </footer>
+
+</div>
+</body>
+</html>
