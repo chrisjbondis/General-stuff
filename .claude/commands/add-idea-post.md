@@ -4,6 +4,8 @@ description: Add a new long-form idea post (article page + ideas.json card)
 
 Add a new idea post about: $ARGUMENTS
 
+This workflow applies in ALL cases: writing a new article from scratch, converting an uploaded file, or adding a pre-written HTML file. The ideas.json card is always required — never add or deploy an article page without it.
+
 Before writing anything, run `git log --oneline -15` and `git status`. Check whether a post on this same topic already exists in `content/ideas.json` or `public/ideas/` (by title/slug, not just exact match) — this catches the case where a previous session already added it or is mid-way through. If something close already exists, stop and tell me instead of creating a duplicate or a near-duplicate.
 
 Then:
