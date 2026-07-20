@@ -17,7 +17,12 @@ Prefer the slash commands `/add-idea-post` and `/add-showcase-page` (in `.claude
 
 Netlify (`generalstuff.netlify.app`) is also connected to the `main` branch and auto-deploys on push, but it is a secondary/unused target — nothing points users there, and it can lag behind `main` by a while after a push (its build queue isn't instant). Don't treat Netlify as the source of truth for "is this live" — check the actual domain.
 
-**Deploying to Oracle is automated via GitHub Actions** (`.github/workflows/deploy.yml`): every push to `main` builds and rsyncs `out/` to `/var/www/generalstuff.com.au/html/` on the Oracle VM. This requires a repo secret `ORACLE_SSH_KEY` (the private key content, added via GitHub repo Settings → Secrets and variables → Actions) — Chris needs to add that secret once from his machine; Claude sessions can't add repo secrets themselves. Until that secret exists the workflow will fail at the SSH step; the build step still runs and validates the export either way.
+**Deploying to Oracle is automated via GitHub Actions** (`.github/workflows/deploy.yml`): every push to `main` builds and rsyncs `out/` to `/var/www/generalstuff.com.au/html/` on the Oracle VM. This pipeline is live and working as of 2026-07-20. Three repo secrets are required (all already set in GitHub → Settings → Secrets and variables → Actions):
+- `ORACLE_SSH_KEY` — RSA private key content
+- `ORACLE_HOST` — `168.138.23.164`
+- `ORACLE_USER` — `ubuntu`
+
+Claude sessions can't read or set repo secrets — if the pipeline breaks, check those three secrets are still present in GitHub settings.
 
 Manual fallback (same as before, still works if you need to deploy from a local machine without waiting on CI):
 ```powershell
@@ -41,6 +46,13 @@ scp -i "$env:USERPROFILE\OneDrive\Desktop\ssh-key-2026-04-21 (1).key" -r out/* u
 5. Build, verify in preview, then deploy per the Deployment section above and push to `main`.
 
 Current projects covered: OptimisedEats, LightTools, VoltageDrop, JCVD.ai. Known projects not yet covered as of 2026-07-08: none outstanding — check with Chris if a new one comes up (e.g. a share-tracking app was mentioned in his bio but doesn't have its own page yet).
+
+## Environment notes
+
+- Chris is on **Windows (PC)**, not Mac — don't suggest Mac-only tools (e.g. `sips`) for image processing
+- SSH key for Oracle is an RSA key stored on the Desktop (filename: `ssh-key-2026-04-21 (1).key`)
+- `public/ideas/lighttools.html` exists on the Oracle server but is **not in this repo** — it was deployed manually at some point. If it needs editing, fetch its content from the live site first, then add it to `public/ideas/` and redeploy via git push
+- Photo hosting: new photos go to Cloudinary (free tier), referenced in `photos.json` via the `url` field. Local photos go in `public/photos/` and use the `filename` field instead
 
 ## Design preferences
 
