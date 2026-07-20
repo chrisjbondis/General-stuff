@@ -1,5 +1,13 @@
 [
   {
+    "id": "9",
+    "title": "HRV & Resonance Breathing",
+    "body": "A working reference for daily practice and sleep. Resonance breathing at 6 breaths/min, dosage that actually builds a habit, and three distinct tools for sleep — including what to do at 2:30am and what not to do at bedtime.",
+    "tags": ["health", "breathing", "sleep", "hrv"],
+    "date": "2026-07-20",
+    "link": "/ideas/hrv-breathing.html"
+  },
+  {
     "id": "8",
     "title": "Heart health: a genetics-first framework",
     "body": "Most heart-health content assumes lifestyle is the main lever. It isn't, for everyone — some people do everything right and still build plaque, because the real driver is genetic. Two anonymised case studies, a testing toolkit, and where cardiology guidance is solid versus still genuinely contested.",
