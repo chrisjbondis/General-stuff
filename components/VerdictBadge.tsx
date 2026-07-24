@@ -34,9 +34,10 @@ const colorMap = {
 type Props = {
   verdict: Verdict;
   compact?: boolean;
+  light?: boolean;
 };
 
-export default function VerdictBadge({ verdict, compact = false }: Props) {
+export default function VerdictBadge({ verdict, compact = false, light = false }: Props) {
   const colors = colorMap[verdict.color];
 
   return (
@@ -47,12 +48,12 @@ export default function VerdictBadge({ verdict, compact = false }: Props) {
         >
           {verdict.label}
         </span>
-        <span className="text-xs text-white/40 font-mono">
+        <span className={`text-xs font-mono ${light ? "text-black/40" : "text-white/40"}`}>
           {verdict.confidence}% confident
         </span>
       </div>
       {!compact && (
-        <p className="mt-4 text-sm leading-relaxed text-white/70">
+        <p className={`mt-4 text-sm leading-relaxed ${light ? "text-black/70" : "text-white/70"}`}>
           {verdict.summary}
         </p>
       )}
