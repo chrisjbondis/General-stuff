@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HRV Is The Readout. Breathing Is The Remote Control.</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --accent: #2dd4bf;
+    --accent-dim: rgba(45, 212, 191, 0.1);
+    --accent-mid: rgba(45, 212, 191, 0.25);
+    --text: #f0f1f5;
+    --text-muted: #b0b8cc;
+    --text-dim: #7a8299;
+    --green: #4ade80;
+    --amber: #fbbf24;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+
+  .page { max-width: 820px; margin: 0 auto; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 32px; }
+  .header-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 400; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+  .header p { color: var(--text-muted); font-size: 15px; max-width: 640px; line-height: 1.7; }
+
+  .disclaimer { background: var(--surface); border: 1px solid var(--accent-mid); border-radius: 10px; padding: 16px 20px; margin-bottom: 36px; }
+  .disclaimer p { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; }
+
+  .section { margin-bottom: 40px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 21px; font-weight: 400; color: var(--text); margin-bottom: 14px; }
+  .section p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 12px; }
+  .section p:last-child { margin-bottom: 0; }
+
+  .ladder { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .ladder-item { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+  .ladder-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); min-width: 18px; padding-top: 2px; }
+  .ladder-item p { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin: 0; }
+
+  .pathway { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 16px 0 20px; }
+  .pathway .node { text-align: center; flex: 1; min-width: 110px; }
+  .pathway .node .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin: 0 auto 8px; }
+  .pathway .node strong { display: block; font-size: 13.5px; color: var(--text); font-weight: 500; }
+  .pathway .node span { font-size: 12px; color: var(--text-dim); }
+  .pathway .arrow { color: var(--accent); font-size: 1.1rem; font-weight: 700; }
+
+  .reasons { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+  .reasons li { list-style: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.75; padding-left: 20px; position: relative; }
+  .reasons li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+  .reasons li em { color: var(--text); font-style: normal; font-weight: 500; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+  .two-col h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .two-col p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+  .fact-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .fact-list li { list-style: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.7; padding-left: 18px; position: relative; }
+  .fact-list.established li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 12px; }
+  .fact-list.vague li::before { content: '?'; position: absolute; left: 0; color: var(--amber); font-size: 12px; font-weight: 700; }
+
+  table.toolkit { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+  table.toolkit th { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  table.toolkit td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--text-muted); vertical-align: top; line-height: 1.6; }
+  table.toolkit td:first-child { color: var(--text); font-weight: 500; white-space: nowrap; }
+  table.toolkit tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  .case-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 20px 24px; }
+  .case-box ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .case-box li { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  .case-box li strong { color: var(--text); font-weight: 500; }
+  .case-box p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+  .caveat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; }
+  .caveat-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+  .caveat p { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-bottom: 10px; }
+  .caveat p:last-child { margin-bottom: 0; }
+  .caveat strong { color: var(--text-muted); }
+
+  .sources { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .sources a { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.2s, border-color 0.2s; }
+  .sources a:hover { color: var(--accent); border-color: var(--accent-mid); }
+
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+
+  /* Breathing pacer */
+  .pacer-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 30px 24px 26px; text-align: center; }
+  .pacer-controls { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; }
+  .pacer-controls button { background: var(--bg); border: 1px solid var(--border); color: var(--text-muted); padding: 8px 14px; border-radius: 20px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; cursor: pointer; font-weight: 500; }
+  .pacer-controls button.active, .pacer-controls button:hover { background: var(--accent); border-color: var(--accent); color: #0a1613; }
+  .pacer-stage { position: relative; width: 200px; height: 200px; margin: 4px auto 22px; display: flex; align-items: center; justify-content: center; }
+  .pacer-ring { position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--border); }
+  .pacer-circle { width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #7ff0e0, var(--accent) 70%); box-shadow: 0 0 40px var(--accent-mid); transform: scale(1); transition: transform 4s ease-in-out; display: flex; align-items: center; justify-content: center; }
+  .pacer-label { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: #0a1613; }
+  .pacer-main-btn { background: var(--accent) !important; border: none !important; color: #0a1613 !important; padding: 10px 26px !important; font-size: 13px !important; font-weight: 700 !important; }
+  .pacer-rate-row { display: flex; align-items: center; gap: 12px; justify-content: center; max-width: 320px; margin: 0 auto 8px; font-size: 12.5px; color: var(--text-dim); font-family: 'DM Mono', monospace; }
+  .pacer-rate-row input[type=range] { flex: 1; accent-color: var(--accent); }
+  .pacer-note { font-size: 12.5px; color: var(--text-dim); margin-top: 6px; line-height: 1.6; }
+
+  .steps { counter-reset: step; display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .steps li { list-style: none; position: relative; padding-left: 34px; font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px; background: var(--accent); color: #0a1613; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; }
+
+  @media (max-width: 600px) { body { padding: 32px 16px 60px; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div style="margin-bottom: 24px;">
+    <a href="/" style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-dim)'">← Home</a>
+  </div>
+
+  <div class="header">
+    <div class="header-tag">Idea · Health · Physiology</div>
+    <h1>HRV Is The Readout. Breathing Is The Remote Control.</h1>
+    <p>Heart rate variability is a cheap, daily-trackable proxy for how activated the body's central stress circuit (the HPA axis) is — and slow, paced breathing is one of the few levers that moves it in real time, for free. This is a working reference on what HRV measures, how the HPA axis actually drives it, and the breathing mechanics that produce the largest measured effect.</p>
+  </div>
+
+  <div class="disclaimer">
+    <p>Not medical advice. HRV is a useful personal signal, not a diagnostic tool. If you suspect sleep apnea, have a mood or anxiety disorder, or have a cardiac condition, talk to a doctor rather than relying on breathing practice alone.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What HRV actually measures</div>
+    <p>Heart rate variability is the tiny, beat-to-beat variation in the time between heartbeats. A heart beating at a perfectly metronomic pace is actually a bad sign; a healthy heart speeds up slightly on the in-breath and slows on the out-breath. That oscillation is <strong style="color:var(--text)">respiratory sinus arrhythmia (RSA)</strong>, driven by the vagus nerve — the main cable of the parasympathetic ("rest and digest") nervous system.</p>
+    <p>High HRV means the vagus nerve has a strong "brake" on the heart, and the autonomic nervous system can flexibly shift between sympathetic (fight/flight) and parasympathetic (rest/recover) states as needed. Low HRV means that brake is weak — the system is stuck leaning sympathetic, whether or not you consciously feel stressed.</p>
+    <p>It's a useful metric to actually track because it's a downstream readout of autonomic and HPA-axis function — it moves before you consciously notice you're burnt out — and because it responds to lifestyle inputs (sleep, alcohol, training load, breathing) within a single day. It's also cheap: any chest-strap monitor or modern wrist wearable captures it passively overnight.</p>
+    <p><strong style="color:var(--text)">The catch:</strong> HRV is highly individual and method-dependent. Apple Watch reports SDNN; Oura, Whoop, Garmin and most chest straps report RMSSD — not directly comparable numbers — and "normal" ranges swing enormously with age, sex, fitness and sensor choice. The only version of this metric worth caring about is your own trend over time, measured the same way, ideally first thing in the morning before you've moved or had caffeine.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The HPA axis: the stress operating system underneath it</div>
+    <p>The hypothalamic-pituitary-adrenal (HPA) axis is the body's central stress-response circuit. It's activated by anything the brain interprets as a physical, mental, or social threat — a near-miss in traffic, a tight deadline, a hostile email, doomscrolling the news.</p>
+    <div class="pathway">
+      <div class="node"><div class="dot"></div><strong>Hypothalamus</strong><span>releases CRF</span></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="dot"></div><strong>Pituitary gland</strong><span>releases ACTH</span></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="dot"></div><strong>Adrenal glands</strong><span>release cortisol</span></div>
+    </div>
+    <p><strong style="color:var(--text)">Short bursts are adaptive</strong> — cortisol mobilizes glucose and fat for fuel, temporarily blunts pain and inflammation, and sharpens memory encoding for the threat. The system is designed to spike, do its job, then return to baseline.</p>
+    <p><strong style="color:var(--text)">The problem is chronic activation</strong> — from ongoing trauma, or just accumulated modern lifestyle stress. Over time, cortisol receptors stop responding normally (glucocorticoid resistance), and the axis gets stuck looping between low resting cortisol and an exaggerated spike to any new stressor. This state is linked to:</p>
+    <ul class="reasons">
+      <li><em>Hippocampal shrinkage</em> — impairs memory and the ability to properly "file away" a resolved threat.</li>
+      <li><em>Amygdala hyperreactivity</em> — hypervigilance, exaggerated startle, poor threat discrimination.</li>
+      <li><em>Reduced prefrontal cortex volume</em> — weaker impulse control and executive function.</li>
+      <li><em>Disrupted GABA, glutamate, serotonin, dopamine and norepinephrine balance</em> — feeding into anxiety, depression, and, in trauma survivors, PTSD.</li>
+      <li><em>Thyroid and sex-hormone imbalance</em> — the HPA axis cross-talks directly with the thyroid (HPT) and gonadal (HPG) axes.</li>
+    </ul>
+    <p style="margin-top:14px">Vagal tone (i.e. HRV) sits in the middle of this loop: HPA-axis activation directly suppresses vagal tone, and low vagal tone in turn predicts weaker resilience to the next stressor. That's why HRV works as an early proxy for HPA dysregulation — it's one of the few parts of this system you can non-invasively measure every single day.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The numbers</div>
+    <p>Just how widespread stress-related illness is, and how the underlying research holds up.</p>
+    <div class="table-wrap">
+      <table class="toolkit">
+        <tr><th>Figure</th><th>What it means</th><th>Source</th></tr>
+        <tr><td>&gt;50%</td><td>of Americans have a chronic condition linked to HPA-axis disturbance, at an estimated $3.3 trillion/year</td><td>Snipes, 2019, <em>Archives of Neurology and Neuroscience</em></td></tr>
+        <tr><td>44%</td><td>of the HPA-linked disease burden is cardiovascular disease; 20% major depressive disorder, 18.1% generalized anxiety, 30% metabolic syndrome</td><td>Snipes, 2019, citing AHA 2018 stats</td></tr>
+        <tr><td>1 in 3</td><td>U.S. adults doesn't get enough sleep</td><td>CDC, 2016</td></tr>
+        <tr><td>26%</td><td>of adults have sleep apnea, itself an HPA-axis activator</td><td>American Academy of Sleep Medicine</td></tr>
+        <tr><td>20%</td><td>of Americans are classified as heavy drinkers (CDC threshold); alcohol-related sleep disorders cost the U.S. an estimated $18B+/year</td><td>CDC, 2018</td></tr>
+        <tr><td>98% / 7.6</td><td>of young adults (2016) used social media regularly, across ~7.6 platforms on average</td><td>Villanti et al., 2017, <em>J Med Internet Res</em></td></tr>
+      </table>
+    </div>
+
+    <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--amber); margin:24px 0 6px; font-family:'DM Mono',monospace;">A few of these deserve a closer look</h3>
+    <p>Some widely-repeated stress statistics rest on thinner evidence than they sound like they do:</p>
+    <div class="caveat" style="margin-top:10px;">
+      <p><strong>&gt;120 min/day or 9+ social media visits/day → significantly higher odds of depression.</strong> Real finding, from Lin et al. (2016, <em>Depression &amp; Anxiety</em>), a nationally representative study of ~1,800 U.S. young adults — but it's correlational and cross-sectional, so it shows an association, not proof that social media use causes depression.</p>
+      <p><strong>"People ruminate on negative events ~5x more than positive ones."</strong> This specific ratio traces to Aaron Ben-Ze'ev, a philosopher, in a 2010 <em>Psychology Today</em> blog post — not a peer-reviewed measurement. The underlying phenomenon it's pointing at, negativity bias (negative events get encoded more strongly and recalled in more detail than positive ones), is well-supported in the literature — e.g. Bowen, Kark &amp; Kensinger's 2018 "NEVER" model, and Baumeister et al.'s "Bad is Stronger than Good" (2001). Treat the "5x" figure as illustrative rather than an experimentally measured number.</p>
+      <p><strong>CPAP "normalizing" cortisol in sleep apnea.</strong> Directionally supported — Kritikou et al. (2016) found 24-hour cortisol fell from ~7.89 to ~7.25 ng/mL with treatment, and a 2021 meta-analysis of 637 patients found a net reduction — but effect sizes are modest and a few individual studies found no effect at all, so "normalizes" overstates what's actually a real but inconsistent effect.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What keeps the HPA axis switched on</div>
+    <p>None of these are exotic. They're the default settings of a modern lifestyle.</p>
+    <ul class="fact-list vague">
+      <li><strong style="color:var(--text)">Chronic noise exposure</strong> — nighttime noise above ~42dB is linked to more sleep-medication and antidepressant prescriptions.</li>
+      <li><strong style="color:var(--text)">Stimulants</strong> — caffeine and nicotine raise cortisol on their own, and combined with a stressor push cortisol/adrenaline higher than either alone.</li>
+      <li><strong style="color:var(--text)">Poor sleep quality &amp; circadian disruption</strong> — shift work, blue light at night, and inconsistent schedules all blunt the HPA axis's natural rhythm.</li>
+      <li><strong style="color:var(--text)">Heavy news/social media consumption</strong> — the brain has a built-in negativity bias, so a 24-hour negative-news cycle is a near-constant low-grade threat signal.</li>
+      <li><strong style="color:var(--text)">Alcohol</strong> — disrupts second-half-of-night sleep even though it speeds sleep onset, and repeated use blunts (rather than fixes) the HPA response.</li>
+      <li><strong style="color:var(--text)">Poor diet / micronutrient gaps</strong> — NHANES data links low vitamin A, calcium, selenium, vitamin D and lycopene intake to poor sleep quality, and low zinc/magnesium to depression via HPA overactivity.</li>
+      <li><strong style="color:var(--text)">Gut microbiome health</strong> — the gut-brain axis runs through the vagus nerve; an unhealthy microbiome is associated with an exaggerated HPA response.</li>
+      <li><strong style="color:var(--text)">Sedentary behaviour</strong> — unfit individuals show slower cortisol/cardiovascular recovery from acute stress than active ones.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What actually helps</div>
+    <div class="two-col">
+      <div>
+        <h3>Low-intensity movement</h3>
+        <p>Exercise at just ~40% VO2 max — a brisk walk, gardening, easy cycling — measurably lowers cortisol and raises serotonin. High-intensity training isn't required to get the HPA-axis benefit.</p>
+      </div>
+      <div>
+        <h3>Treating sleep apnea</h3>
+        <p>CPAP therapy is associated with reduced cortisol output in people with obstructive sleep apnea. Heavy snoring, waking unrefreshed, or a partner flagging breathing pauses is worth a sleep study.</p>
+      </div>
+      <div>
+        <h3>Distress-tolerance &amp; grounding skills</h3>
+        <p>DBT-based emotion regulation, mindfulness and grounding techniques help the nervous system re-regulate faster after a stressor, rather than staying activated.</p>
+      </div>
+      <div>
+        <h3>Paced breathing</h3>
+        <p>The one lever you can pull in real time, with no equipment, and measure the effect on the same wearable that flagged the problem. Covered in full below.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Breathe with it: a resonance-frequency pacer</div>
+    <p>This is the actual mechanism, not just advice to "breathe deeply." Every breath moves your heart rate slightly — it speeds up as you inhale and slows as you exhale (RSA). Slow the breathing down to roughly <strong style="color:var(--text)">4.5–7 breaths per minute</strong> and that oscillation synchronizes with the body's own baroreflex feedback loop (blood-pressure regulation), and the two amplify each other. This is <strong style="color:var(--text)">resonance frequency breathing</strong>, and it produces the single largest short-term HRV increase of any breathing pattern studied. Most people's personal resonance frequency sits close to <strong style="color:var(--text)">6 breaths/min</strong> (5 seconds in, 5 seconds out), but it's genuinely individual — formal HRV-biofeedback protocols test each person across 4.5 to 7 bpm and pick whichever rate feels smoothest and produces the biggest heart-rate oscillation.</p>
+
+    <div class="pacer-card">
+      <div class="pacer-controls" id="presetButtons">
+        <button data-preset="resonance" class="active">Resonance (6/min)</button>
+        <button data-preset="box">Box (4-4-4-4)</button>
+        <button data-preset="478">4-7-8</button>
+        <button data-preset="sigh">Physiological sigh</button>
+      </div>
+
+      <div class="pacer-stage">
+        <div class="pacer-ring"></div>
+        <div class="pacer-circle" id="pacerCircle"><span class="pacer-label" id="pacerLabel">Ready</span></div>
+      </div>
+
+      <button class="pacer-main-btn" id="pacerToggle" style="border-radius:20px; cursor:pointer; font-family:'DM Sans',sans-serif;">Start</button>
+
+      <div class="pacer-rate-row" id="rateRow" style="margin-top:18px;">
+        <span id="rateLabel">6.0 br/min</span>
+        <input type="range" id="rateSlider" min="4.5" max="7" step="0.5" value="6">
+      </div>
+      <p class="pacer-note" id="pacerNote">Diaphragm, not chest: let the belly rise on the in-breath. Adjust the slider and notice which rate feels calmest — that's likely close to your own resonance frequency.</p>
+    </div>
+
+    <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin:24px 0 6px; font-family:'DM Mono',monospace;">Diaphragmatic mechanics (do this regardless of pace)</h3>
+    <ol class="steps">
+      <li>Sit or lie down. One hand on your upper chest, one just below the ribcage on your belly.</li>
+      <li>Inhale slowly through the nose. The belly hand should rise; the chest hand should barely move.</li>
+      <li>Exhale slowly, ideally through pursed lips, letting the belly fall — don't force it, just release.</li>
+      <li>Keep shoulders and upper chest quiet throughout. If your shoulders are rising, you've slipped into chest breathing.</li>
+      <li>At resonance pace this means a long, slow, low breath — not a big breath. Volume isn't the goal; rhythm is.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Which technique, when</div>
+    <div class="table-wrap">
+      <table class="toolkit">
+        <tr><th>Technique</th><th>Pattern</th><th>Best for</th><th>Evidence</th></tr>
+        <tr><td>Resonance / coherent breathing</td><td>~6 br/min, roughly equal inhale:exhale</td><td>Training baroreflex sensitivity &amp; raising resting HRV over weeks</td><td>Largest evidence base (HRV-biofeedback literature, Lehrer et al.)</td></tr>
+        <tr><td>Physiological sigh</td><td>Double inhale through nose, long exhale through mouth</td><td>Fast in-the-moment stress/anxiety reset (~1–5 min)</td><td>Stanford/Huberman Lab trial: outperformed box breathing, cyclic hyperventilation and mindfulness meditation for lowering stress and resting respiratory rate over 28 days of daily 5-minute practice</td></tr>
+        <tr><td>Box breathing</td><td>4-4-4-4 (in-hold-out-hold)</td><td>Pre-performance focus, tactical/military use</td><td>Widely used, less HRV-specific research than resonance breathing</td></tr>
+        <tr><td>4-7-8 breathing</td><td>4 in, 7 hold, 8 out</td><td>Winding down before sleep</td><td>Popularised by Dr. Andrew Weil; small studies, promising but limited</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">A daily protocol worth actually running</div>
+    <ol class="steps">
+      <li><strong style="color:var(--text)">Baseline it.</strong> Track HRV every morning, same time, same device, before caffeine or getting out of bed. Give it 1–2 weeks before drawing conclusions — you're establishing your own normal, not comparing to population averages.</li>
+      <li><strong style="color:var(--text)">Find your resonance rate.</strong> Use the pacer above at 4.5, 5, 5.5, 6, 6.5 and 7 breaths/min across a few sessions. Whichever feels smoothest and calmest is your working number.</li>
+      <li><strong style="color:var(--text)">Practice resonance breathing 10–20 minutes, once or twice a day.</strong> This is the dose used in most HRV-biofeedback research — consistency matters more than any single session.</li>
+      <li><strong style="color:var(--text)">Use the physiological sigh as your in-the-moment tool.</strong> Stressful email, tense meeting, can't sleep — 1–3 cycles, or up to 5 minutes for a bigger reset.</li>
+      <li><strong style="color:var(--text)">Stack the other levers.</strong> A daily brisk walk, treating sleep apnea if you have it, capping alcohol, and getting off the phone before bed will move the same needle breathing does — they're not competing strategies.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The cheap mechanical hack</div>
+    <div class="case-box">
+      <p>Wearing a chest-strap heart-rate monitor like a Polar H10 tends to nudge you toward slower, deeper, diaphragmatic breathing without any deliberate effort. That's probably not the sensor doing anything clever — it's almost certainly the band. A snug strap sitting right at the base of the ribcage/upper abdomen gives you a constant physical cue on every breath: you feel your belly push out against it on the inhale, which is exactly the movement diaphragmatic breathing is trying to train. It's the same underlying principle as the strain-gauge "respiratory belts" used in clinical breathing biofeedback — the mechanism is the pressure and proprioception, not the electronics inside the pod.</p>
+      <p style="margin-top:12px">Which means a $90+ HR strap isn't required to get the effect. Any adjustable band that sits in the same spot and gives the same gentle resistance should do the same job: a spare/replacement HR strap band with no sensor pod clipped in (most brands sell the fabric band alone for a few dollars), a wide elastic exercise band, yoga strap, or luggage strap fastened snugly around the lower ribs, or a postpartum-style velcro waist wrap cinched down a size. Wear it during a work block, a commute, or while running the pacer above, and let the pressure be the passive reminder to expand into the band rather than lift the chest. Costs next to nothing, turns diaphragmatic breathing into an ambient habit instead of something to consciously remember.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="caveat">
+      <div class="caveat-title">Reminder</div>
+      <p>HRV is a useful personal signal, not a diagnostic tool. If you suspect sleep apnea, have a mood or anxiety disorder, or have a cardiac condition, talk to a doctor rather than relying on breathing practice alone.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Sources</div>
+    <div class="sources">
+      <a href="https://irispublishers.com/ann/fulltext/lifestyle-factors-contributing-to-hpa-axis-activation-and-chronic-illness-in-americans.ID.000608.php" target="_blank">Snipes (2019) — Lifestyle Factors Contributing to HPA-Axis Activation and Chronic Illness in Americans</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5575449/" target="_blank">The Impact of Resonance Frequency Breathing on HRV, Blood Pressure, and Mood</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8924557/" target="_blank">Effect of Resonance Breathing on HRV and Cognitive Functions</a>
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5319881/" target="_blank">Russell et al. (2017) — Inclusion of a rest period in diaphragmatic breathing increases high frequency HRV</a>
+      <a href="https://www.hubermanlab.com/newsletter/breathwork-protocols-for-health-focus-stress" target="_blank">Balban et al. — Cyclic sighing (physiological sigh) breathwork trial, Stanford/Huberman Lab</a>
+      <a href="https://www.psychologytoday.com/us/blog/in-the-name-love/201007/are-negative-emotions-more-important-positive-emotions" target="_blank">Ben-Ze'ev (2010) — Are Negative Emotions More Important Than Positive Emotions? (opinion piece, not peer-reviewed)</a>
+      <a href="https://onlinelibrary.wiley.com/doi/10.1002/da.22466" target="_blank">Lin et al. (2016) — Association Between Social Media Use and Depression Among U.S. Young Adults</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5480010/" target="_blank">Villanti et al. (2017) — Social Media Use and Access to Digital Technology in US Young Adults in 2016</a>
+      <a href="https://publications.ersnet.org/content/erj/47/2/366" target="_blank">Kritikou et al. (2016) — Sleep apnoea and the HPA axis: effects of CPAP</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Personal reference · not medical advice</p>
+    <p>Updated July 2026</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const presets = {
+    resonance: { rate: 6, phases: null },
+    box:       { phases: [ ['Inhale',4,1.35], ['Hold',4,1.35], ['Exhale',4,0.75], ['Hold',4,0.75] ], showRate: false },
+    478:       { phases: [ ['Inhale',4,1.35], ['Hold',7,1.35], ['Exhale',8,0.75] ], showRate: false },
+    sigh:      { phases: [ ['Inhale',1.2,1.15], ['Inhale again',1.0,1.4], ['Long exhale',6,0.7] ], showRate: false }
+  };
+  presets.resonance.showRate = true;
+
+  let current = 'resonance';
+  let running = false;
+  let timer = null;
+
+  const circle = document.getElementById('pacerCircle');
+  const label = document.getElementById('pacerLabel');
+  const toggleBtn = document.getElementById('pacerToggle');
+  const rateRow = document.getElementById('rateRow');
+  const rateSlider = document.getElementById('rateSlider');
+  const rateLabel = document.getElementById('rateLabel');
+  const note = document.getElementById('pacerNote');
+  const buttons = document.querySelectorAll('#presetButtons button');
+
+  function resonancePhases(bpm){
+    const half = 30 / bpm;
+    return [ ['Inhale', half, 1.35], ['Exhale', half, 0.75] ];
+  }
+
+  function getPhases(){
+    if(current === 'resonance'){
+      return resonancePhases(parseFloat(rateSlider.value));
+    }
+    return presets[current].phases;
+  }
+
+  function setPhaseVisual(phase){
+    const text = phase[0], duration = phase[1], scale = phase[2];
+    label.textContent = text;
+    circle.style.transition = 'transform ' + duration + 's ease-in-out';
+    circle.style.transform = 'scale(' + scale + ')';
+  }
+
+  function step(phases, i){
+    if(!running) return;
+    const phase = phases[i % phases.length];
+    setPhaseVisual(phase);
+    timer = setTimeout(function(){ step(phases, i+1); }, phase[1]*1000);
+  }
+
+  function start(){
+    running = true;
+    toggleBtn.textContent = 'Stop';
+    const phases = getPhases();
+    step(phases, 0);
+  }
+
+  function stop(){
+    running = false;
+    clearTimeout(timer);
+    toggleBtn.textContent = 'Start';
+    label.textContent = 'Ready';
+    circle.style.transition = 'transform 0.6s ease';
+    circle.style.transform = 'scale(1)';
+  }
+
+  toggleBtn.addEventListener('click', function(){
+    if(running){ stop(); } else { start(); }
+  });
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      buttons.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      current = btn.getAttribute('data-preset');
+      rateRow.style.visibility = presets[current].showRate ? 'visible' : 'hidden';
+      if(current === 'box'){ note.textContent = 'Equal 4-second inhale, hold, exhale, hold. Good for a quick pre-meeting reset.'; }
+      else if(current === '478'){ note.textContent = '4 in, 7 hold, 8 out. Popular as a wind-down before sleep.'; }
+      else if(current === 'sigh'){ note.textContent = 'Two inhales through the nose (short, then a small top-up), then one long, slow exhale through the mouth. Repeat for 1–5 minutes.'; }
+      else { note.textContent = "Diaphragm, not chest: let the belly rise on the in-breath. Adjust the slider and notice which rate feels calmest — that's likely close to your own resonance frequency."; }
+      if(running){ stop(); start(); }
+    });
+  });
+
+  rateSlider.addEventListener('input', function(){
+    rateLabel.textContent = parseFloat(rateSlider.value).toFixed(1) + ' br/min';
+    if(running && current === 'resonance'){ stop(); start(); }
+  });
+})();
+</script>
+
+</body>
+</html>

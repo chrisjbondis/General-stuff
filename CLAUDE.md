@@ -51,7 +51,7 @@ Current projects covered: OptimisedEats, LightTools, VoltageDrop, JCVD.ai. Known
 
 - Chris is on **Windows (PC)**, not Mac — don't suggest Mac-only tools (e.g. `sips`) for image processing
 - SSH key for Oracle is an RSA key stored on the Desktop (filename: `ssh-key-2026-04-21 (1).key`)
-- `public/ideas/lighttools.html` exists on the Oracle server but is **not in this repo** — it was deployed manually at some point. If it needs editing, fetch its content from the live site first, then add it to `public/ideas/` and redeploy via git push
+- `public/ideas/lighttools.html` is tracked in this repo (added 2026-07-13) — the earlier note here claiming it wasn't was stale
 - Photo hosting: new photos go to Cloudinary (free tier), referenced in `photos.json` via the `url` field. Local photos go in `public/photos/` and use the `filename` field instead
 
 ## Design preferences
