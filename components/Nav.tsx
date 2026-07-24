@@ -79,6 +79,14 @@ export default function Nav() {
             ShareTracker Pro
           </a>
         </li>
+        <li>
+          <a
+            href="/ideas/hrv-mechanism.html"
+            className="transition-colors text-white/70 hover:text-white"
+          >
+            HRV
+          </a>
+        </li>
       </ul>
     </nav>
   );
