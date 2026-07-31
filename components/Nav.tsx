@@ -9,14 +9,17 @@ const links = [
   { href: "/quotes", label: "Quotes" },
 ];
 
-const staticLinks = [
+const otherLinks = [
   { href: "/claude-training.html", label: "Claude Training" },
+  { href: "/ideas/hrv-mechanism.html", label: "HRV" },
+];
+
+const projectLinks = [
   { href: "/ideas/optimisedeats.html", label: "OptimisedEats" },
   { href: "/ideas/lighttools.html", label: "LightTools" },
   { href: "/ideas/voltagedrop.html", label: "VoltageDrop" },
   { href: "/ideas/jcvdai.html", label: "JCVD.ai" },
   { href: "/ideas/sharetracker.html", label: "ShareTracker Pro" },
-  { href: "/ideas/hrv-mechanism.html", label: "HRV" },
 ];
 
 export default function Nav() {
@@ -34,7 +37,7 @@ export default function Nav() {
           General Stuff<span className="text-[#d4f04c]">.</span>
         </Link>
 
-        <ul className="hidden md:flex gap-6 text-sm font-medium overflow-x-auto whitespace-nowrap min-w-0">
+        <ul className="hidden md:flex items-center gap-6 text-sm font-medium overflow-x-auto whitespace-nowrap min-w-0">
           {links.slice(1).map(({ href, label }) => (
             <li key={href}>
               <Link
@@ -49,7 +52,21 @@ export default function Nav() {
               </Link>
             </li>
           ))}
-          {staticLinks.map(({ href, label }) => (
+          {otherLinks.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                className="transition-colors text-white/70 hover:text-white"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+          <li aria-hidden className="w-px h-4 bg-white/15" />
+          <li className="text-xs font-mono uppercase tracking-widest text-white/30 shrink-0">
+            Projects I&apos;ve built
+          </li>
+          {projectLinks.map(({ href, label }) => (
             <li key={href}>
               <a
                 href={href}
@@ -103,7 +120,21 @@ export default function Nav() {
               </Link>
             </li>
           ))}
-          {staticLinks.map(({ href, label }) => (
+          {otherLinks.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                onClick={() => setOpen(false)}
+                className="block py-2 transition-colors text-white/70 hover:text-white"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+          <li className="text-xs font-mono uppercase tracking-widest text-white/30 pt-3 mt-2 border-t border-white/10">
+            Projects I&apos;ve built
+          </li>
+          {projectLinks.map(({ href, label }) => (
             <li key={href}>
               <a
                 href={href}
