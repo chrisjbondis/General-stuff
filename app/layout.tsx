@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -31,6 +32,18 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-[var(--font-sans)] bg-[#f9f5ef] text-[#111111]">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-22FCZR2JSC"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-22FCZR2JSC');
+          `}
+        </Script>
         <Nav />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-black/10 py-8 px-6 text-center text-sm text-black/40">
