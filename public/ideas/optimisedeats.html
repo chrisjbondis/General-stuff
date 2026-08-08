@@ -190,6 +190,43 @@
     flex-shrink: 0;
   }
 
+  .stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 18px;
+    flex: 1;
+    min-width: 140px;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  .region-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .region-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .region-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .region-card li { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; padding-left: 14px; position: relative; }
+  .region-card li::before { content: '—'; position: absolute; left: 0; color: var(--text-dim); }
+
   .footer {
     margin-top: 48px;
     padding-top: 24px;
@@ -207,8 +244,11 @@
     color: var(--text-dim);
   }
 
+  .region-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+
   @media (max-width: 600px) {
     body { padding: 32px 16px 60px; }
+    .region-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -267,6 +307,70 @@
   </div>
 
   <div class="section">
+    <div class="section-title">A guide library most nutrition apps don't bother with</div>
+    <p class="section-note">Every guide is sourced from a national health body and priced against real supermarket data for the country you're actually shopping in — not generic "eat your veggies" advice.</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">34+</div><div class="stat-label">in-depth guides, from pre-conception to elderly nutrition</div></div>
+      <div class="stat"><div class="stat-num">106</div><div class="stat-label">budget-optimised recipes, filterable by diet and nutrient focus</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">fully localised regions — not just a currency swap</div></div>
+    </div>
+
+    <div class="region-grid">
+      <div class="region-card">
+        <h3>🇦🇺 AU / NZ edition</h3>
+        <ul>
+          <li>Reference values from NHMRC (Australia's national health body)</li>
+          <li>Pricing benchmarked against Coles, Woolworths, and Aldi</li>
+          <li>Region-specific guides — e.g. kangaroo meat as a budget protein, iodine deficiency resurgence in AU</li>
+        </ul>
+      </div>
+      <div class="region-card">
+        <h3>🇺🇸 US edition</h3>
+        <ul>
+          <li>Every reference value rebuilt from NIH ODS, not converted from the AU numbers</li>
+          <li>Pricing benchmarked against Kroger and Aldi US</li>
+          <li>Same depth, independently re-sourced — a separate guide, not a translation</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="section-note" style="margin-bottom: 12px;">A sample of what's covered:</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">⚠️</div>
+        <div class="feature-name">Nutrient Gap Data</div>
+        <div class="feature-desc">Real deficiency rates — 60% calcium, 48% zinc, 47% iron — with full food-cost tables for closing each gap.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🤰</div>
+        <div class="feature-name">Life-Stage Guides</div>
+        <div class="feature-desc">Pre-conception, pregnancy, kids, teens, adults, and elderly — each with distinct nutrient priorities.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔬</div>
+        <div class="feature-name">Absorption Science</div>
+        <div class="feature-desc">Iron + Vitamin C pairing, calcium timing, phytates and oxalates — the rules that can double what you actually absorb.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🦘</div>
+        <div class="feature-name">Kangaroo Meat Nutrition</div>
+        <div class="feature-desc">Leaner than chicken, more iron than beef, cheaper per kilo — Australia's most underrated protein, fully ranked.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📜</div>
+        <div class="feature-name">Weston A. Price Research</div>
+        <div class="feature-desc">1930s traditional-diet fieldwork on Vitamin K2 and pre-conception nutrition, cross-checked against modern science.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👨‍👩‍👧‍👦</div>
+        <div class="feature-name">Real Costed Meal Plans</div>
+        <div class="feature-desc">Full 7-day plans, line-by-line pricing — a family of 4 fed for $135/week, a solo adult for $37/week.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">More from OptimisedEats</div>
     <div class="links">
       <a href="https://optimisedeats.com" target="_blank" class="link-card">
@@ -279,7 +383,7 @@
       <a href="https://optimisedeats.com/guide/" target="_blank" class="link-card">
         <div class="link-card-info">
           <strong>Guides</strong>
-          <span>Written explainers on budget nutrition topics</span>
+          <span>34+ evidence-based guides, localised for AU/NZ and the US</span>
         </div>
         <div class="link-card-arrow">↗</div>
       </a>
