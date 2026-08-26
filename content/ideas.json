@@ -1,5 +1,13 @@
 [
   {
+    "id": "11",
+    "title": "Organic or Not: Fruit, Veg, Tea & Coffee",
+    "body": "Which produce is worth the organic premium and which isn't. EWG's 2025 Dirty Dozen and Clean Fifteen, plus the cases where the pesticide ranking misses the point — mushrooms and heavy metals, citrus zest, cruciferous veg and thyroid. Tea and coffee covered separately, because the rules are completely different.",
+    "tags": ["health", "food", "nutrition"],
+    "date": "2026-08-16",
+    "link": "/ideas/organic-produce-guide.html"
+  },
+  {
     "id": "10",
     "title": "HRV is the readout, breathing is the remote control",
     "body": "Heart rate variability is a cheap, daily-trackable proxy for how activated the body's central stress circuit is — and slow, paced breathing is one of the few levers that moves it in real time, for free. Covers the HPA-axis mechanism, which stress stats actually hold up, resonance-frequency breathing with an interactive pacer, and a near-free chest-strap-band hack.",

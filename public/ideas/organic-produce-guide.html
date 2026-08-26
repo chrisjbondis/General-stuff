@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic or Not: Fruit, Veg, Tea &amp; Coffee Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1210;
+    --bg-alt:#151a17;
+    --card:#1a2019;
+    --border:#2a332b;
+    --text:#e9ede8;
+    --text-dim:#a6b0a4;
+    --text-faint:#6f7a6d;
+    --dirty:#d4644a;
+    --dirty-bg:rgba(212,100,74,0.08);
+    --clean:#6fae7f;
+    --clean-bg:rgba(111,174,127,0.08);
+    --accent:#c9a35c;
+    --radius:12px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:56px 24px 100px;}
+  h1,h2,h3{font-family:'Syne',sans-serif;font-weight:700;letter-spacing:-0.01em;color:var(--text);}
+  header{margin-bottom:40px;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+  h1{font-size:clamp(28px,5vw,38px);margin:0 0 14px;line-height:1.15;}
+  .lede{color:var(--text-dim);font-size:16px;max-width:60ch;margin:0;}
+
+  .callout{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    border-radius:8px;
+    padding:16px 18px;
+    margin:32px 0;
+    font-size:14.5px;
+    color:var(--text-dim);
+  }
+  .callout strong{color:var(--text);}
+
+  section{margin-top:52px;}
+  .section-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
+  h2{font-size:22px;margin:0;}
+  .section-sub{color:var(--text-faint);font-size:13.5px;margin:0 0 20px;}
+
+  .list{display:flex;flex-direction:column;gap:10px;}
+  .item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:14px 16px;
+  }
+  .rank{
+    font-family:'Syne',sans-serif;
+    font-weight:800;
+    font-size:14px;
+    width:26px;
+    height:26px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:7px;
+    margin-top:1px;
+  }
+  .dirty .rank{background:var(--dirty-bg);color:var(--dirty);}
+  .clean .rank{background:var(--clean-bg);color:var(--clean);}
+  .item-body{flex:1;}
+  .item-name{font-weight:600;font-size:15px;color:var(--text);}
+  .item-note{color:var(--text-dim);font-size:13.5px;margin-top:2px;}
+  .tag{
+    display:inline-block;
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:2px 7px;
+    border-radius:5px;
+    margin-left:8px;
+    vertical-align:middle;
+    position:relative;
+    top:-1px;
+  }
+  .tag.new{background:rgba(201,163,92,0.15);color:var(--accent);}
+
+  .safe-skip{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-top:14px;
+  }
+  .safe-skip h3{font-size:15px;color:var(--clean);margin:0 0 10px;}
+  .safe-skip p{color:var(--text-dim);font-size:14.5px;margin:0 0 10px;}
+  .safe-skip p:last-child{margin-bottom:0;}
+  .safe-skip.lean-organic h3{color:var(--dirty);}
+  .verdict-pill{
+    display:inline-block;
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:6px;
+    margin-bottom:12px;
+  }
+  .verdict-pill.organic{background:var(--dirty-bg);color:var(--dirty);}
+  .verdict-pill.caveat{background:rgba(201,163,92,0.15);color:var(--accent);}
+
+  .brand-grid{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+  .brand-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .brand-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .brand-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15.5px;color:var(--text);}
+  .brand-loc{font-size:12px;color:var(--text-faint);}
+  .brand-card p{color:var(--text-dim);font-size:14px;margin:0 0 10px;}
+  .brand-link{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid rgba(201,163,92,0.35);
+    padding-bottom:1px;
+  }
+  .brand-link:hover{text-decoration:none;border-bottom-color:var(--accent);}
+
+  .grid-notes{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px;}
+  @media(min-width:560px){.grid-notes{grid-template-columns:1fr 1fr;}}
+  .note-card{
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .note-card h4{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:var(--text);
+    margin:0 0 6px;
+  }
+  .note-card p{font-size:13.5px;color:var(--text-dim);margin:0;}
+
+  .rule{border:none;border-top:1px solid var(--border);margin:52px 0;}
+
+  footer{margin-top:48px;font-size:12.5px;color:var(--text-faint);}
+  footer p{margin:4px 0;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div style="margin-bottom:32px;">
+    <a href="/" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;display:inline-flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--text-dim)'" onmouseout="this.style.color='var(--text-faint)'">← Home</a>
+  </div>
+
+  <header>
+    <div class="eyebrow">General Stuff · Food</div>
+    <h1>Organic or Not: Fruit, Veg, Tea &amp; Coffee</h1>
+    <p class="lede">Which produce is worth paying extra for organic, and which is basically a waste of money. Based on EWG's 2025 Shopper's Guide (US pesticide residue testing), the most comprehensive dataset available — plus a separate look at tea and coffee, which don't follow the same rules.</p>
+  </header>
+
+  <div class="callout">
+    <strong>Aussie note:</strong> this data is US-based (EWG/USDA testing) — Australia doesn't publish an equivalent ranked list. The Australian Total Diet Study consistently finds local produce tests low for pesticide residue overall, often with no detectable trace at all, so if anything Australian conventional produce likely skews cleaner than the US baseline. The relative pattern (thin-skinned &amp; porous = higher risk, thick-skinned &amp; enclosed = lower risk) holds regardless of country.
+  </div>
+
+  <section>
+    <div class="section-head"><h2>Buy organic</h2></div>
+    <p class="section-sub">The 2025 Dirty Dozen — highest pesticide load, worth the extra spend</p>
+    <div class="list">
+      <div class="item dirty"><div class="rank">1</div><div class="item-body"><div class="item-name">Spinach</div><div class="item-note">More pesticide residue by weight than any other produce tested this year.</div></div></div>
+      <div class="item dirty"><div class="rank">2</div><div class="item-body"><div class="item-name">Strawberries</div><div class="item-note">Perennial top offender — soft skin, grown low to the ground, heavily sprayed.</div></div></div>
+      <div class="item dirty"><div class="rank">3</div><div class="item-body"><div class="item-name">Kale, collard &amp; mustard greens</div><div class="item-note">Some samples had up to 21 different pesticides detected on a single sample.</div></div></div>
+      <div class="item dirty"><div class="rank">4</div><div class="item-body"><div class="item-name">Grapes</div><div class="item-note">Thin skin, eaten whole, no peeling step to remove residue.</div></div></div>
+      <div class="item dirty"><div class="rank">5</div><div class="item-body"><div class="item-name">Peaches</div><div class="item-note">Fuzzy skin traps residue; usually eaten unpeeled.</div></div></div>
+      <div class="item dirty"><div class="rank">6</div><div class="item-body"><div class="item-name">Cherries</div><div class="item-note">Only Dirty Dozen item without dozens of different pesticides detected — but still ranks high on volume.</div></div></div>
+      <div class="item dirty"><div class="rank">7</div><div class="item-body"><div class="item-name">Nectarines</div><div class="item-note">Same profile as peaches — thin, unpeeled skin.</div></div></div>
+      <div class="item dirty"><div class="rank">8</div><div class="item-body"><div class="item-name">Pears</div><div class="item-note">Usually eaten with skin on.</div></div></div>
+      <div class="item dirty"><div class="rank">9</div><div class="item-body"><div class="item-name">Apples</div><div class="item-note">Long-time Dirty Dozen regular.</div></div></div>
+      <div class="item dirty"><div class="rank">10</div><div class="item-body"><div class="item-name">Blackberries <span class="tag new">New for 2025</span></div><div class="item-note">First-time entry — soft, porous skin similar to other berries.</div></div></div>
+      <div class="item dirty"><div class="rank">11</div><div class="item-body"><div class="item-name">Blueberries</div><div class="item-note">Same soft-skin issue as the rest of the berry family.</div></div></div>
+      <div class="item dirty"><div class="rank">12</div><div class="item-body"><div class="item-name">Potatoes <span class="tag new">New for 2025</span></div><div class="item-note">Surprise entry — flagged mainly for chlorpropham, a sprout inhibitor that's actually banned in the EU.</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Skip organic</h2></div>
+    <p class="section-sub">The 2025 Clean Fifteen — lowest pesticide load, conventional is fine</p>
+    <div class="list">
+      <div class="item clean"><div class="rank">1</div><div class="item-body"><div class="item-name">Pineapple</div><div class="item-note">Thick, inedible skin does all the protective work.</div></div></div>
+      <div class="item clean"><div class="rank">2</div><div class="item-body"><div class="item-name">Sweet corn</div><div class="item-note">Husk keeps kernels shielded.</div></div></div>
+      <div class="item clean"><div class="rank">3</div><div class="item-body"><div class="item-name">Avocado</div><div class="item-note">Thick skin, not eaten — near-zero residue reaches the flesh.</div></div></div>
+      <div class="item clean"><div class="rank">4</div><div class="item-body"><div class="item-name">Onions</div><div class="item-note">Papery outer layers are discarded before eating.</div></div></div>
+      <div class="item clean"><div class="rank">5</div><div class="item-body"><div class="item-name">Papaya</div><div class="item-note">Skin is peeled; flesh consistently tests clean.</div></div></div>
+      <div class="item clean"><div class="rank">6</div><div class="item-body"><div class="item-name">Asparagus</div><div class="item-note">Historically low pesticide use by growers; fast crop cycle.</div></div></div>
+      <div class="item clean"><div class="rank">7</div><div class="item-body"><div class="item-name">Honeydew melon</div><div class="item-note">Thick rind; flesh rarely tests positive for residue.</div></div></div>
+      <div class="item clean"><div class="rank">8</div><div class="item-body"><div class="item-name">Kiwi</div><div class="item-note">Skin is usually peeled before eating.</div></div></div>
+      <div class="item clean"><div class="rank">9</div><div class="item-body"><div class="item-name">Cabbage</div><div class="item-note">Outer leaves are removed during preparation.</div></div></div>
+      <div class="item clean"><div class="rank">10</div><div class="item-body"><div class="item-name">Mushrooms</div><div class="item-note">Grown indoors with no field pesticides — though see the note below on heavy metals.</div></div></div>
+      <div class="item clean"><div class="rank">11</div><div class="item-body"><div class="item-name">Mango</div><div class="item-note">Skin is peeled; most residue stays on the outside.</div></div></div>
+      <div class="item clean"><div class="rank">12</div><div class="item-body"><div class="item-name">Sweet peas (frozen)</div><div class="item-note">Protective pod, then frozen immediately after harvest — minimal spray exposure.</div></div></div>
+      <div class="item clean"><div class="rank">13</div><div class="item-body"><div class="item-name">Watermelon</div><div class="item-note">Thick rind; flesh is largely clean.</div></div></div>
+      <div class="item clean"><div class="rank">14</div><div class="item-body"><div class="item-name">Carrots</div><div class="item-note">Peeling and scrubbing removes most surface residue.</div></div></div>
+      <div class="item clean"><div class="rank">15</div><div class="item-body"><div class="item-name">Sweet potatoes</div><div class="item-note">Underground crop; different pest profile and lower spray needs than surface crops.</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Exceptions worth knowing</h2></div>
+    <p class="section-sub">Cases where the pesticide ranking doesn't tell the whole story</p>
+
+    <div class="safe-skip">
+      <div class="verdict-pill caveat">Caveat</div>
+      <h3>Mushrooms — clean on pesticides, watch for heavy metals</h3>
+      <p>Mushrooms score well on the Clean Fifteen because they're grown indoors on controlled substrate with no field pesticides. But mushrooms are bioaccumulators — they absorb whatever is in their growing medium, including heavy metals like cadmium, lead, and mercury. Organic certification doesn't regulate substrate quality for these contaminants, so "organic" mushrooms aren't automatically cleaner on this front. If you eat mushrooms regularly, varying your source (different farms, different species) is more useful than buying organic.</p>
+    </div>
+
+    <div class="safe-skip" style="margin-top:12px;">
+      <div class="verdict-pill caveat">Caveat</div>
+      <h3>Cruciferous veg — pesticide-free doesn't mean hassle-free</h3>
+      <p>Broccoli, cauliflower, Brussels sprouts, and cabbage consistently score well on pesticide testing — they have natural defence compounds that reduce how much spray is needed. But these same compounds (glucosinolates, which break down into goitrogens and thiocyanates) can suppress thyroid function at high intake, particularly if you're already iodine-deficient. Cooking deactivates most of them. This has nothing to do with whether you buy organic — it's just worth knowing if cruciferous veg are a daily staple.</p>
+    </div>
+
+    <div class="safe-skip" style="margin-top:12px;">
+      <div class="verdict-pill organic">Buy organic</div>
+      <h3>Citrus — the zest is the problem</h3>
+      <p>Oranges, lemons, limes, and grapefruit rank in the middle of the pesticide tables — not as bad as spinach or strawberries, but not clean either. If you're eating the flesh only, conventional is usually fine. The issue is the zest: pesticides concentrate heavily in citrus peel, and the peel is where all the flavour compounds are. If you use zest in cooking or drinks, buy organic citrus. If you never touch the skin, conventional is acceptable.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <div class="section-head"><h2>Tea &amp; coffee</h2></div>
+    <p class="section-sub">Different crop, different rules — the pesticide conversation here is more complicated</p>
+
+    <div class="safe-skip lean-organic">
+      <div class="verdict-pill organic">Buy organic</div>
+      <h3>Tea — strongly worth buying organic</h3>
+      <p>Tea leaves are dried and steeped, not washed before drinking. Whatever pesticide residue is on the leaf goes into the cup. Most commercial tea — including premium brands — is grown in countries with much weaker pesticide regulation than Australia or the US: China, India, Sri Lanka, Kenya. Testing by consumer groups in the US and Europe has repeatedly found residues of pesticides that are banned in Western countries on imported tea.</p>
+      <p>Beyond pesticides, conventional tea cultivation often uses synthetic fertilisers heavily, which affects soil health and can affect the mineral profile of the leaf over time. Organic certification at minimum guarantees no synthetic pesticide use and independently audited soil management practices.</p>
+      <p>The exception: Japanese teas (matcha, gyokuro, sencha) tend to test cleaner even when not certified organic, because Japan's domestic food safety standards are very high. Still worth checking the specific brand.</p>
+    </div>
+
+    <div class="safe-skip lean-organic" style="margin-top:12px;">
+      <div class="verdict-pill organic">Buy organic</div>
+      <h3>Coffee — organic matters, but for different reasons</h3>
+      <p>Roasting destroys most pesticide residues — by the time you're drinking brewed coffee, very little pesticide remains in the cup. So unlike tea, the direct health argument for organic coffee is weaker.</p>
+      <p>The stronger argument is environmental and social: conventional coffee farming uses some of the heaviest pesticide application of any crop globally, much of it in countries with poor worker protections. Shade-grown, organic-certified coffee also tends to support biodiversity in ways monoculture plantations don't.</p>
+      <p>One genuine health caveat: mould (mycotoxins, specifically ochratoxin A) is more of a concern in coffee than pesticides. It forms in poorly stored or low-quality green beans. Choosing high-quality single-origin coffee from reputable roasters — whether or not it's certified organic — is probably more protective against mycotoxins than the organic label alone.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Australian brands doing something about it</h2></div>
+    <p class="section-sub">Local options that take sourcing seriously — not an exhaustive list</p>
+    <div class="brand-grid">
+      <div class="brand-card">
+        <div class="brand-head">
+          <span class="brand-name">Bun Coffee</span>
+          <span class="brand-loc">Byron Bay, NSW</span>
+        </div>
+        <p>Specialty roaster focused on ethically sourced, traceable single-origin beans. Their sourcing relationships emphasise direct trade with farms that use responsible growing practices, including organic or low-input methods. Consistently high cup quality, which also tends to correlate with better post-harvest handling (lower mycotoxin risk).</p>
+        <a href="https://buncoffee.com.au" target="_blank" class="brand-link">buncoffee.com.au ↗</a>
+      </div>
+      <div class="brand-card">
+        <div class="brand-head">
+          <span class="brand-name">Byron Bay Coffee Company</span>
+          <span class="brand-loc">Byron Bay, NSW</span>
+        </div>
+        <p>One of the longer-standing Australian roasters with a genuine organic range. Their certified organic blends use beans from verified organic-certified farms, with Rainforest Alliance accreditation across their broader range. Widely available in supermarkets, which makes it practical to actually buy.</p>
+        <a href="https://byronbaycoffee.com.au" target="_blank" class="brand-link">byronbaycoffee.com.au ↗</a>
+      </div>
+      <div class="brand-card">
+        <div class="brand-head">
+          <span class="brand-name">Changing Habits</span>
+          <span class="brand-loc">Online (Aus-wide)</span>
+        </div>
+        <p>Founded by nutritionist Cyndi O'Meara. Their Certified Organic Cacao is a standby, and they carry organic teas and food products with a focus on minimal processing and transparent sourcing. Tends toward the health-food end of the market — worth checking for organic tea especially.</p>
+        <a href="https://changinghabits.com.au" target="_blank" class="brand-link">changinghabits.com.au ↗</a>
+      </div>
+      <div class="brand-card">
+        <div class="brand-head">
+          <span class="brand-name">The Decaf Co.</span>
+          <span class="brand-loc">Online (Aus-wide)</span>
+        </div>
+        <p>Specialist decaf roaster using Swiss Water Process — which removes caffeine without chemical solvents. This matters for anyone avoiding decaf made with methylene chloride or ethyl acetate. They source quality green beans and the Swiss Water Process is certified organic by default (no chemicals involved). Good option if you want decaf that's actually clean.</p>
+        <a href="https://thedecafco.com" target="_blank" class="brand-link">thedecafco.com ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Why some produce is worse than others</h2></div>
+    <p class="section-sub">The underlying patterns that explain the lists</p>
+    <div class="grid-notes">
+      <div class="note-card">
+        <h4>Skin and surface area</h4>
+        <p>Thin, porous, or rough-textured skins absorb and trap residue. Thick, smooth, or inedible skins — anything you peel off — act as a barrier. This is the single biggest predictor of where a food lands on the list.</p>
+      </div>
+      <div class="note-card">
+        <h4>Growing environment matters</h4>
+        <p>Crops grown close to the ground (strawberries, spinach, potatoes) are more exposed to soil-applied pesticides and fungal pressure. Crops grown on trellises or inside husks have less contact with sprayed surfaces.</p>
+      </div>
+      <div class="note-card">
+        <h4>New entries are usually about one chemical</h4>
+        <p>When something jumps onto the Dirty Dozen unexpectedly — like potatoes in 2025 — it's usually because one specific pesticide was flagged in that testing cycle, not because the crop suddenly got much worse overall. Worth reading the EWG detail rather than just the headline.</p>
+      </div>
+      <div class="note-card">
+        <h4>Washing helps, but has limits</h4>
+        <p>Washing removes surface residue but not systemic pesticides (ones absorbed into the plant tissue). For high-residue produce, washing is still worth doing, but it won't bring a Dirty Dozen item down to Clean Fifteen levels.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Sources: EWG 2025 Shopper's Guide to Pesticides in Produce (ewg.org/foodnews); USDA Pesticide Data Program.</p>
+    <p>Tea pesticide data: Clean Label Project independent testing; EU rapid alert system for food and feed (RASFF) database.</p>
+    <p>Coffee mycotoxin data: Peraica et al., European Journal of Nutrition; general literature on ochratoxin A in roasted coffee.</p>
+    <p>Australian context: Food Standards Australia New Zealand (FSANZ) Australian Total Diet Study; APVMA approved active constituent register.</p>
+    <p>Personal reference only — not dietary advice. Individual responses to pesticide exposure vary; people with specific health conditions should consult a practitioner.</p>
+  </footer>
+
+</div>
+</body>
+</html>
