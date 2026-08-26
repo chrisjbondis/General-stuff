@@ -70,14 +70,16 @@ export default function Home() {
                   </span>
                 ))}
               </div>
-              {idea.locked && idea.link && (
+              {idea.link && (
                 <a
                   href={idea.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-4 text-xs font-mono bg-black/10 hover:bg-black/20 rounded-full px-3 py-1.5 transition-colors"
                 >
-                  Unlock with 1:1 Claude training →
+                  {idea.locked
+                    ? "Unlock with 1:1 Claude training →"
+                    : "Read the full article →"}
                 </a>
               )}
             </div>
