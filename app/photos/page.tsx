@@ -82,12 +82,12 @@ export default function PhotosPage() {
 
       {/* Hire me blurb */}
       <div className="mt-20 pt-8 border-t border-black/10 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-black/40 text-sm">
+        <p className="text-[#f97316] text-sm font-medium">
           Available for hire — still life, product, landscape, and aerial/drone photography.
         </p>
         <a
           href="mailto:chris@generalstuff.com.au"
-          className="text-black/40 text-sm hover:text-black transition-colors underline underline-offset-2"
+          className="text-[#f97316] text-sm font-medium hover:text-[#c2570c] transition-colors underline underline-offset-2"
         >
           chris@generalstuff.com.au
         </a>
