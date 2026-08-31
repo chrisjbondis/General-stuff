@@ -25,24 +25,6 @@ export default function PhotosPage() {
         <h1 className="text-5xl font-bold mb-3">Photos</h1>
         <p className="text-black/50 text-lg">Stuff worth remembering.</p>
 
-        {/* Hire me blurb */}
-        <div className="mt-6 border-2 border-black rounded-2xl p-6 bg-[#5bc8f5] flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <p className="font-bold text-lg leading-snug">
-              Available for hire — still life, product, landscape, and aerial/drone photography.
-            </p>
-            <p className="text-black/60 text-sm mt-1">
-              Based in Melbourne, happy to travel. Get in touch to talk about a shoot.
-            </p>
-          </div>
-          <a
-            href="mailto:chris@generalstuff.com.au"
-            className="shrink-0 bg-black text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black/80 transition-colors"
-          >
-            chris@generalstuff.com.au
-          </a>
-        </div>
-
         {/* Album jump links */}
         <div className="flex flex-wrap gap-2 mt-8">
           {albumSections.map((album) => (
@@ -96,6 +78,19 @@ export default function PhotosPage() {
             </section>
           );
         })}
+      </div>
+
+      {/* Hire me blurb */}
+      <div className="mt-20 pt-8 border-t border-black/10 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-black/40 text-sm">
+          Available for hire — still life, product, landscape, and aerial/drone photography.
+        </p>
+        <a
+          href="mailto:chris@generalstuff.com.au"
+          className="text-black/40 text-sm hover:text-black transition-colors underline underline-offset-2"
+        >
+          chris@generalstuff.com.au
+        </a>
       </div>
     </div>
   );
