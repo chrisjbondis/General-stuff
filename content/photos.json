@@ -1,12 +1,75 @@
 [
   {
-    "id": "travel-placeholder",
+    "id": "arapiles-01",
     "album": "travel",
-    "filename": "placeholder-1.jpg",
-    "caption": "Your travel photos will go here.",
-    "location": "",
-    "date": "2026-01-01",
-    "tags": []
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171122/DJI_20260829064024_0018_D_gxm5sn.jpg",
+    "caption": "Close on the sandstone face as first light hits",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-29",
+    "tags": ["drone", "sunrise", "cliff"]
+  },
+  {
+    "id": "arapiles-02",
+    "album": "travel",
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171123/DJI_20260829064626_0020_D_crhuzk.jpg",
+    "caption": "The main face, with the walking track cutting below",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-29",
+    "tags": ["drone", "sunrise", "cliff"]
+  },
+  {
+    "id": "arapiles-03",
+    "album": "travel",
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171121/DJI_20260829064750_0022_D_eh5glr.jpg",
+    "caption": "Full range panorama, mist still sitting in the trees",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-29",
+    "tags": ["drone", "panorama", "sunrise"]
+  },
+  {
+    "id": "arapiles-04",
+    "album": "travel",
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171123/DJI_20260829070546_0025_D_a970wa.jpg",
+    "caption": "The whole range lit up, not a cloud in sight",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-29",
+    "tags": ["drone", "panorama", "sunrise"]
+  },
+  {
+    "id": "arapiles-05",
+    "album": "travel",
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171121/DJI_20260829071129_0030_D_xnad3s.jpg",
+    "caption": "Sunrise breaking right beside the range",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-29",
+    "tags": ["drone", "panorama", "sunrise"]
+  },
+  {
+    "id": "arapiles-06",
+    "album": "travel",
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171124/DJI_20260829072556_0033_D_inpnz5.jpg",
+    "caption": "Looking back over the crop fields as the sun climbs",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-29",
+    "tags": ["drone", "panorama", "farmland"]
+  },
+  {
+    "id": "arapiles-07",
+    "album": "travel",
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171123/DJI_20260830063953_0040_D_kczx9w.jpg",
+    "caption": "The road in, moon still hanging over the range",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-30",
+    "tags": ["drone", "panorama", "moon"]
+  },
+  {
+    "id": "arapiles-08",
+    "album": "travel",
+    "url": "https://res.cloudinary.com/cexyvez6/image/upload/v1788171123/DJI_20260830071150_0047_D_hq3sqr.jpg",
+    "caption": "Second morning, softer light over the plains",
+    "location": "Mount Arapiles, VIC",
+    "date": "2026-08-30",
+    "tags": ["drone", "panorama"]
   },
   {
     "id": "macro-placeholder",
