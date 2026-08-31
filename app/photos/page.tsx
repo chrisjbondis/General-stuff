@@ -1,4 +1,5 @@
 import { getPhotos, getAlbums } from "@/lib/content";
+import PhotoGallery from "@/components/PhotoGallery";
 
 export const metadata = { title: "Photos — General Stuff" };
 
@@ -23,6 +24,24 @@ export default function PhotosPage() {
       <div className="mb-12">
         <h1 className="text-5xl font-bold mb-3">Photos</h1>
         <p className="text-black/50 text-lg">Stuff worth remembering.</p>
+
+        {/* Hire me blurb */}
+        <div className="mt-6 border-2 border-black rounded-2xl p-6 bg-[#5bc8f5] flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="font-bold text-lg leading-snug">
+              Available for hire — still life, product, landscape, and aerial/drone photography.
+            </p>
+            <p className="text-black/60 text-sm mt-1">
+              Based in Melbourne, happy to travel. Get in touch to talk about a shoot.
+            </p>
+          </div>
+          <a
+            href="mailto:chris@generalstuff.com.au"
+            className="shrink-0 bg-black text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black/80 transition-colors"
+          >
+            chris@generalstuff.com.au
+          </a>
+        </div>
 
         {/* Album jump links */}
         <div className="flex flex-wrap gap-2 mt-8">
@@ -72,40 +91,7 @@ export default function PhotosPage() {
                   </p>
                 </div>
               ) : (
-                <div
-                  className="columns-1 sm:columns-2 lg:columns-3"
-                  style={{ columnGap: "1rem" }}
-                >
-                  {realPhotos.map((photo) => {
-                    const src = photo.url ?? `/photos/${photo.filename}`;
-                    return (
-                      <figure
-                        key={photo.id}
-                        className="break-inside-avoid mb-4 group"
-                      >
-                        <div className="relative overflow-hidden rounded-xl border border-black/10">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={src}
-                            alt={photo.caption}
-                            className="w-full h-auto block transition-[filter] duration-300 group-hover:brightness-75"
-                            loading="lazy"
-                          />
-                          <figcaption className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                            <p className="text-white text-sm font-medium leading-snug">
-                              {photo.caption}
-                            </p>
-                            {photo.location && (
-                              <p className="text-white/60 text-xs mt-0.5">
-                                {photo.location}
-                              </p>
-                            )}
-                          </figcaption>
-                        </div>
-                      </figure>
-                    );
-                  })}
-                </div>
+                <PhotoGallery photos={album.photos} />
               )}
             </section>
           );

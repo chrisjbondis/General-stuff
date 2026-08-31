@@ -9,7 +9,13 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-[#111111] text-white px-6 py-20 md:py-32">
+      <section
+        className="relative text-white px-6 py-20 md:py-32 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(17,17,17,0.75), rgba(17,17,17,0.88)), url(https://res.cloudinary.com/cexyvez6/image/upload/f_auto,q_auto,w_1920/v1788171121/DJI_20260829071129_0030_D_xnad3s.jpg)",
+        }}
+      >
         <div className="max-w-4xl mx-auto">
           <p className="text-[#d4f04c] text-sm font-mono uppercase tracking-widest mb-4">
             generalstuff.com.au
