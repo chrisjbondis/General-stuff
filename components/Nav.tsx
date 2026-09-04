@@ -13,6 +13,7 @@ const links = [
 const otherLinks = [
   { href: "/claude-training.html", label: "Claude Training" },
   { href: "/ideas/hrv-mechanism.html", label: "HRV" },
+  { href: "/ideas/organic-lookup/", label: "Organic?" },
 ];
 
 const projectLinks = [
