@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worth It Organic</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-22FCZR2JSC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-22FCZR2JSC');
+</script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f1117">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Worth It Organic">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --border: #252a38;
+    --text: #f0f1f5;
+    --text-muted: #b0b8cc;
+    --text-dim: #7a8299;
+    --buy: #ef4444;
+    --buy-bg: rgba(239,68,68,0.1);
+    --skip: #22c55e;
+    --skip-bg: rgba(34,197,94,0.1);
+    --depends: #f59e0b;
+    --depends-bg: rgba(245,158,11,0.1);
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 600px; margin: 0 auto; padding: 40px 16px 80px; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-bottom: 28px;
+  }
+  .back-link:hover { color: var(--text-muted); }
+
+  header { margin-bottom: 28px; }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--depends);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .lede { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+  .search-wrap { position: relative; margin-bottom: 20px; }
+  .search-input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 13px 44px 13px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: var(--text-dim); }
+  .search-input:focus { border-color: var(--text-dim); }
+  .search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+    font-size: 16px;
+    pointer-events: none;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-dim);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .tab:hover { border-color: var(--text-dim); color: var(--text-muted); }
+  .tab.active { background: var(--surface); border-color: var(--text-dim); color: var(--text); }
+
+  .count {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .list { display: flex; flex-direction: column; gap: 8px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: border-color 0.15s;
+    overflow: hidden;
+  }
+  .card:hover { border-color: var(--text-dim); }
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+  }
+  .verdict-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .verdict-pill.buy { background: var(--buy-bg); color: var(--buy); }
+  .verdict-pill.skip { background: var(--skip-bg); color: var(--skip); }
+  .verdict-pill.depends { background: var(--depends-bg); color: var(--depends); }
+  .card-name { font-size: 14.5px; font-weight: 500; color: var(--text); flex: 1; }
+  .card-summary { font-size: 12.5px; color: var(--text-dim); flex: 2; display: none; }
+  @media(min-width: 480px) { .card-summary { display: block; } }
+  .card-chevron { color: var(--text-dim); font-size: 12px; flex-shrink: 0; transition: transform 0.2s; }
+  .card.open .card-chevron { transform: rotate(180deg); }
+
+  .card-detail {
+    display: none;
+    padding: 0 16px 14px;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+  .card.open .card-detail { display: block; }
+  .card-detail p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-top: 12px;
+  }
+  .card-detail p + p { margin-top: 8px; }
+
+  .no-results { text-align: center; padding: 40px 0; color: var(--text-dim); font-size: 14px; }
+
+  .ios-hint {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text-dim);
+    display: none;
+  }
+  .ios-hint strong { color: var(--text-muted); }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  footer a { color: var(--text-dim); text-decoration: none; }
+  footer a:hover { color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="/" class="back-link">← Home</a>
+
+  <header>
+    <div class="eyebrow">Lookup Tool</div>
+    <h1>Worth It Organic?</h1>
+    <p class="lede">Search any fruit, veg, pantry item, meat, or drink. Get an instant verdict plus the reason why.</p>
+  </header>
+
+  <div class="search-wrap">
+    <input type="search" class="search-input" id="search" placeholder="Search — spinach, chicken, oats…" autocomplete="off" autocorrect="off" spellcheck="false">
+    <span class="search-icon">⌕</span>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-filter="all">All</button>
+    <button class="tab" data-filter="dirty_dozen">Dirty Dozen</button>
+    <button class="tab" data-filter="clean_fifteen">Clean Fifteen</button>
+    <button class="tab" data-filter="special">Special cases</button>
+    <button class="tab" data-filter="meat">Meat &amp; fish</button>
+    <button class="tab" data-filter="pantry">Pantry</button>
+    <button class="tab" data-filter="drinks">Tea &amp; coffee</button>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div class="list" id="list"></div>
+
+  <div class="ios-hint" id="ios-hint">
+    <strong>Add to home screen (iOS):</strong> tap the Share button in Safari, then choose "Add to Home Screen" — it'll behave like a native app icon with offline support.
+  </div>
+
+  <footer>
+    <span>Based on <a href="/ideas/organic-produce-guide.html">the full guide</a></span>
+    <span>EWG 2025 · Australian context</span>
+  </footer>
+
+</div>
+
+<script>
+const DATA = [
+  // DIRTY DOZEN
+  { name: "Spinach", verdict: "buy", category: "dirty_dozen",
+    summary: "More pesticide residue by weight than any other produce",
+    detail: "Spinach carries more pesticide residue by weight than anything else tested in the 2025 EWG data — ahead of every berry on the list. The leaf absorbs and holds it. If you only buy one organic thing, make it this." },
+  { name: "Strawberries", verdict: "buy", category: "dirty_dozen",
+    summary: "Soft skin, grown low to ground, heavily sprayed",
+    detail: "Perennial top offender — soft skin, grown low to the ground, heavily sprayed. Conventional strawberries are one of the most pesticide-contaminated foods you can eat." },
+  { name: "Kale / collard / mustard greens", verdict: "buy", category: "dirty_dozen",
+    summary: "Up to 21 different pesticides on a single sample",
+    detail: "Some samples had up to 21 different pesticides detected on a single leaf. This includes DCPA (dimethyl tetrachloroterephthalate), which the EPA declared a possible human carcinogen. Also covers collard and mustard greens — same family, same risk profile." },
+  { name: "Grapes", verdict: "buy", category: "dirty_dozen",
+    summary: "Thin skin, eaten whole, no peeling step",
+    detail: "Thin skin, eaten whole — there's no peeling step to remove residue. This applies to both red and green grapes. Raisins would follow the same logic (dried grapes concentrate whatever was on the fresh fruit)." },
+  { name: "Peaches", verdict: "buy", category: "dirty_dozen",
+    summary: "Fuzzy skin traps residue, usually eaten unpeeled",
+    detail: "Fuzzy skin traps residue and people usually eat them unpeeled. Long-standing Dirty Dozen fixture." },
+  { name: "Cherries", verdict: "buy", category: "dirty_dozen",
+    summary: "High residue volume despite fewer chemical types",
+    detail: "Only Dirty Dozen item without dozens of different pesticides detected — but still ranks high on volume of residue. You eat them whole with no prep step." },
+  { name: "Nectarines", verdict: "buy", category: "dirty_dozen",
+    summary: "Same profile as peaches — thin, unpeeled skin",
+    detail: "Same profile as peaches — thin skin, usually eaten unpeeled. Consistently appear near the top of pesticide residue testing." },
+  { name: "Pears", verdict: "buy", category: "dirty_dozen",
+    summary: "Usually eaten with skin on",
+    detail: "Usually eaten with skin on, which means whatever residue is on the surface stays on. Long-time Dirty Dozen regular." },
+  { name: "Apples", verdict: "buy", category: "dirty_dozen",
+    summary: "Long-time Dirty Dozen fixture",
+    detail: "Long-time Dirty Dozen regular. Eaten unpeeled by most people, and apples store for months — longer storage means more post-harvest treatments too." },
+  { name: "Blackberries", verdict: "buy", category: "dirty_dozen",
+    summary: "New 2025 entry — soft, porous skin like other berries",
+    detail: "First-time Dirty Dozen entry in 2025. Soft, porous skin similar to other berries — same mechanism as strawberries and blueberries. Worth buying organic." },
+  { name: "Blueberries", verdict: "buy", category: "dirty_dozen",
+    summary: "Soft skin, no prep step to remove residue",
+    detail: "Same soft-skin issue as the rest of the berry family. Eaten whole with no peeling or washing step that meaningfully removes residue from porous skin." },
+  { name: "Potatoes", verdict: "buy", category: "dirty_dozen",
+    summary: "Chlorpropham sprout inhibitor, banned in the EU",
+    detail: "New 2025 Dirty Dozen entry. Flagged mainly for chlorpropham, a sprout inhibitor sprayed on after harvest — found on around 90% of conventional potato samples and banned in the EU. Note: sweet potato is a completely different story (see below)." },
+
+  // CLEAN FIFTEEN
+  { name: "Pineapple", verdict: "skip", category: "clean_fifteen",
+    summary: "Thick inedible skin does all the protective work",
+    detail: "Thick, inedible skin does all the protective work — near-zero residue reaches the flesh. One of the cleanest conventional options you can buy." },
+  { name: "Sweet corn", verdict: "skip", category: "clean_fifteen",
+    summary: "Husk keeps kernels shielded",
+    detail: "Husk keeps kernels shielded from spray. Consistently one of the cleanest produce items tested." },
+  { name: "Avocado", verdict: "skip", category: "clean_fifteen",
+    summary: "Thick skin, not eaten — near-zero residue in flesh",
+    detail: "Thick skin that you throw away, not eat — near-zero pesticide residue reaches the flesh. Save the organic premium for something else." },
+  { name: "Onions", verdict: "skip", category: "clean_fifteen",
+    summary: "Papery outer layers discarded before eating",
+    detail: "Papery outer layers are discarded before eating. The flesh inside consistently tests clean." },
+  { name: "Papaya", verdict: "skip", category: "clean_fifteen",
+    summary: "Skin is peeled, flesh tests consistently clean",
+    detail: "Skin is peeled before eating and flesh consistently tests clean on pesticide residue." },
+  { name: "Asparagus", verdict: "skip", category: "clean_fifteen",
+    summary: "Historically low pesticide use",
+    detail: "Historically low pesticide use by growers, and a fast crop cycle that doesn't require as much spray. Consistently near the bottom of the pesticide tables." },
+  { name: "Honeydew melon", verdict: "skip", category: "clean_fifteen",
+    summary: "Thick rind, flesh rarely tests positive",
+    detail: "Thick rind that acts as a barrier. The edible flesh rarely tests positive for pesticide residue." },
+  { name: "Kiwi", verdict: "skip", category: "clean_fifteen",
+    summary: "Skin usually peeled before eating",
+    detail: "Skin is usually peeled before eating, removing the surface where residue accumulates." },
+  { name: "Cabbage", verdict: "skip", category: "clean_fifteen",
+    summary: "Outer leaves removed during prep",
+    detail: "Outer leaves removed during preparation, and tight leaf structure reduces spray penetration. Also has natural pest-resistance compounds that reduce how much spray is needed." },
+  { name: "Mango", verdict: "skip", category: "clean_fifteen",
+    summary: "Skin peeled, most residue stays outside",
+    detail: "Skin is peeled and most residue stays on the outside. Flesh consistently tests clean." },
+  { name: "Sweet peas (frozen)", verdict: "skip", category: "clean_fifteen",
+    summary: "Protective pod, then frozen immediately after harvest",
+    detail: "Protective pod, then frozen immediately after harvest — minimal spray exposure. Frozen peas often have less pesticide residue than fresh because they're processed so quickly after picking." },
+  { name: "Watermelon", verdict: "skip", category: "clean_fifteen",
+    summary: "Thick rind, flesh largely clean",
+    detail: "Thick rind that you don't eat. The flesh is largely clean on pesticide residue testing." },
+  { name: "Carrots", verdict: "skip", category: "clean_fifteen",
+    summary: "Peeling and scrubbing removes most surface residue",
+    detail: "Peeling and scrubbing removes most surface residue. Baby carrots (which aren't peeled) would be a slightly different case, but still generally clean." },
+  { name: "Sweet potato", verdict: "skip", category: "clean_fifteen",
+    summary: "~60% of samples had zero detectable residue",
+    detail: "The 'anti-potato' — around 60% of sweet potato samples had zero detectable pesticide residue. Not treated with chlorpropham (the sprout inhibitor used on regular potatoes). A completely different chemical profile, not a marginal difference." },
+
+  // SPECIAL CASES
+  { name: "Mushrooms", verdict: "skip", category: "special",
+    summary: "No field pesticides, but watch for heavy metals",
+    detail: "Mushrooms score well on pesticides because they're grown indoors on controlled substrate — no field spray. But mushrooms are bioaccumulators and can absorb heavy metals (cadmium, lead, mercury) from their growing medium. Organic certification doesn't regulate substrate quality for metals, so 'organic' mushrooms aren't automatically cleaner on this front. Vary your source rather than defaulting to organic." },
+  { name: "Tomatoes", verdict: "depends", category: "special",
+    summary: "Depends on how they're grown — greenhouse vs field",
+    detail: "Greenhouse (truss/vine) tomatoes are often raised with predatory mites and beneficial insects instead of spray, because a sealed environment makes biological pest control practical. Field-grown tomatoes have higher pesticide exposure. Cherry tomatoes get a separate warning — small size, thin skin, flagged for higher pesticide diversity on single samples. If buying conventional, prefer truss-grown over field-grown." },
+  { name: "Citrus (zest)", verdict: "buy", category: "special",
+    summary: "Organic only matters if you use the zest",
+    detail: "Oranges, lemons, limes, and grapefruit rank in the middle of the pesticide tables — not Dirty Dozen territory. If you eat the flesh only, conventional is fine. The issue is the zest: two fungicides (imazalil and thiabendazole) are sprayed onto citrus peel after harvest and penetrate into the flesh. If you bake or cook with zest regularly, buy organic. If you never use the skin, conventional is fine. Mandarins/clementines test worse than oranges; grapefruit is best of the three." },
+  { name: "Cruciferous veg", verdict: "skip", category: "special",
+    summary: "Low pesticide use — but a different caveat applies",
+    detail: "Broccoli, cauliflower, Brussels sprouts, and cabbage consistently score well on pesticide testing — they have natural defence compounds (glucosinolates) that reduce spray needs. But those same compounds (which break down into goitrogens and thiocyanates) can suppress thyroid function at very high intake if you're iodine-deficient. Cooking deactivates most of them. This is unrelated to organic vs conventional — it's just worth knowing if these are daily staples." },
+
+  // PANTRY / LEGUMES
+  { name: "Chickpeas", verdict: "buy", category: "pantry",
+    summary: "Glyphosate used as a pre-harvest drying agent",
+    detail: "Chickpeas aren't sprayed for bugs — the issue is glyphosate used as a pre-harvest desiccant (drying agent) 7–14 days before harvest to speed up the process. Found in around 90% of conventional US chickpea samples and in a third of hummus samples above safety benchmarks. For canned chickpeas, also check for BPA-free can lining. Australian note: Australian-grown chickpeas and lentils have tested consistently cleaner than US data in local testing." },
+  { name: "Lentils", verdict: "buy", category: "pantry",
+    summary: "Same glyphosate desiccation issue as chickpeas",
+    detail: "Same issue as chickpeas — glyphosate sprayed directly onto the plant before harvest as a drying agent. Canadian and US lentils in particular. For canned versions, check for BPA-free lining. Australian-grown lentils generally test cleaner." },
+  { name: "Beans (dried)", verdict: "buy", category: "pantry",
+    summary: "Glyphosate desiccation residue, plus BPA cans",
+    detail: "Same glyphosate pre-harvest desiccation issue applies to dried beans (kidney, black, navy, etc.). If buying canned, look for BPA-free lining — the can lining is a separate concern from pesticide residue. Organic dried beans avoid the glyphosate issue. Soaking and rinsing dried beans removes a meaningful amount of surface residue but not systemic residue." },
+  { name: "Oats", verdict: "buy", category: "pantry",
+    summary: "Glyphosate desiccation residue common in conventional oats",
+    detail: "Glyphosate is commonly used as a pre-harvest drying agent on oats, just like legumes. Consumer testing in the US and Australia has found glyphosate residue in a significant portion of conventional oat products, including some branded cereals and oat milks. Organic oats are widely available and not much more expensive per serve." },
+
+  // MEAT & FISH
+  { name: "Chicken", verdict: "depends", category: "meat",
+    summary: "Hormones already banned — antibiotics are the real question",
+    detail: "Hormones have been banned in Australian poultry farming since 1973. Every chicken sold in Australia — organic, free-range, or the cheapest conventional bird — is hormone-free by law. This is not a premium feature. What varies between brands is antibiotic use. 'Raised without antibiotics' labels mean the birds were never treated — if a bird gets sick, it's pulled from that supply chain. Lilydale Free Range explicitly claims no antibiotics, hormones, or growth promotants. RSPCA Approved is a welfare/housing standard, not an antibiotics guarantee. Certified organic chicken (e.g. Australian Organic Meat Co) is the fuller package: no antibiotics + organic feed + outdoor access." },
+  { name: "Beef", verdict: "depends", category: "meat",
+    summary: "Hormones legal but residue risk minimal; antibiotics matter more",
+    detail: "Unlike chicken, hormonal growth promotants (HGPs) are legal in Australian cattle farming and used in roughly 40% of beef cattle. But the residue risk is negligible — you'd need to eat around 77kg of HGP-treated beef in one sitting to get the same oestrogen dose as one egg. 'No hormones added' is a real, checkable distinction for beef (it's automatic for chicken, not for beef). Antibiotic-free and grass-fed/no-feedlot are arguably more substantive differentiators. Brands: Cape Grim (no hormones/antibiotics/GMOs, not organic), Great Southern (grass-fed for life, no hormones/antibiotics, third-party certified), OBE Organic (fully certified organic, Channel Country native grass)." },
+  { name: "Pork", verdict: "depends", category: "meat",
+    summary: "Same logic as beef — antibiotics are the key lever",
+    detail: "Same regulatory pattern as beef: hormones and antibiotics are the two levers; organic certification bans both and mandates organic feed and outdoor access. Australian brand research for pork antibiotic-free labelling is less comprehensive than for chicken and beef — check individual product packaging rather than assuming RSPCA Approved means antibiotic-free (it's a welfare standard, not an antibiotic one)." },
+  { name: "Lamb", verdict: "skip", category: "meat",
+    summary: "Generally lower antibiotic use; hormone-free by practice",
+    detail: "Australian lamb is largely pasture-raised and has historically lower antibiotic use than intensive chicken or beef operations. Hormone use is less common in lamb production than beef. Generally a lower-concern meat from a residue standpoint, though certified organic is still the highest-assurance option if that matters." },
+  { name: "Fish / seafood", verdict: "depends", category: "meat",
+    summary: "'Organic' doesn't exist for fish — wild vs farmed is the question",
+    detail: "There is no certified organic seafood in Australia (or most places) — the category simply doesn't exist for wild-caught or farmed fish. The relevant question is wild vs farmed by species. Wild-caught: generally lower in contaminants, more natural omega-3 profile. Farmed: quality varies a lot by species and operation. Australian specifics: farmed salmon (mostly Tasmanian) is the realistic local option; oysters and mussels are filter feeders in open water and are essentially as clean as wild; farmed prawns vary significantly by source — worth asking. Skip the 'organic' question for fish entirely." },
+  { name: "Salmon", verdict: "depends", category: "meat",
+    summary: "All Australian salmon is farmed (mostly Tasmanian)",
+    detail: "Australian salmon is virtually all farmed, mostly Tasmanian. Wild-caught salmon isn't really an Australian product. Tasmanian farmed salmon is generally considered a reasonable quality option, but farmed salmon studies show more variation in contaminant and omega-3 profiles than wild-caught. Wild-caught (e.g. Alaskan) tends to test better internationally, but isn't what you're getting at the local supermarket." },
+  { name: "Eggs", verdict: "depends", category: "meat",
+    summary: "Feed quality matters — pasture-raised has better omega-3 profile",
+    detail: "No certified 'organic egg' pesticide concern — the relevant distinction is what the hen eats. Pasture-raised hens (with access to grass and insects) produce eggs with a meaningfully better omega-3 to omega-6 ratio than caged or barn-laid hens on grain feed. 'Free range' labels in Australia have a wide range of stocking densities — it doesn't mean the same thing across brands. Pasture-raised (e.g. Pasture Promise, Mulloon Creek) is the clearest distinction if nutrition profile matters." },
+
+  // TEA & COFFEE
+  { name: "Tea", verdict: "buy", category: "drinks",
+    summary: "Dried and steeped — whatever's on the leaf goes in the cup",
+    detail: "Tea leaves are dried and steeped, not washed before drinking. Whatever pesticide residue is on the leaf goes into the cup. Most commercial tea is grown in countries with weaker pesticide regulation than Australia: China, India, Sri Lanka, Kenya. Consumer testing has found residues of pesticides banned in Western countries on imported tea. Beyond pesticides, conventional tea can carry heavy metals absorbed from soil. The exception: Japanese teas (matcha, gyokuro, sencha) tend to test cleaner even when not certified organic, because Japan's domestic food safety standards are very high. For everything else — especially everyday black and green tea — organic is worth it." },
+  { name: "Coffee", verdict: "depends", category: "drinks",
+    summary: "Roasting destroys most pesticide residue, but mould matters",
+    detail: "Roasting destroys most pesticide residues — by the time you're drinking brewed coffee, very little remains in the cup. So the direct health argument for organic coffee is weaker than for tea. The stronger argument is environmental and social: conventional coffee farming uses some of the heaviest pesticide application of any crop globally, mostly in countries with poor worker protections. One genuine health caveat: mould (specifically ochratoxin A) is more of a concern in coffee than pesticides — it forms in poorly stored green beans. Choosing high-quality single-origin coffee from reputable roasters (whether or not certified organic) is probably more protective than the organic label alone." },
+  { name: "Matcha", verdict: "buy", category: "drinks",
+    summary: "Whole leaf consumed — highest priority for organic",
+    detail: "You consume the entire ground leaf, not just a steep. This makes matcha the highest-priority tea to buy organic — you're ingesting everything that was on or in the leaf. Japanese-sourced matcha from reputable brands tends to be cleaner even when not certified, but for matcha specifically, the organic certification is most meaningful because of the whole-leaf consumption." },
+];
+
+let currentFilter = 'all';
+let currentSearch = '';
+let openCard = null;
+
+function verdictLabel(v) {
+  if (v === 'buy') return 'Buy organic';
+  if (v === 'skip') return 'Skip organic';
+  return 'Depends';
+}
+
+function renderList() {
+  const q = currentSearch.toLowerCase().trim();
+  let items = DATA.filter(item => {
+    const matchSearch = !q ||
+      item.name.toLowerCase().includes(q) ||
+      item.summary.toLowerCase().includes(q) ||
+      item.detail.toLowerCase().includes(q);
+    const matchFilter = currentFilter === 'all' || item.category === currentFilter;
+    return matchSearch && matchFilter;
+  });
+
+  const listEl = document.getElementById('list');
+  const countEl = document.getElementById('count');
+
+  if (items.length === 0) {
+    listEl.innerHTML = '<div class="no-results">Nothing found — try a different search or clear the filter.</div>';
+    countEl.textContent = '';
+    return;
+  }
+
+  countEl.textContent = items.length + (items.length === 1 ? ' item' : ' items');
+
+  listEl.innerHTML = items.map((item, i) => `
+    <div class="card" data-idx="${DATA.indexOf(item)}" onclick="toggleCard(this)">
+      <div class="card-top">
+        <span class="verdict-pill ${item.verdict}">${verdictLabel(item.verdict)}</span>
+        <span class="card-name">${item.name}</span>
+        <span class="card-summary">${item.summary}</span>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="card-detail">
+        <p>${item.detail}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleCard(el) {
+  if (openCard && openCard !== el) openCard.classList.remove('open');
+  el.classList.toggle('open');
+  openCard = el.classList.contains('open') ? el : null;
+}
+
+document.getElementById('search').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  renderList();
+});
+
+document.getElementById('tabs').addEventListener('click', e => {
+  const tab = e.target.closest('.tab');
+  if (!tab) return;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  currentFilter = tab.dataset.filter;
+  renderList();
+});
+
+// iOS hint
+const isIOS = /iP(hone|od|ad)/.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.navigator.standalone;
+if (isIOS && !isStandalone) {
+  document.getElementById('ios-hint').style.display = 'block';
+}
+
+// Service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+renderList();
+</script>
+</body>
+</html>

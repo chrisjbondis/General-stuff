@@ -1,8 +1,16 @@
 [
   {
+    "id": "12",
+    "title": "Worth It Organic — quick lookup",
+    "body": "A fast, installable reference: search any fruit, veg, meat, or pantry item to see whether the organic version is worth buying. Based on EWG's Dirty Dozen and Clean Fifteen, plus meat, fish, tea, and coffee. Works offline once installed.",
+    "tags": ["health", "food", "tools"],
+    "date": "2026-09-04",
+    "link": "/ideas/organic-lookup/"
+  },
+  {
     "id": "11",
-    "title": "Organic or Not: Fruit, Veg, Tea & Coffee",
-    "body": "Which produce is worth the organic premium and which isn't. EWG's 2025 Dirty Dozen and Clean Fifteen, plus the cases where the pesticide ranking misses the point — mushrooms and heavy metals, citrus zest, cruciferous veg and thyroid. Tea and coffee covered separately, because the rules are completely different.",
+    "title": "Organic or Not: Fruit, Veg, Meat, Tea & Coffee",
+    "body": "Which produce is worth the organic premium and which isn't. EWG's 2025 Dirty Dozen and Clean Fifteen, special cases (mushrooms, citrus zest, chickpeas/lentils, tomatoes), and a full meat and fish section — because hormones, antibiotics, and wild vs farmed are different questions entirely. Tea and coffee covered too.",
     "tags": ["health", "food", "nutrition"],
     "date": "2026-08-16",
     "link": "/ideas/organic-produce-guide.html"

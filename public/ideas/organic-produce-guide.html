@@ -3,187 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Organic or Not: Fruit, Veg, Tea &amp; Coffee Guide</title>
+<title>Organic or Not: Fruit, Veg, Meat, Tea & Coffee Guide</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-22FCZR2JSC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-22FCZR2JSC');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0f1210;
-    --bg-alt:#151a17;
-    --card:#1a2019;
-    --border:#2a332b;
-    --text:#e9ede8;
-    --text-dim:#a6b0a4;
-    --text-faint:#6f7a6d;
-    --dirty:#d4644a;
-    --dirty-bg:rgba(212,100,74,0.08);
-    --clean:#6fae7f;
-    --clean-bg:rgba(111,174,127,0.08);
-    --accent:#c9a35c;
-    --radius:12px;
-  }
+  :root{--bg:#0f1210;--bg-alt:#151a17;--card:#1a2019;--border:#2a332b;--text:#e9ede8;--text-dim:#a6b0a4;--text-faint:#6f7a6d;--dirty:#d4644a;--dirty-bg:rgba(212,100,74,0.08);--clean:#6fae7f;--clean-bg:rgba(111,174,127,0.08);--accent:#c9a35c;--radius:12px;}
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:760px;margin:0 auto;padding:56px 24px 100px;}
   h1,h2,h3{font-family:'Syne',sans-serif;font-weight:700;letter-spacing:-0.01em;color:var(--text);}
   header{margin-bottom:40px;}
-  .eyebrow{
-    font-family:'Inter',sans-serif;
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:14px;
-  }
+  .eyebrow{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
   h1{font-size:clamp(28px,5vw,38px);margin:0 0 14px;line-height:1.15;}
   .lede{color:var(--text-dim);font-size:16px;max-width:60ch;margin:0;}
-
-  .callout{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-left:3px solid var(--accent);
-    border-radius:8px;
-    padding:16px 18px;
-    margin:32px 0;
-    font-size:14.5px;
-    color:var(--text-dim);
-  }
+  .callout{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:16px 18px;margin:32px 0;font-size:14.5px;color:var(--text-dim);}
   .callout strong{color:var(--text);}
-
   section{margin-top:52px;}
   .section-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
   h2{font-size:22px;margin:0;}
   .section-sub{color:var(--text-faint);font-size:13.5px;margin:0 0 20px;}
-
   .list{display:flex;flex-direction:column;gap:10px;}
-  .item{
-    display:flex;
-    align-items:flex-start;
-    gap:14px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:14px 16px;
-  }
-  .rank{
-    font-family:'Syne',sans-serif;
-    font-weight:800;
-    font-size:14px;
-    width:26px;
-    height:26px;
-    flex:none;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:7px;
-    margin-top:1px;
-  }
+  .item{display:flex;align-items:flex-start;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+  .rank{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;width:26px;height:26px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:7px;margin-top:1px;}
   .dirty .rank{background:var(--dirty-bg);color:var(--dirty);}
   .clean .rank{background:var(--clean-bg);color:var(--clean);}
   .item-body{flex:1;}
   .item-name{font-weight:600;font-size:15px;color:var(--text);}
   .item-note{color:var(--text-dim);font-size:13.5px;margin-top:2px;}
-  .tag{
-    display:inline-block;
-    font-size:10.5px;
-    font-weight:600;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    padding:2px 7px;
-    border-radius:5px;
-    margin-left:8px;
-    vertical-align:middle;
-    position:relative;
-    top:-1px;
-  }
+  .tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;margin-left:8px;vertical-align:middle;position:relative;top:-1px;}
   .tag.new{background:rgba(201,163,92,0.15);color:var(--accent);}
-
-  .safe-skip{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:18px 20px;
-    margin-top:14px;
-  }
+  .safe-skip{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-top:14px;}
   .safe-skip h3{font-size:15px;color:var(--clean);margin:0 0 10px;}
   .safe-skip p{color:var(--text-dim);font-size:14.5px;margin:0 0 10px;}
   .safe-skip p:last-child{margin-bottom:0;}
   .safe-skip.lean-organic h3{color:var(--dirty);}
-  .verdict-pill{
-    display:inline-block;
-    font-family:'Inter',sans-serif;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    padding:3px 9px;
-    border-radius:6px;
-    margin-bottom:12px;
-  }
+  .verdict-pill{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:3px 9px;border-radius:6px;margin-bottom:12px;}
   .verdict-pill.organic{background:var(--dirty-bg);color:var(--dirty);}
   .verdict-pill.caveat{background:rgba(201,163,92,0.15);color:var(--accent);}
-
   .brand-grid{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
-  .brand-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:16px 18px;
-  }
+  .brand-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;}
   .brand-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
   .brand-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15.5px;color:var(--text);}
   .brand-loc{font-size:12px;color:var(--text-faint);}
   .brand-card p{color:var(--text-dim);font-size:14px;margin:0 0 10px;}
-  .brand-link{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    font-size:13px;
-    font-weight:600;
-    color:var(--accent);
-    text-decoration:none;
-    border-bottom:1px solid rgba(201,163,92,0.35);
-    padding-bottom:1px;
-  }
+  .brand-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(201,163,92,0.35);padding-bottom:1px;}
   .brand-link:hover{text-decoration:none;border-bottom-color:var(--accent);}
-
   .grid-notes{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px;}
   @media(min-width:560px){.grid-notes{grid-template-columns:1fr 1fr;}}
-  .note-card{
-    background:var(--bg-alt);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:16px 18px;
-  }
-  .note-card h4{
-    font-family:'Inter',sans-serif;
-    font-size:13px;
-    font-weight:700;
-    color:var(--text);
-    margin:0 0 6px;
-  }
+  .note-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;}
+  .note-card h4{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin:0 0 6px;}
   .note-card p{font-size:13.5px;color:var(--text-dim);margin:0;}
-
   .rule{border:none;border-top:1px solid var(--border);margin:52px 0;}
-
   footer{margin-top:48px;font-size:12.5px;color:var(--text-faint);}
   footer p{margin:4px 0;}
   a{color:var(--accent);text-decoration:none;}
@@ -199,12 +78,12 @@
 
   <header>
     <div class="eyebrow">General Stuff · Food</div>
-    <h1>Organic or Not: Fruit, Veg, Tea &amp; Coffee</h1>
-    <p class="lede">Which produce is worth paying extra for organic, and which is basically a waste of money. Based on EWG's 2025 Shopper's Guide (US pesticide residue testing), the most comprehensive dataset available — plus a separate look at tea and coffee, which don't follow the same rules.</p>
+    <h1>Organic or Not: Fruit, Veg, Meat &amp; Coffee</h1>
+    <p class="lede">Which food is worth paying extra for organic, and which is basically a waste of money. Based on EWG's 2025 Shopper's Guide (US pesticide residue testing) plus Australian regulatory data (FSANZ, APVMA) — with separate deep-dives into meat, fish, tea and coffee, which don't follow the same rules as fruit and veg.</p>
   </header>
 
   <div class="callout">
-    <strong>Aussie note:</strong> this data is US-based (EWG/USDA testing) — Australia doesn't publish an equivalent ranked list. The Australian Total Diet Study consistently finds local produce tests low for pesticide residue overall, often with no detectable trace at all, so if anything Australian conventional produce likely skews cleaner than the US baseline. The relative pattern (thin-skinned &amp; porous = higher risk, thick-skinned &amp; enclosed = lower risk) holds regardless of country.
+    <strong>Aussie note:</strong> this data is US-based (EWG/USDA testing) — Australia doesn't publish an equivalent ranked list. The Australian Total Diet Study consistently finds local produce tests low for pesticide residue overall, often with no detectable trace at all, so if anything Australian conventional produce likely skews cleaner than the US baseline. The relative pattern (thin-skinned & porous = higher risk, thick-skinned & enclosed = lower risk) holds regardless of country.
   </div>
 
   <section>
@@ -233,135 +112,228 @@
       <div class="item clean"><div class="rank">1</div><div class="item-body"><div class="item-name">Pineapple</div><div class="item-note">Thick, inedible skin does all the protective work.</div></div></div>
       <div class="item clean"><div class="rank">2</div><div class="item-body"><div class="item-name">Sweet corn</div><div class="item-note">Husk keeps kernels shielded.</div></div></div>
       <div class="item clean"><div class="rank">3</div><div class="item-body"><div class="item-name">Avocado</div><div class="item-note">Thick skin, not eaten — near-zero residue reaches the flesh.</div></div></div>
-      <div class="item clean"><div class="rank">4</div><div class="item-body"><div class="item-name">Onions</div><div class="item-note">Papery outer layers are discarded before eating.</div></div></div>
-      <div class="item clean"><div class="rank">5</div><div class="item-body"><div class="item-name">Papaya</div><div class="item-note">Skin is peeled; flesh consistently tests clean.</div></div></div>
-      <div class="item clean"><div class="rank">6</div><div class="item-body"><div class="item-name">Asparagus</div><div class="item-note">Historically low pesticide use by growers; fast crop cycle.</div></div></div>
-      <div class="item clean"><div class="rank">7</div><div class="item-body"><div class="item-name">Honeydew melon</div><div class="item-note">Thick rind; flesh rarely tests positive for residue.</div></div></div>
-      <div class="item clean"><div class="rank">8</div><div class="item-body"><div class="item-name">Kiwi</div><div class="item-note">Skin is usually peeled before eating.</div></div></div>
-      <div class="item clean"><div class="rank">9</div><div class="item-body"><div class="item-name">Cabbage</div><div class="item-note">Outer leaves are removed during preparation.</div></div></div>
-      <div class="item clean"><div class="rank">10</div><div class="item-body"><div class="item-name">Mushrooms</div><div class="item-note">Grown indoors with no field pesticides — though see the note below on heavy metals.</div></div></div>
-      <div class="item clean"><div class="rank">11</div><div class="item-body"><div class="item-name">Mango</div><div class="item-note">Skin is peeled; most residue stays on the outside.</div></div></div>
-      <div class="item clean"><div class="rank">12</div><div class="item-body"><div class="item-name">Sweet peas (frozen)</div><div class="item-note">Protective pod, then frozen immediately after harvest — minimal spray exposure.</div></div></div>
-      <div class="item clean"><div class="rank">13</div><div class="item-body"><div class="item-name">Watermelon</div><div class="item-note">Thick rind; flesh is largely clean.</div></div></div>
-      <div class="item clean"><div class="rank">14</div><div class="item-body"><div class="item-name">Carrots</div><div class="item-note">Peeling and scrubbing removes most surface residue.</div></div></div>
-      <div class="item clean"><div class="rank">15</div><div class="item-body"><div class="item-name">Sweet potatoes</div><div class="item-note">Underground crop; different pest profile and lower spray needs than surface crops.</div></div></div>
+      <div class="item clean"><div class="rank">4</div><div class="item-body"><div class="item-name">Papaya</div><div class="item-note">Among the lowest overall pesticide toxicity of anything tested.</div></div></div>
+      <div class="item clean"><div class="rank">5</div><div class="item-body"><div class="item-name">Onion</div><div class="item-note">Papery outer layer plus low pest pressure.</div></div></div>
+      <div class="item clean"><div class="rank">6</div><div class="item-body"><div class="item-name">Sweet peas (frozen)</div><div class="item-note">Pod protection + freezing process.</div></div></div>
+      <div class="item clean"><div class="rank">7</div><div class="item-body"><div class="item-name">Asparagus</div><div class="item-note">Naturally pest-resistant.</div></div></div>
+      <div class="item clean"><div class="rank">8</div><div class="item-body"><div class="item-name">Cabbage</div><div class="item-note">Tight outer leaves are sacrificial — get discarded before eating.</div></div></div>
+      <div class="item clean"><div class="rank">9</div><div class="item-body"><div class="item-name">Watermelon</div><div class="item-note">Thick rind, low pest pressure.</div></div></div>
+      <div class="item clean"><div class="rank">10</div><div class="item-body"><div class="item-name">Bananas</div><div class="item-note">Peel isn't eaten and blocks nearly all residue.</div></div></div>
+      <div class="item clean"><div class="rank">11</div><div class="item-body"><div class="item-name">Carrots</div><div class="item-note">Grows underground, low pest issues.</div></div></div>
+      <div class="item clean"><div class="rank">12</div><div class="item-body"><div class="item-name">Mangoes</div><div class="item-note">Thick skin, not eaten.</div></div></div>
+      <div class="item clean"><div class="rank">13</div><div class="item-body"><div class="item-name">Kiwi</div><div class="item-note">Fuzzy skin isn't eaten and blocks residue well.</div></div></div>
+      <div class="item clean"><div class="rank">14</div><div class="item-body"><div class="item-name">Honeydew melon</div><div class="item-note">Thick rind.</div></div></div>
+      <div class="item clean"><div class="rank">15</div><div class="item-body"><div class="item-name">Cantaloupe</div><div class="item-note">Same as honeydew — rind does the protecting.</div></div></div>
     </div>
   </section>
 
   <section>
-    <div class="section-head"><h2>Exceptions worth knowing</h2></div>
-    <p class="section-sub">Cases where the pesticide ranking doesn't tell the whole story</p>
+    <div class="section-head"><h2>The good-to-know exceptions</h2></div>
+    <p class="section-sub">Items that don't make the official lists but are worth flagging</p>
 
     <div class="safe-skip">
-      <div class="verdict-pill caveat">Caveat</div>
-      <h3>Mushrooms — clean on pesticides, watch for heavy metals</h3>
-      <p>Mushrooms score well on the Clean Fifteen because they're grown indoors on controlled substrate with no field pesticides. But mushrooms are bioaccumulators — they absorb whatever is in their growing medium, including heavy metals like cadmium, lead, and mercury. Organic certification doesn't regulate substrate quality for these contaminants, so "organic" mushrooms aren't automatically cleaner on this front. If you eat mushrooms regularly, varying your source (different farms, different species) is more useful than buying organic.</p>
+      <h3>Mushrooms — skip organic</h3>
+      <p>Not part of the EWG's official 47-item test set, but the consensus is clear: mushrooms grow in enclosed, controlled compost rather than open, sprayed soil, so pesticide exposure is naturally low. Conventional and organic mushrooms come out roughly equivalent on nutrient content too — the "organic is more nutritious" claim doesn't hold up well here specifically.</p>
     </div>
 
-    <div class="safe-skip" style="margin-top:12px;">
-      <div class="verdict-pill caveat">Caveat</div>
-      <h3>Cruciferous veg — pesticide-free doesn't mean hassle-free</h3>
-      <p>Broccoli, cauliflower, Brussels sprouts, and cabbage consistently score well on pesticide testing — they have natural defence compounds that reduce how much spray is needed. But these same compounds (glucosinolates, which break down into goitrogens and thiocyanates) can suppress thyroid function at high intake, particularly if you're already iodine-deficient. Cooking deactivates most of them. This has nothing to do with whether you buy organic — it's just worth knowing if cruciferous veg are a daily staple.</p>
+    <div class="safe-skip">
+      <h3>Cruciferous vegetables — skip organic</h3>
+      <p>Cabbage, cauliflower, and broccoli all rank in the clean-to-middle zone of EWG's full 47-item list — essentially Clean Fifteen territory. Tight, waxy leaves and natural pest resistance across the whole brassica family do the work. Brussels sprouts aren't in the official test set, but given the same growing habit and leaf structure, they're generally considered low-risk by the same logic.</p>
     </div>
 
-    <div class="safe-skip" style="margin-top:12px;">
-      <div class="verdict-pill organic">Buy organic</div>
-      <h3>Citrus — the zest is the problem</h3>
-      <p>Oranges, lemons, limes, and grapefruit rank in the middle of the pesticide tables — not as bad as spinach or strawberries, but not clean either. If you're eating the flesh only, conventional is usually fine. The issue is the zest: pesticides concentrate heavily in citrus peel, and the peel is where all the flavour compounds are. If you use zest in cooking or drinks, buy organic citrus. If you never touch the skin, conventional is acceptable.</p>
+    <div class="safe-skip">
+      <span class="verdict-pill caveat">Check the label, not just the fruit</span>
+      <h3>Tomatoes — depends how they were grown</h3>
+      <p>Tomatoes sit mid-pack on EWG's list — not Dirty Dozen, not Clean Fifteen. But the more useful signal isn't the ranking, it's <strong>how they were grown</strong>. Greenhouse tomatoes (usually labelled "truss" or "vine" tomatoes at the supermarket) are typically raised using biological pest control — predatory mites, ladybugs, parasitic wasps released into the enclosed space — specifically because a sealed environment makes that approach practical in a way it isn't in an open field. Growers doing this often use dramatically fewer synthetic sprays as a result. Field-grown tomatoes, exposed to a much wider range of pests, generally rely more on conventional spraying.</p>
+      <p><strong>Cherry tomatoes get a separate flag.</strong> Their small size and thin skin mean a single sample has tested with unusually high pesticide diversity in past monitoring — worth treating them with a bit more caution than regular tomatoes specifically.</p>
+      <p>Practical takeaway: if going organic on tomatoes feels like overkill, truss/vine (greenhouse) tomatoes are a reasonable lower-effort middle ground over loose field-grown ones — though it's still worth checking the label, since not everything sold as "vine" is necessarily greenhouse-grown everywhere.</p>
+    </div>
+
+    <div class="safe-skip">
+      <h3>Sweet potato — skip organic (basically the anti-potato)</h3>
+      <p>Sweet potatoes are one of the biggest good-news stories in the whole dataset. They sit just two or three spots outside the official Clean Fifteen — essentially in it. Nearly 60% of sweet potato samples had <strong>no detectable pesticide residue at all</strong>, and overall toxicity ranks well below regular potatoes.</p>
+      <p><strong>The reason is specific and worth knowing.</strong> Regular potatoes made the 2025 Dirty Dozen largely because of chlorpropham, a sprout inhibitor applied post-harvest that showed up on around 90% of potato samples (and is banned in the EU). Sweet potatoes simply aren't treated with it — under 1% of samples had any detectable trace, and always at very low levels. Different crop biology, different storage requirements, no need for the chemical that's dragging regular potatoes down.</p>
+      <p>Net effect: sweet potato is one of the clearest "don't bother going organic" calls on this whole page — arguably a safer default than regular potato if you're choosing between the two and pesticide load is a factor.</p>
+    </div>
+
+    <div class="safe-skip lean-organic">
+      <span class="verdict-pill caveat">Fresh vs. dried is a different question</span>
+      <h3>Green beans, dried beans, lentils &amp; chickpeas</h3>
+      <p><strong>Fresh green beans</strong> aren't officially in the Dirty Dozen, but EWG calls them out separately as a "plus" item — they ranked among the highest for overall pesticide toxicity in 2025, ahead of several actual Dirty Dozen items. The genuinely alarming finding: acephate, an insecticide the EPA effectively banned for use on green beans back in 2011, still turns up on samples — one tested at roughly 500x the EPA's legal residue limit. Worth treating fresh green beans like a Dirty Dozen item in practice, even though they're technically just outside it.</p>
+      <p><strong>Dried beans, lentils and chickpeas are a completely different issue.</strong> These aren't sprayed for insects the way most produce is — the main exposure route is <strong>glyphosate used as a pre-harvest desiccant</strong>, sprayed directly onto the plant 7–14 days before harvest simply to dry it out faster and make harvesting easier. EWG's independent lab testing found glyphosate in around 90% of conventional chickpea samples, including a third of hummus samples exceeding EWG's health-based benchmark, and one dry chickpea sample exceeding even the EPA's own (comparatively lenient) legal limit.</p>
+      <p><strong>This is one of the clearer "organic actually matters" cases on this page.</strong> Desiccation is a farming-practice choice, not an unavoidable pest-pressure issue — organic certification specifically prohibits glyphosate use, so going organic on lentils, chickpeas and dried beans meaningfully removes this exposure route rather than just reducing it.</p>
+      <p><strong>Australia note — and it's a genuinely different picture here.</strong> Glyphosate desiccation is legally approved for Australian pulse crops too, and APVMA's own National Residue Survey tests for it. But the results have consistently come back much cleaner than the US data: across multiple survey rounds, <strong>no samples</strong> of Australian chickpeas, lentils, faba beans or field peas tested above even half the legal residue limit — a real contrast to EWG's US finding of glyphosate in around 90% of chickpea samples. Worth noting though: India's food safety authority has specifically flagged Australian (and Canadian) lentil imports for extra glyphosate scrutiny, so the picture isn't uniformly reassuring — but Australia's own domestic testing on Australian-grown pulses does look genuinely cleaner than the US baseline this time, not just presumed to be.</p>
+      <p><strong>Canned adds a separate consideration: the can lining.</strong> Older can linings used BPA (bisphenol A), an estrogen-mimicking compound; most major brands have now moved away from it, though the replacement linings (acrylics, PVC-based, olefin polymers) aren't always independently confirmed as safer, since manufacturers don't have to disclose formulations. Dried beans cooked at home, or beans in glass jars, sidestep this question entirely. In Australia, FSANZ has assessed BPA and concluded there's no health or safety issue at current exposure levels — a notably more relaxed official position than the general consumer-advocacy caution around it.</p>
+    </div>
+
+    <div class="safe-skip lean-organic">
+      <span class="verdict-pill caveat">Peeling doesn't fully protect</span>
+      <h3>Citrus — a special case</h3>
+      <p>Oranges and grapefruit sit mid-pack on EWG's main list — not Dirty Dozen, not Clean Fifteen. But a separate EWG lab test specifically on citrus found something the main ranking misses: two fungicides, <strong>imazalil</strong> and <strong>thiabendazole</strong>, are routinely sprayed onto the peel <em>after</em> harvest to stop mould and extend shelf life — and they penetrate through the skin into the edible flesh. These showed up even in peeled fruit, at concentrations EWG estimated around 20x their recommended child-safety threshold for imazalil.</p>
+      <p><strong>Worst to best within citrus:</strong> mandarins and clementines had the highest fungicide levels, then oranges, then grapefruit lowest of the three. Tangerines also rank in the worse third of EWG's full 47-item list, well below oranges and grapefruit.</p>
+      <p><strong>The practical catch: zest.</strong> If you use citrus zest — in cooking, baking, or drinks — you're eating the most concentrated part of the fungicide application directly, with none of the "the peel protects you" logic that applies to avocado or banana. Worth going organic specifically if zesting regularly, even if you're relaxed about citrus otherwise.</p>
+      <p><strong>Lemons and limes</strong> weren't part of EWG's citrus-specific fungicide test, but they're treated with the same post-harvest fungicide practices industry-wide, so the same zest caveat reasonably applies.</p>
+      <p><strong>Australia note:</strong> this isn't a US-only issue. Citrus Australia, the industry's own peak body, names thiabendazole, imazalil and fludioxonil as the standard postharvest fungicide set used across Australian packing sheds — applied by dip or wax coating, same chemicals, same method as the US industry EWG tested. Same practice globally, driven by the same green/blue mould problem in storage and shipping.</p>
     </div>
   </section>
 
   <hr class="rule">
 
-  <section>
-    <div class="section-head"><h2>Tea &amp; coffee</h2></div>
-    <p class="section-sub">Different crop, different rules — the pesticide conversation here is more complicated</p>
+  <section style="margin-top:0;">
+    <div class="section-head"><h2>Tea &amp; coffee — a different question entirely</h2></div>
+    <p class="section-sub">These don't fit the skin-based logic above. Different rules apply.</p>
 
-    <div class="safe-skip lean-organic">
-      <div class="verdict-pill organic">Buy organic</div>
-      <h3>Tea — strongly worth buying organic</h3>
-      <p>Tea leaves are dried and steeped, not washed before drinking. Whatever pesticide residue is on the leaf goes into the cup. Most commercial tea — including premium brands — is grown in countries with much weaker pesticide regulation than Australia or the US: China, India, Sri Lanka, Kenya. Testing by consumer groups in the US and Europe has repeatedly found residues of pesticides that are banned in Western countries on imported tea.</p>
-      <p>Beyond pesticides, conventional tea cultivation often uses synthetic fertilisers heavily, which affects soil health and can affect the mineral profile of the leaf over time. Organic certification at minimum guarantees no synthetic pesticide use and independently audited soil management practices.</p>
-      <p>The exception: Japanese teas (matcha, gyokuro, sencha) tend to test cleaner even when not certified organic, because Japan's domestic food safety standards are very high. Still worth checking the specific brand.</p>
+    <div class="callout">
+      With fruit and veg, the pesticide sits mostly on a skin you can peel or wash off. With tea, you're steeping the whole leaf, and with coffee you're consuming the roasted seed itself — so there's no "outer layer" doing any protective work. Origin and regulation matter more here than the plant itself.
     </div>
 
-    <div class="safe-skip lean-organic" style="margin-top:12px;">
-      <div class="verdict-pill organic">Buy organic</div>
-      <h3>Coffee — organic matters, but for different reasons</h3>
-      <p>Roasting destroys most pesticide residues — by the time you're drinking brewed coffee, very little pesticide remains in the cup. So unlike tea, the direct health argument for organic coffee is weaker.</p>
-      <p>The stronger argument is environmental and social: conventional coffee farming uses some of the heaviest pesticide application of any crop globally, much of it in countries with poor worker protections. Shade-grown, organic-certified coffee also tends to support biodiversity in ways monoculture plantations don't.</p>
-      <p>One genuine health caveat: mould (mycotoxins, specifically ochratoxin A) is more of a concern in coffee than pesticides. It forms in poorly stored or low-quality green beans. Choosing high-quality single-origin coffee from reputable roasters — whether or not it's certified organic — is probably more protective against mycotoxins than the organic label alone.</p>
+    <div class="safe-skip lean-organic">
+      <span class="verdict-pill organic">Lean organic</span>
+      <h3>Tea</h3>
+      <p><strong>Rinsing doesn't help.</strong> Pesticide residue in tea is bound within the leaf's cellular tissue, not sitting on the surface — so the quick "rinse and discard the first steep" habit does almost nothing to reduce exposure.</p>
+      <p><strong>The famous 2014 CBC Marketplace investigation</strong> tested 10 mainstream brands (Lipton, Tetley, Twinings, No Name, Uncle Lee's, King Cole and others) and found 8 of 10 contained multiple pesticides, one with 22 different chemicals. Only Red Rose came back clean. Worth a caveat though: a later fact-check found the "illegal, deadly" framing overstated it — many of the flagged chemicals simply had no official residue limit set for tea specifically (not the same as being banned), and only one, endosulfan, was on an internationally recognised banned-pesticide list.</p>
+      <p><strong>A 2021 Japanese study</strong> comparing organic vs. conventional green tea found meaningfully lower neonicotinoid insecticide levels in the organic (JAS-certified) samples.</p>
+      <p><strong>Origin and regulation matter more than the tea type.</strong> Large-scale, loosely regulated growing regions test worse on average. Taiwan-grown tea, by contrast, runs a 97%+ compliance rate under its own testing regime — so a well-regulated origin or a brand that publishes batch-level residue testing can be a reasonable middle ground if organic isn't available.</p>
+    </div>
+
+    <div class="safe-skip lean-organic">
+      <span class="verdict-pill organic">Lean organic</span>
+      <h3>Coffee</h3>
+      <p><strong>Coffee is essentially unregulated on this front.</strong> The US has no established maximum residue limits (MRLs) for most pesticides used on coffee — unlike fruit and veg, which are tested and capped. Around 42 different pesticides are used on coffee globally.</p>
+      <p><strong>A large 2025 lab study</strong> (7,000+ tests across dozens of brands, covering pesticides, heavy metals and mycotoxins) found organic coffee did outperform conventional on total contaminant load — but with a catch: AMPA, a glyphosate breakdown product, turned up in <em>all</em> the organic coffees tested too, most likely from spray drift off neighbouring conventional farms. Organic reduces exposure; it doesn't eliminate it.</p>
+      <p><strong>Mycotoxins may matter more than pesticides here.</strong> Beans stored in humid or poorly-controlled conditions can develop mold that produces ochratoxin A — and organic certification says nothing about storage or mold testing. A well-stored conventional bean can beat a poorly-stored organic one. Decaf and instant coffee tend to run higher on mycotoxins generally.</p>
+      <p><strong>Roasting helps, but not completely.</strong> Many pesticides break down under roasting heat, but glyphosate is heat-stable and can survive the process.</p>
+      <p><strong>Farm scale is a bigger signal than most people realise.</strong> Small farms (under ~5 hectares) generally use far less pesticide than large industrial plantations — Brazil and Vietnam's big commercial operations are the most commonly flagged. A small-farm, single-origin bean — organic or not — is often a safer bet than a mass-market conventional blend.</p>
     </div>
   </section>
 
-  <section>
+  <section style="margin-top:52px;">
     <div class="section-head"><h2>Australian brands doing something about it</h2></div>
-    <p class="section-sub">Local options that take sourcing seriously — not an exhaustive list</p>
+    <p class="section-sub">Local roasters that lab-test rather than just claim "clean"</p>
+
+    <div class="callout">
+      Worth flagging: none of the Australian brands below publish a specific glyphosate number the way some of the big US "clean coffee" brands do (Heirloom, Natural Force). They lean on organic certification for the pesticide/herbicide side and reserve their lab testing for mycotoxins. So "organic + mycotoxin-tested" is currently the closest local proxy — not quite the same as verified glyphosate-free.
+    </div>
+
     <div class="brand-grid">
       <div class="brand-card">
         <div class="brand-head">
           <span class="brand-name">Bun Coffee</span>
-          <span class="brand-loc">Byron Bay, NSW</span>
+          <span class="brand-loc">Byron Bay / Ballina, NSW</span>
         </div>
-        <p>Specialty roaster focused on ethically sourced, traceable single-origin beans. Their sourcing relationships emphasise direct trade with farms that use responsible growing practices, including organic or low-input methods. Consistently high cup quality, which also tends to correlate with better post-harvest handling (lower mycotoxin risk).</p>
-        <a href="https://buncoffee.com.au" target="_blank" class="brand-link">buncoffee.com.au ↗</a>
+        <p>Whole mycotoxin-free range — organic, single-origin and Australian-grown lines included, not just one product. Tested at Agrifood Technology, an independent Australian analytical lab. Roasting since 2005.</p>
+        <a class="brand-link" href="https://www.buncoffee.com.au/collections/mycotoxin-free-coffee" target="_blank" rel="noopener">buncoffee.com.au →</a>
       </div>
+
       <div class="brand-card">
         <div class="brand-head">
-          <span class="brand-name">Byron Bay Coffee Company</span>
+          <span class="brand-name">Byron Bay Coffee Co</span>
           <span class="brand-loc">Byron Bay, NSW</span>
         </div>
-        <p>One of the longer-standing Australian roasters with a genuine organic range. Their certified organic blends use beans from verified organic-certified farms, with Rainforest Alliance accreditation across their broader range. Widely available in supermarkets, which makes it practical to actually buy.</p>
-        <a href="https://byronbaycoffee.com.au" target="_blank" class="brand-link">byronbaycoffee.com.au ↗</a>
+        <p>Organic range tested post-roast for the full mycotoxin suite by an Australian government–accredited lab — results reported non-detectable so far. Sourcing care first, lab verification second.</p>
+        <a class="brand-link" href="https://byronbaycoffeeco.com.au/shop/organic-espresso-mycotoxin-free/" target="_blank" rel="noopener">byronbaycoffeeco.com.au →</a>
       </div>
+
       <div class="brand-card">
         <div class="brand-head">
           <span class="brand-name">Changing Habits</span>
-          <span class="brand-loc">Online (Aus-wide)</span>
+          <span class="brand-loc">Ships Australia-wide</span>
         </div>
-        <p>Founded by nutritionist Cyndi O'Meara. Their Certified Organic Cacao is a standby, and they carry organic teas and food products with a focus on minimal processing and transparent sourcing. Tends toward the health-food end of the market — worth checking for organic tea especially.</p>
-        <a href="https://changinghabits.com.au" target="_blank" class="brand-link">changinghabits.com.au ↗</a>
+        <p>Organic blend sourced from fair trade co-ops in Colombia and PNG, independently lab-tested and marketed specifically as mycotoxin/mould-free.</p>
+        <a class="brand-link" href="https://changinghabits.com.au/product/organic-mycotoxin-free-coffee-beans/" target="_blank" rel="noopener">changinghabits.com.au →</a>
       </div>
+
       <div class="brand-card">
         <div class="brand-head">
-          <span class="brand-name">The Decaf Co.</span>
-          <span class="brand-loc">Online (Aus-wide)</span>
+          <span class="brand-name">Decaf Co</span>
+          <span class="brand-loc">Ships Australia-wide</span>
         </div>
-        <p>Specialist decaf roaster using Swiss Water Process — which removes caffeine without chemical solvents. This matters for anyone avoiding decaf made with methylene chloride or ethyl acetate. They source quality green beans and the Swiss Water Process is certified organic by default (no chemicals involved). Good option if you want decaf that's actually clean.</p>
-        <a href="https://thedecafco.com" target="_blank" class="brand-link">thedecafco.com ↗</a>
+        <p>Worth a special mention since decaf runs a higher mycotoxin risk generally (less caffeine to naturally suppress mould). Their organic decaf range is lab-tested specifically for this.</p>
+        <a class="brand-link" href="https://www.decafco.com.au/collections/mycotoxin-free-decaf" target="_blank" rel="noopener">decafco.com.au →</a>
       </div>
     </div>
   </section>
 
-  <section>
+  <hr class="rule">
+
+  <section style="margin-top:0;">
+    <div class="section-head"><h2>Meat &amp; fish — a completely different set of levers</h2></div>
+    <p class="section-sub">Forget pesticide residue. Here it's hormones, antibiotics, and animal diet — and Australia's rules genuinely change the answer.</p>
+
+    <div class="callout">
+      For produce, "organic or not" is mostly a pesticide-residue question. For meat, it's a different set of levers entirely — hormones, antibiotics, and animal diet/welfare. And in Australia specifically, one of the biggest reasons people go organic overseas (hormones) is largely a non-issue already, which changes what's actually worth paying attention to here.
+    </div>
+
+    <div class="safe-skip">
+      <span class="verdict-pill caveat">The hormone question is already solved</span>
+      <h3>Chicken — hormones are a non-issue; antibiotics are the real variable</h3>
+      <p><strong>Genuine myth-buster:</strong> hormones have been banned in Australian poultry farming since 1973. Every chicken sold in Australia — organic, free-range, or the cheapest conventional bird on the shelf — is hormone-free. This isn't a premium feature you're paying extra for; it's simply the law, and has been for over 50 years.</p>
+      <p><strong>What actually varies between brands is antibiotic use.</strong> Conventional chicken farming can still use antibiotics, generally for disease prevention or treatment in high-density sheds, not growth promotion (that practice has been phased out). "Raised without antibiotics" labels mean the birds were never treated — if a bird gets sick and needs antibiotics, it's pulled from that supply chain and can no longer be sold under that label.</p>
+      <p><strong>Brands worth knowing</strong> (non-organic but antibiotic-free positioning): <strong>Lilydale Free Range</strong> explicitly states "raised without antibiotics, added hormones, or growth promotants" (owned by Baiada, same parent as Steggles). Coles Brand and Woolworths Brand RSPCA Approved chicken ranges tend to have similar antibiotic restrictions — but RSPCA Approved is primarily a <em>welfare/housing</em> standard (space, environment), not strictly an antibiotics guarantee, so it's worth checking the specific product rather than assuming. Steggles and Ingham's, Australia's two dominant chicken producers, may use antibiotics for treatment on conventional lines — check specific ranges for antibiotic-free labelling. Certified organic chicken (e.g. Australian Organic Meat Co) goes further still: no antibiotics <em>and</em> organic feed (no synthetic pesticides, fertilisers or GMOs in what the birds eat) <em>and</em> outdoor access requirements.</p>
+      <p><strong>Bottom line:</strong> don't pay an organic premium purely for "hormone-free" on chicken — that's already guaranteed for every bird sold here. If antibiotic exposure is the priority, check for antibiotic-free labelling specifically; treat organic certification as the fuller package (antibiotics + feed + welfare) if budget allows.</p>
+    </div>
+
+    <div class="safe-skip">
+      <span class="verdict-pill caveat">Legal here, but the exposure math is tiny</span>
+      <h3>Beef — hormones ARE legal, tightly regulated; antibiotics still the bigger lever</h3>
+      <p><strong>Unlike chicken, hormonal growth promotants (HGPs) are legal in Australian cattle farming</strong> and used in roughly 40% of Australian beef cattle. This is regulated by APVMA, and its most recent national residue survey found full compliance with safety standards. For scale: you'd need to eat around <strong>77 kilograms of HGP-treated beef in one sitting</strong> to get the same oestrogen dose as a single egg. So the health risk from HGP residue specifically looks negligible based on current regulatory data — this reads more as a personal-preference/naturalness question than a proven safety issue.</p>
+      <p><strong>"No hormones added" is a real, checkable label distinction for beef</strong> (unlike chicken, where it's automatic for everyone). Grass-fed beef under the Pasturefed Cattle Assurance Scheme (PCAS) certification — e.g. Woolworths' grass-fed range — also rules out feedlot finishing, a separate but related quality marker.</p>
+      <p><strong>Brands worth knowing</strong> (non-organic but no-hormones/no-antibiotics positioning): <strong>Cape Grim</strong> (Tasmania) — never fed hormones, antibiotics, or GMOs, grass-fed, not certified organic. <strong>Great Southern</strong> — grass-fed for life, free from added hormones, never treated with antibiotics, third-party certified (AsureQuality) but not organic certified. <strong>Dandaraga Springs</strong> — explicitly <em>not</em> certified organic but claims to exceed organic standards; no hormones, antibiotics, vaccines, GMOs, or chemical drenches. A good example of "beyond organic" marketing worth reading critically, since the claims aren't independently organic-certified. <strong>OBE Organic</strong> — fully certified organic beef, grass-fed and free-range, Channel Country grazing on native grasses. The clearest fully-certified option if certification (not just brand claims) matters to you.</p>
+      <p><strong>Bottom line:</strong> hormone residue risk looks minimal per the regulatory data, so "no hormones added" is more a nice-to-have than a strong health argument for beef. Antibiotic-free and grass-fed/no-feedlot are arguably the more substantive differentiators if choosing conventional over certified organic.</p>
+    </div>
+
+    <div class="safe-skip">
+      <h3>Pork &amp; lamb — same core logic as beef</h3>
+      <p>Same regulatory pattern applies: hormones and antibiotics are the two levers, and organic certification bans both plus mandates organic feed and outdoor access. Deep Australian brand-specific research on pork and lamb antibiotic-free positioning hasn't been done to the same depth as chicken and beef yet — worth a follow-up pass if this becomes a priority. The same welfare-label caution applies here too: RSPCA Approved, "free range" and similar terms are about housing conditions, not automatically antibiotic status, so check the specific product rather than assuming from the badge alone.</p>
+    </div>
+
+    <div class="safe-skip lean-organic">
+      <span class="verdict-pill organic">Antibiotics, not hormones or pesticides</span>
+      <h3>The bigger picture across all meat</h3>
+      <p>Across chicken, beef, pork and lamb, <strong>antibiotic use — not hormones, not pesticides — is the more consistently-supported reason</strong> to consider organic or antibiotic-free labelled meat. A few key points: organic certification bans routine antibiotic use outright — if an animal needs treatment, it loses organic status entirely, no exceptions. Research (including a 2021 Johns Hopkins–affiliated study) found organic meat is less likely to carry multidrug-resistant bacteria than conventional meat. And the core public health concern here isn't really residue in the meat itself so much as antibiotic resistance developing in bacteria more broadly — a population-level concern more than an individual-meal one, but still the strongest evidence-backed reason on this whole page to lean organic for meat specifically.</p>
+    </div>
+
+    <div class="safe-skip">
+      <span class="verdict-pill caveat">Organic isn't even a real category here</span>
+      <h3>Fish &amp; seafood — wild vs. farmed is the actual question</h3>
+      <p><strong>Important distinction:</strong> there is no such thing as certified organic seafood in Australia, or in most places. Wild-caught fish can't have a controlled environment (so can't meet organic standards), and farmed fish has no established organic certification standard here either. So "organic" simply isn't the relevant lens for fish — wild versus farmed is the real question.</p>
+      <p><strong>General pattern:</strong> wild-caught fish is generally lower in contaminants (mercury, PCBs) than farmed, and typically has a more naturally balanced omega-3 profile. Farmed fish can sometimes run slightly higher in omega-3s due to fortified feed, but tends to be more prone to contaminant accumulation in some studies — quality varies a lot by species and by the specific farming operation.</p>
+      <p><strong>Australian specifics worth knowing:</strong> farmed king and tiger prawns are worth a second look — commonly Crystal Bay or Vannamei farmed varieties, and noticeably different in taste to wild-caught. Oysters and mussels are technically "farmed" but are filter feeders in open water, so they're essentially as good as wild — there aren't really genuinely wild oysters sold in Australia anyway, so this distinction barely matters for them. Fresh tuna sold in Australian fish shops is mostly wild-caught, then held and fattened in floating pens before sale. Salmon is virtually all farmed in Australia (mostly Tasmanian) — wild-caught salmon isn't really a local product, so the realistic local choice is which farming operation, not wild versus farmed.</p>
+      <p><strong>Bottom line:</strong> skip the "organic" question entirely for fish — it's not a real category here. Focus on wild versus farmed by species instead, and treat prawns specifically as worth checking the label on.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section style="margin-top:0;">
     <div class="section-head"><h2>Why some produce is worse than others</h2></div>
-    <p class="section-sub">The underlying patterns that explain the lists</p>
     <div class="grid-notes">
       <div class="note-card">
-        <h4>Skin and surface area</h4>
-        <p>Thin, porous, or rough-textured skins absorb and trap residue. Thick, smooth, or inedible skins — anything you peel off — act as a barrier. This is the single biggest predictor of where a food lands on the list.</p>
+        <h4>Skin matters more than anything</h4>
+        <p>Thin, soft, or porous skin (berries, grapes, leafy greens) absorbs and holds residue. Thick skin you peel or discard (avocado, banana, melon, onion) blocks almost all of it.</p>
       </div>
       <div class="note-card">
         <h4>Growing environment matters</h4>
-        <p>Crops grown close to the ground (strawberries, spinach, potatoes) are more exposed to soil-applied pesticides and fungal pressure. Crops grown on trellises or inside husks have less contact with sprayed surfaces.</p>
+        <p>Mushrooms and sweet corn are both low-risk for the same underlying reason — they're grown in more enclosed, controlled conditions than open soil crops.</p>
       </div>
       <div class="note-card">
-        <h4>New entries are usually about one chemical</h4>
-        <p>When something jumps onto the Dirty Dozen unexpectedly — like potatoes in 2025 — it's usually because one specific pesticide was flagged in that testing cycle, not because the crop suddenly got much worse overall. Worth reading the EWG detail rather than just the headline.</p>
+        <h4>"New" entries are usually about one chemical</h4>
+        <p>Potatoes joined the Dirty Dozen in 2025 largely because of chlorpropham, a specific sprout inhibitor — not because potatoes as a category are inherently high-risk.</p>
       </div>
       <div class="note-card">
         <h4>Washing helps, but has limits</h4>
-        <p>Washing removes surface residue but not systemic pesticides (ones absorbed into the plant tissue). For high-residue produce, washing is still worth doing, but it won't bring a Dirty Dozen item down to Clean Fifteen levels.</p>
+        <p>EWG tests produce after washing/peeling to mimic real consumer habits — so these rankings already account for a normal rinse before eating.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>Sources: EWG 2025 Shopper's Guide to Pesticides in Produce (ewg.org/foodnews); USDA Pesticide Data Program.</p>
-    <p>Tea pesticide data: Clean Label Project independent testing; EU rapid alert system for food and feed (RASFF) database.</p>
-    <p>Coffee mycotoxin data: Peraica et al., European Journal of Nutrition; general literature on ochratoxin A in roasted coffee.</p>
-    <p>Australian context: Food Standards Australia New Zealand (FSANZ) Australian Total Diet Study; APVMA approved active constituent register.</p>
-    <p>Personal reference only — not dietary advice. Individual responses to pesticide exposure vary; people with specific health conditions should consult a practitioner.</p>
+    <p>Produce data: EWG's 2025 Shopper's Guide to Pesticides in Produce™ (USDA Pesticide Data Program, 53,000+ samples across 47 fruits &amp; vegetables), plus EWG's separate 2020 citrus-specific fungicide testing (imazalil &amp; thiabendazole), plus EWG's potato/sweet potato comparison data, plus EWG's green bean acephate findings, plus EWG's independent glyphosate testing on chickpeas/hummus, plus greenhouse vs. field tomato pest-management practices (horticultural extension sources). Cross-checked against FSANZ's Australian Total Diet Study, APVMA's National Residue Survey glyphosate data on Australian pulse crops, and FSANZ's BPA safety assessment.</p>
+    <p>Tea data: CBC Marketplace (2014) with Snopes fact-check context; Japanese neonicotinoid study on JAS-certified vs. conventional tea (2021).</p>
+    <p>Coffee data: 2025 independent lab study (7,000+ tests, pesticides/heavy metals/mycotoxins) reported via CNN; general coffee agronomy reporting on farm scale and MRL gaps.</p>
+    <p>Meat data: APVMA (hormonal growth promotant regulation and residue survey data), Meat & Livestock Australia, Australian Chicken Meat Federation (antibiotic stewardship, hormone ban history since 1973), 2021 Johns Hopkins–affiliated study on multidrug-resistant bacteria in organic vs. conventional meat. Fish data: general Australian sustainable seafood guidance on wild vs. farmed contaminant and omega-3 profiles.</p>
+    <p>Australian brand info sourced directly from each roaster's own product/testing claims (Aug 2026) — not independently re-verified by this page.</p>
+    <p>Personal reference — not medical or dietary advice.</p>
   </footer>
 
 </div>
